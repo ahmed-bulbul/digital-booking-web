@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Booking Management - Admin Terminal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-primary": "#62de81",
+                        "surface-container-low": "#f1f4fa",
+                        "surface": "#f7f9ff",
+                        "on-secondary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#ebeef4",
+                        "on-tertiary-fixed": "#002117",
+                        "secondary-container": "#ff8e28",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#3e4a3e",
+                        "on-secondary-fixed": "#301400",
+                        "tertiary-fixed": "#99f4d2",
+                        "outline": "#6e7a6d",
+                        "surface-dim": "#d7dae0",
+                        "inverse-surface": "#2d3135",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#dfe3e8",
+                        "secondary": "#934b00",
+                        "surface-bright": "#f7f9ff",
+                        "on-primary-fixed-variant": "#005323",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#653200",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#181c20",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#218367",
+                        "on-background": "#181c20",
+                        "primary-container": "#00873d",
+                        "tertiary": "#006950",
+                        "surface-container-high": "#e5e8ee",
+                        "on-tertiary-fixed-variant": "#00513d",
+                        "primary": "#006b2f",
+                        "inverse-on-surface": "#eef1f7",
+                        "secondary-fixed-dim": "#ffb782",
+                        "on-tertiary-container": "#f5fff8",
+                        "primary-fixed-dim": "#62de81",
+                        "on-primary-container": "#f7fff3",
+                        "secondary-fixed": "#ffdcc5",
+                        "outline-variant": "#bdcaba",
+                        "on-primary-fixed": "#00210a",
+                        "surface-container-highest": "#dfe3e8",
+                        "primary-fixed": "#7ffc9b",
+                        "on-secondary-fixed-variant": "#703800",
+                        "tertiary-fixed-dim": "#7dd8b7",
+                        "surface-tint": "#006d30",
+                        "background": "#f7f9ff"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<aside class="h-screen w-64 fixed left-0 top-0 flex flex-col bg-surface dark:bg-slate-900 border-r border-transparent z-50">
+<div class="px-8 py-10">
+<h1 class="font-['Plus_Jakarta_Sans'] text-xl font-bold italic text-green-900 dark:text-green-50">JatraXpress</h1>
+<p class="text-xs text-slate-500 font-medium tracking-widest mt-1 opacity-70">ADMIN TERMINAL</p>
+</div>
+<nav class="flex-1 px-0 font-['Inter'] text-sm font-medium tracking-wide">
+<div class="space-y-1">
+<a class="flex items-center gap-3 text-slate-500 dark:text-slate-400 py-3 px-6 hover:bg-slate-50 dark:hover:bg-slate-800/30 hover:text-green-700 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 dark:text-slate-400 py-3 px-6 hover:bg-slate-50 dark:hover:bg-slate-800/30 hover:text-green-700 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="route">route</span>
+<span>Route Management</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 dark:text-slate-400 py-3 px-6 hover:bg-slate-50 dark:hover:bg-slate-800/30 hover:text-green-700 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="event_upcoming">event_upcoming</span>
+<span>Trip Scheduling</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 dark:text-slate-400 py-3 px-6 hover:bg-slate-50 dark:hover:bg-slate-800/30 hover:text-green-700 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="directions_bus">directions_bus</span>
+<span>Bus Management</span>
+</a>
+<a class="flex items-center gap-3 bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-400 rounded-r-full py-3 px-6 shadow-sm font-semibold" href="#">
+<span class="material-symbols-outlined" data-icon="confirmation_number">confirmation_number</span>
+<span>Booking Management</span>
+</a>
+</div>
+</nav>
+<div class="p-6 mt-auto">
+<div class="flex items-center gap-3 bg-surface-container-low dark:bg-slate-800/50 p-3 rounded-xl">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-bold">A</div>
+<div class="overflow-hidden">
+<p class="text-sm font-semibold truncate">Admin Profile</p>
+<p class="text-xs text-slate-500 truncate">System Controller</p>
+</div>
+</div>
+</div>
+</aside>
+<header class="docked full-width top-0 sticky pl-64 z-40 bg-surface/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-100 dark:border-slate-800/50">
+<div class="flex justify-between items-center px-8 py-4 w-full">
+<div class="flex items-center gap-6 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-lg" data-icon="search">search</span>
+<input class="w-full bg-surface-container-high border-none rounded-xl py-2.5 pl-11 pr-4 focus:ring-2 focus:ring-primary/20 text-sm font-['Inter'] transition-all" placeholder="Search booking ID or passenger..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="h-6 w-[1px] bg-slate-200 dark:bg-slate-700 mx-2"></div>
+<div class="flex items-center gap-3">
+<span class="font-['Plus_Jakarta_Sans'] font-semibold text-slate-900 dark:text-white">Admin Terminal</span>
+<span class="material-symbols-outlined text-slate-500" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</div>
+</header>
+<main class="ml-64 p-8 min-h-screen">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+<div>
+<h2 class="font-headline text-3xl font-bold text-on-surface tracking-tight">Booking Management</h2>
+<p class="text-on-surface-variant mt-1 font-body">Review, manage, and process passenger reservations for the Emerald Route.</p>
+</div>
+<button class="flex items-center gap-2 bg-gradient-to-br from-primary to-primary-container text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-primary/20 transition-all active:scale-95">
+<span class="material-symbols-outlined text-xl" data-icon="add_circle">add_circle</span>
+<span>Manual Booking</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm">
+<p class="text-xs font-label uppercase tracking-widest text-on-surface-variant font-bold mb-2">Total Bookings Today</p>
+<div class="flex items-end gap-3">
+<span class="text-3xl font-headline font-bold text-on-surface">1,284</span>
+<span class="text-primary text-sm font-semibold flex items-center mb-1">
+<span class="material-symbols-outlined text-base" data-icon="trending_up">trending_up</span>
+                            12%
+                        </span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm">
+<p class="text-xs font-label uppercase tracking-widest text-on-surface-variant font-bold mb-2">Confirmed Trips</p>
+<div class="flex items-end gap-3">
+<span class="text-3xl font-headline font-bold text-on-surface">942</span>
+<div class="h-2 flex-1 bg-surface-container rounded-full mb-2 overflow-hidden">
+<div class="h-full bg-primary" style="width: 74%"></div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm">
+<p class="text-xs font-label uppercase tracking-widest text-on-surface-variant font-bold mb-2">Pending Invoices</p>
+<div class="flex items-end gap-3">
+<span class="text-3xl font-headline font-bold text-on-surface">312</span>
+<span class="px-2 py-0.5 bg-secondary-fixed text-on-secondary-fixed text-[10px] rounded-full font-bold mb-2">URGENT</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm">
+<p class="text-xs font-label uppercase tracking-widest text-on-surface-variant font-bold mb-2">Revenue (24h)</p>
+<div class="flex items-end gap-3">
+<span class="text-3xl font-headline font-bold text-on-surface">$42.8k</span>
+<span class="text-slate-400 text-sm font-medium mb-1">USD</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-[2rem] p-4 mb-8 flex flex-wrap items-center gap-4">
+<div class="flex-1 min-w-[200px] relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/60" data-icon="filter_list">filter_list</span>
+<select class="w-full pl-12 pr-4 py-3 bg-surface-container-lowest border-none rounded-xl focus:ring-2 focus:ring-primary/20 font-medium appearance-none">
+<option>All Statuses</option>
+<option>Confirmed</option>
+<option>Pending</option>
+<option>Cancelled</option>
+</select>
+</div>
+<div class="flex-1 min-w-[200px] relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/60" data-icon="calendar_today">calendar_today</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container-lowest border-none rounded-xl focus:ring-2 focus:ring-primary/20 font-medium" type="date"/>
+</div>
+<div class="flex-1 min-w-[200px] relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/60" data-icon="directions_bus">directions_bus</span>
+<select class="w-full pl-12 pr-4 py-3 bg-surface-container-lowest border-none rounded-xl focus:ring-2 focus:ring-primary/20 font-medium appearance-none">
+<option>All Trip IDs</option>
+<option>TR-442 (Emerald Route)</option>
+<option>TR-901 (Forest Transit)</option>
+<option>TR-115 (JatraXpress Express)</option>
+</select>
+</div>
+<button class="px-8 py-3 bg-on-surface text-surface rounded-xl font-bold hover:opacity-90 transition-opacity">
+                    Apply Filters
+                </button>
+</div>
+<div class="bg-surface-container-lowest rounded-[2rem] overflow-hidden shadow-sm">
+<table class="w-full border-collapse">
+<thead>
+<tr class="text-left border-b border-surface-container">
+<th class="px-8 py-6 text-xs font-label uppercase tracking-widest text-on-surface-variant">Booking ID</th>
+<th class="px-8 py-6 text-xs font-label uppercase tracking-widest text-on-surface-variant">Passenger</th>
+<th class="px-8 py-6 text-xs font-label uppercase tracking-widest text-on-surface-variant">Trip ID</th>
+<th class="px-8 py-6 text-xs font-label uppercase tracking-widest text-on-surface-variant text-center">Seat</th>
+<th class="px-8 py-6 text-xs font-label uppercase tracking-widest text-on-surface-variant">Amount</th>
+<th class="px-8 py-6 text-xs font-label uppercase tracking-widest text-on-surface-variant">Status</th>
+<th class="px-8 py-6 text-xs font-label uppercase tracking-widest text-on-surface-variant">Date</th>
+<th class="px-8 py-6"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low">
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="px-8 py-5">
+<span class="font-mono text-sm font-semibold text-primary">#BKG-88219</span>
+</td>
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="Passenger" class="w-full h-full object-cover" data-alt="professional headshot of a smiling woman with dark hair in a corporate setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApggdz7ZEVddoX04yXUnZFjq5n7eBX_PLjPWpkKhy31yUgvUibhZ3zrY_10H3vMnkRKUHrvKdQoie7HhqLuN6Yd-moCziscBA06z2tdYLjPgJyjOd3_w3wIroGBRoMOpT7fLj5FZTwzPs2bxHHaVTbP2P7R8D4_lYf-a5_si6LySkqWfjCB8Zp-e148Gq4T4dom5XUih-tC3gYS8jOjHwxBf0U2zGFSKnAv1m6Hz7xrNj8q0ix6PmE6VtwJrPW_AEg1AwuINOa0Q"/>
+</div>
+<span class="font-medium text-on-surface">Elena Rodriguez</span>
+</div>
+</td>
+<td class="px-8 py-5 text-on-surface-variant">TR-442</td>
+<td class="px-8 py-5 text-center">
+<span class="px-2 py-1 bg-surface-container text-[10px] font-bold rounded uppercase">12A</span>
+</td>
+<td class="px-8 py-5 font-semibold text-on-surface">$145.00</td>
+<td class="px-8 py-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 bg-primary-fixed text-on-primary-fixed text-xs font-bold rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                                    Confirmed
+                                </span>
+</td>
+<td class="px-8 py-5 text-sm text-on-surface-variant">Oct 24, 2023</td>
+<td class="px-8 py-5 text-right">
+<button class="p-2 hover:bg-white rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="px-8 py-5">
+<span class="font-mono text-sm font-semibold text-primary">#BKG-88220</span>
+</td>
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="Passenger" class="w-full h-full object-cover" data-alt="portrait of a bearded man with glasses in a natural light setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnCyBjqHCCGq3HGRhUJdumHyOYfB61i96SxYwaKd6G8AGS-TNnf0LxZbkwqpihIy4jx81ovKQbcQ7gReWmqiWB90cDIgLxMRa7EobVkx7llsTGVxIlea1B6qr7KjtXbRsMlJA2HxO6Be5Sa5c8gxj-T6kkbQfG5RLt1bpbwHfqcl4vMPZl6tMvbXScclMq9-cXGNv27wuAtMjKFcaZmx55m2GOpV-APgrfXgW7jJGAAGuRrjfBFn-aq57VASCQ_kr883z5g_UDEw"/>
+</div>
+<span class="font-medium text-on-surface">Marcus Thorne</span>
+</div>
+</td>
+<td class="px-8 py-5 text-on-surface-variant">TR-442</td>
+<td class="px-8 py-5 text-center">
+<span class="px-2 py-1 bg-surface-container text-[10px] font-bold rounded uppercase">04C</span>
+</td>
+<td class="px-8 py-5 font-semibold text-on-surface">$145.00</td>
+<td class="px-8 py-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 bg-secondary-fixed text-on-secondary-fixed text-xs font-bold rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                                    Pending
+                                </span>
+</td>
+<td class="px-8 py-5 text-sm text-on-surface-variant">Oct 24, 2023</td>
+<td class="px-8 py-5 text-right">
+<button class="p-2 hover:bg-white rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="px-8 py-5">
+<span class="font-mono text-sm font-semibold text-primary">#BKG-88221</span>
+</td>
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="Passenger" class="w-full h-full object-cover" data-alt="candid shot of a young man smiling in an urban environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAolgQ9SFz2jN1tP6Jjte3__RQI2SIGjAX9kgGTFYIdNCpCxWT_ybnhzvhfLmeZuD5soguQ9ZBuIwGbX3JSpv-mY7-LNoV8j1Cg9W0hZukPEptP-nw9FcgjbTQ-BsBq15oyeQ5PbJ-qEmwUsG8qlRMFe1VQSnXSYXsyy3_BIuFcrwqBlv-yDQwR8v3idUnMM25sbvkZzgyUyzbuRd8lvPGmNPcHuIH7RS9v0CV9lpi_-OeiABtYJZCZQumfI7KE6V-yumXNMjOvIw"/>
+</div>
+<span class="font-medium text-on-surface">Julian Chen</span>
+</div>
+</td>
+<td class="px-8 py-5 text-on-surface-variant">TR-901</td>
+<td class="px-8 py-5 text-center">
+<span class="px-2 py-1 bg-surface-container text-[10px] font-bold rounded uppercase">01A</span>
+</td>
+<td class="px-8 py-5 font-semibold text-on-surface">$210.00</td>
+<td class="px-8 py-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 bg-primary-fixed text-on-primary-fixed text-xs font-bold rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                                    Confirmed
+                                </span>
+</td>
+<td class="px-8 py-5 text-sm text-on-surface-variant">Oct 23, 2023</td>
+<td class="px-8 py-5 text-right">
+<button class="p-2 hover:bg-white rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="px-8 py-5">
+<span class="font-mono text-sm font-semibold text-primary">#BKG-88222</span>
+</td>
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden flex items-center justify-center bg-slate-100">
+<span class="text-xs font-bold text-slate-400">SM</span>
+</div>
+<span class="font-medium text-on-surface">Sarah Miller</span>
+</div>
+</td>
+<td class="px-8 py-5 text-on-surface-variant">TR-115</td>
+<td class="px-8 py-5 text-center">
+<span class="px-2 py-1 bg-surface-container text-[10px] font-bold rounded uppercase">15F</span>
+</td>
+<td class="px-8 py-5 font-semibold text-on-surface">$85.50</td>
+<td class="px-8 py-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 bg-error-container text-on-error-container text-xs font-bold rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                                    Cancelled
+                                </span>
+</td>
+<td class="px-8 py-5 text-sm text-on-surface-variant">Oct 23, 2023</td>
+<td class="px-8 py-5 text-right">
+<button class="p-2 hover:bg-white rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="px-8 py-5">
+<span class="font-mono text-sm font-semibold text-primary">#BKG-88223</span>
+</td>
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="Passenger" class="w-full h-full object-cover" data-alt="vibrant portrait of a woman with red hair in a creative studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCauGlv4V2CU3ZIZlesdlwIzGSlKYDZN01wrtIIdwN_9AFbVJszG14s2rKc0WcYpAIjQ2ohhHkXMIe-Gqf92hQS_W0FUm3ch1OJmjcd0dZatVFtrk5aycAChKHUfDmtbvacFuT2gLfeWOmXRD-n_WJtqR2KQ4fS3uPMZgBsyP6Z0yOrqbR4DG18pAznthxObh620iybFHp2zRF6s40k8xvxYhz6nYAKLsPrMcpMwOM7auoz7thDdXThgy5aRdqGzWW0boZ6_qPgvw"/>
+</div>
+<span class="font-medium text-on-surface">Aria Vane</span>
+</div>
+</td>
+<td class="px-8 py-5 text-on-surface-variant">TR-442</td>
+<td class="px-8 py-5 text-center">
+<span class="px-2 py-1 bg-surface-container text-[10px] font-bold rounded uppercase">09B</span>
+</td>
+<td class="px-8 py-5 font-semibold text-on-surface">$145.00</td>
+<td class="px-8 py-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 bg-primary-fixed text-on-primary-fixed text-xs font-bold rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                                    Confirmed
+                                </span>
+</td>
+<td class="px-8 py-5 text-sm text-on-surface-variant">Oct 23, 2023</td>
+<td class="px-8 py-5 text-right">
+<button class="p-2 hover:bg-white rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="p-6 bg-surface-container-low/30 border-t border-surface-container flex items-center justify-between">
+<p class="text-sm text-on-surface-variant font-medium">Showing 5 of 1,284 bookings</p>
+<div class="flex gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-xl border border-surface-container hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-xl bg-primary text-white font-bold">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-xl border border-surface-container hover:bg-white transition-colors font-bold">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-xl border border-surface-container hover:bg-white transition-colors font-bold">3</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-xl border border-surface-container hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+<div class="bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/10 p-8 rounded-[2.5rem] relative overflow-hidden group">
+<div class="relative z-10">
+<div class="w-12 h-12 bg-primary rounded-2xl flex items-center justify-center text-white mb-6">
+<span class="material-symbols-outlined text-2xl" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<h3 class="text-xl font-headline font-bold mb-2">Optimize Seat Allocations</h3>
+<p class="text-on-surface-variant font-body text-sm leading-relaxed mb-6">Our AI suggested re-allocating 12 standby passengers to the 09:00 AM JatraXpress Express to maximize load factor.</p>
+<button class="text-primary font-bold text-sm flex items-center gap-2 group-hover:translate-x-1 transition-transform">
+                            View Smart Recommendations
+                            <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<span class="material-symbols-outlined absolute -bottom-10 -right-10 text-[12rem] text-primary/5 select-none" data-icon="insights">insights</span>
+</div>
+<div class="bg-surface-container-low p-8 rounded-[2.5rem]">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-xl font-headline font-bold">Recent System Log</h3>
+<span class="text-xs font-label uppercase tracking-widest bg-white/50 px-3 py-1 rounded-full text-on-surface-variant font-bold">Real-time</span>
+</div>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="w-2 h-2 rounded-full bg-primary mt-2"></div>
+<div>
+<p class="text-sm font-semibold">Manual Booking Created</p>
+<p class="text-xs text-on-surface-variant">Admin #02 processed BKG-88223 for Aria Vane.</p>
+<p class="text-[10px] text-slate-400 mt-1 uppercase font-bold tracking-tighter">14:02 PM</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-2 h-2 rounded-full bg-error mt-2"></div>
+<div>
+<p class="text-sm font-semibold">Booking Cancelled by User</p>
+<p class="text-xs text-on-surface-variant">BKG-88222 was revoked. Seat 15F is now vacant.</p>
+<p class="text-[10px] text-slate-400 mt-1 uppercase font-bold tracking-tighter">13:45 PM</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-2 h-2 rounded-full bg-secondary mt-2"></div>
+<div>
+<p class="text-sm font-semibold">Payment Verification Pending</p>
+<p class="text-xs text-on-surface-variant">BKG-88220 awaiting merchant confirmation.</p>
+<p class="text-[10px] text-slate-400 mt-1 uppercase font-bold tracking-tighter">13:12 PM</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

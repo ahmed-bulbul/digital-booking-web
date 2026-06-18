@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JatraXpress | Admin Terminal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-primary-container": "#f7fff3",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#ffb782",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#181c20",
+                        "tertiary": "#006950",
+                        "on-tertiary-fixed": "#002117",
+                        "on-secondary-container": "#653200",
+                        "on-error-container": "#93000a",
+                        "background": "#f7f9ff",
+                        "error": "#ba1a1a",
+                        "surface": "#f7f9ff",
+                        "inverse-primary": "#62de81",
+                        "surface-dim": "#d7dae0",
+                        "outline": "#6e7a6d",
+                        "on-tertiary-fixed-variant": "#00513d",
+                        "outline-variant": "#bdcaba",
+                        "on-secondary-fixed-variant": "#703800",
+                        "primary-fixed-dim": "#62de81",
+                        "secondary-container": "#ff8e28",
+                        "secondary-fixed": "#ffdcc5",
+                        "surface-container-highest": "#dfe3e8",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#99f4d2",
+                        "on-tertiary-container": "#f5fff8",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#301400",
+                        "on-primary-fixed": "#00210a",
+                        "surface-bright": "#f7f9ff",
+                        "on-background": "#181c20",
+                        "primary-container": "#00873d",
+                        "tertiary-fixed-dim": "#7dd8b7",
+                        "on-surface-variant": "#3e4a3e",
+                        "on-primary-fixed-variant": "#005323",
+                        "surface-container-low": "#f1f4fa",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#e5e8ee",
+                        "inverse-surface": "#2d3135",
+                        "primary": "#006b2f",
+                        "surface-container": "#ebeef4",
+                        "surface-tint": "#006d30",
+                        "inverse-on-surface": "#eef1f7",
+                        "tertiary-container": "#218367",
+                        "surface-variant": "#dfe3e8",
+                        "secondary": "#934b00",
+                        "primary-fixed": "#7ffc9b"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- SideNavBar (Admin Console) -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface flex flex-col border-r border-transparent z-50">
+<div class="p-6">
+<h1 class="text-xl font-black text-green-900 italic font-headline">JatraXpress</h1>
+<div class="mt-8 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="Admin Avatar" class="w-full h-full object-cover" data-alt="professional portrait of a senior transit operations manager in a minimalist office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFvHZKVpGoQfxmRBRlrADnXoF-Z1aBh9lvUlYq4ryMkWyeh_IiOctTBmxGxnERlNI-Fp4xbhwAbAygMZW3m__I2665rktavsdHca0w_XyG2egYgYbz2sx5yrdPoo9G7WBT-Xomxli7xsDbzM2apOdV4el8GAEp1awecqwXzs7eJe4s6ZA6Rq4o09oNSl2Ke5X3bk0ZVDKsSdS9FVAr1QrHcSTQV006WRpTcjpQIEo2Gc3r29KvD7Ext0V2tz3mAvcdE1mulA2YWQ"/>
+</div>
+<div>
+<p class="font-headline text-sm font-bold text-green-900">Admin Console</p>
+<p class="text-[10px] uppercase tracking-wider text-outline">Fleet Operations</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 mt-4 px-2 space-y-1">
+<!-- Active: Dashboard -->
+<a class="flex items-center gap-3 bg-green-50 text-green-800 rounded-r-full py-3 px-6 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-['Inter'] text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 py-3 px-6 hover:bg-slate-100 hover:text-green-700 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="route">route</span>
+<span class="font-['Inter'] text-sm font-medium">Route Management</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 py-3 px-6 hover:bg-slate-100 hover:text-green-700 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="event_upcoming">event_upcoming</span>
+<span class="font-['Inter'] text-sm font-medium">Trip Scheduling</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 py-3 px-6 hover:bg-slate-100 hover:text-green-700 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="directions_bus">directions_bus</span>
+<span class="font-['Inter'] text-sm font-medium">Bus Management</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 py-3 px-6 hover:bg-slate-100 hover:text-green-700 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="confirmation_number">confirmation_number</span>
+<span class="font-['Inter'] text-sm font-medium">Booking Management</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 py-3 px-6 hover:bg-slate-100 hover:text-green-700 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-['Inter'] text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="p-6 mt-auto">
+<div class="bg-surface-container-low rounded-xl p-4">
+<p class="text-[10px] font-bold text-outline uppercase tracking-widest">System Health</p>
+<div class="flex items-center gap-2 mt-2">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<p class="text-xs font-medium text-on-surface-variant">All Systems Nominal</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Wrapper -->
+<div class="pl-64 flex flex-col min-h-screen">
+<!-- TopNavBar (Admin Terminal) -->
+<header class="sticky top-0 z-40 bg-surface/90 backdrop-blur-md flex justify-between items-center px-6 py-3 w-full border-b border-slate-100">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg" data-icon="search">search</span>
+<input class="w-full bg-surface-container-high border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary/20 placeholder:text-outline/60" placeholder="Search routes, buses, or bookings..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-50 transition-colors active:scale-95">
+<span class="material-symbols-outlined text-slate-600" data-icon="notifications">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-50 transition-colors active:scale-95">
+<span class="material-symbols-outlined text-slate-600" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Page Content -->
+<main class="p-8 space-y-8 max-w-7xl mx-auto w-full">
+<!-- Welcome Header -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="font-headline text-3xl font-extrabold text-on-surface tracking-tight">Fleet Dashboard</h2>
+<p class="text-on-surface-variant mt-1">Operational overview for <span class="text-primary font-semibold">GreenLine Transits</span></p>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-5 py-2.5 bg-surface-container-lowest text-on-surface border border-outline-variant/30 rounded-xl text-sm font-semibold hover:bg-surface-container-high transition-colors">
+                        Export Reports
+                    </button>
+<button class="px-5 py-2.5 bg-gradient-to-br from-primary to-primary-container text-white rounded-xl text-sm font-semibold shadow-sm active:scale-95 transition-all">
+                        New Schedule
+                    </button>
+</div>
+</section>
+<!-- Metrics Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Card: Total Bookings -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10">
+<div class="flex items-center justify-between mb-4">
+<div class="p-2 bg-primary/5 text-primary rounded-lg">
+<span class="material-symbols-outlined" data-icon="confirmation_number">confirmation_number</span>
+</div>
+<span class="text-[10px] font-bold text-primary px-2 py-1 bg-primary/10 rounded-full tracking-wider">+12%</span>
+</div>
+<p class="text-sm font-medium text-on-surface-variant font-body">Total Bookings</p>
+<h3 class="text-2xl font-bold font-headline mt-1">1,284</h3>
+</div>
+<!-- Card: Today's Revenue -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10">
+<div class="flex items-center justify-between mb-4">
+<div class="p-2 bg-secondary/5 text-secondary rounded-lg">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+</div>
+<span class="text-[10px] font-bold text-secondary px-2 py-1 bg-secondary/10 rounded-full tracking-wider">+5.4%</span>
+</div>
+<p class="text-sm font-medium text-on-surface-variant font-body">Today's Revenue</p>
+<h3 class="text-2xl font-bold font-headline mt-1">$42,910.50</h3>
+</div>
+<!-- Card: Active Routes -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10">
+<div class="flex items-center justify-between mb-4">
+<div class="p-2 bg-tertiary/5 text-tertiary rounded-lg">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+</div>
+<span class="text-[10px] font-bold text-tertiary px-2 py-1 bg-tertiary/10 rounded-full tracking-wider">Stable</span>
+</div>
+<p class="text-sm font-medium text-on-surface-variant font-body">Active Routes</p>
+<h3 class="text-2xl font-bold font-headline mt-1">24</h3>
+</div>
+<!-- Card: Buses in Service -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10">
+<div class="flex items-center justify-between mb-4">
+<div class="p-2 bg-on-primary-fixed-variant/5 text-on-primary-fixed-variant rounded-lg">
+<span class="material-symbols-outlined" data-icon="directions_bus">directions_bus</span>
+</div>
+<span class="text-[10px] font-bold text-on-primary-fixed-variant px-2 py-1 bg-green-100 rounded-full tracking-wider">94% Capacity</span>
+</div>
+<p class="text-sm font-medium text-on-surface-variant font-body">Buses in Service</p>
+<h3 class="text-2xl font-bold font-headline mt-1">18 / 20</h3>
+</div>
+</section>
+<!-- Middle Section: Revenue Chart & Status -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Revenue Chart Placeholder -->
+<div class="lg:col-span-2 bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 flex flex-col">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h4 class="font-headline font-bold text-lg">Revenue Performance</h4>
+<p class="text-xs text-on-surface-variant">Last 7 days cumulative growth</p>
+</div>
+<div class="flex gap-2">
+<button class="px-3 py-1 text-xs font-semibold bg-surface-container-low text-on-surface rounded-md">Week</button>
+<button class="px-3 py-1 text-xs font-semibold hover:bg-surface-container-low transition-colors rounded-md">Month</button>
+</div>
+</div>
+<!-- Pseudo Chart -->
+<div class="flex-1 min-h-[250px] relative flex items-end gap-2 pb-6">
+<div class="w-full bg-surface-container-low h-[40%] rounded-t-lg relative group">
+<div class="absolute bottom-0 w-full bg-primary/20 h-full rounded-t-lg transition-all group-hover:bg-primary/30"></div>
+</div>
+<div class="w-full bg-surface-container-low h-[65%] rounded-t-lg relative group">
+<div class="absolute bottom-0 w-full bg-primary/20 h-full rounded-t-lg transition-all group-hover:bg-primary/30"></div>
+</div>
+<div class="w-full bg-surface-container-low h-[55%] rounded-t-lg relative group">
+<div class="absolute bottom-0 w-full bg-primary/20 h-full rounded-t-lg transition-all group-hover:bg-primary/30"></div>
+</div>
+<div class="w-full bg-surface-container-low h-[80%] rounded-t-lg relative group">
+<div class="absolute bottom-0 w-full bg-primary/20 h-full rounded-t-lg transition-all group-hover:bg-primary/30"></div>
+</div>
+<div class="w-full bg-surface-container-low h-[45%] rounded-t-lg relative group">
+<div class="absolute bottom-0 w-full bg-primary/20 h-full rounded-t-lg transition-all group-hover:bg-primary/30"></div>
+</div>
+<div class="w-full bg-surface-container-low h-[95%] rounded-t-lg relative group">
+<div class="absolute bottom-0 w-full bg-primary h-full rounded-t-lg shadow-lg"></div>
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface text-[10px] px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">$12.4k (Today)</div>
+</div>
+<div class="w-full bg-surface-container-low h-[70%] rounded-t-lg relative group">
+<div class="absolute bottom-0 w-full bg-primary/20 h-full rounded-t-lg transition-all group-hover:bg-primary/30"></div>
+</div>
+</div>
+<div class="flex justify-between text-[10px] text-outline px-1">
+<span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+</div>
+</div>
+<!-- Active Trips Breakdown -->
+<div class="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10">
+<h4 class="font-headline font-bold text-lg mb-6">Upcoming Departures</h4>
+<div class="space-y-6">
+<div class="flex items-start gap-4">
+<div class="min-w-[50px] text-center">
+<p class="text-xs font-bold text-primary">09:45</p>
+<p class="text-[10px] text-outline uppercase">AM</p>
+</div>
+<div class="flex-1">
+<p class="text-sm font-semibold">Seattle Express</p>
+<p class="text-xs text-on-surface-variant">Bus #402 • Platform 4</p>
+<div class="mt-2 w-full bg-surface-container-low h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[85%]"></div>
+</div>
+<p class="text-[10px] mt-1 text-on-surface-variant">85% Seats Filled</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="min-w-[50px] text-center">
+<p class="text-xs font-bold text-on-surface">11:15</p>
+<p class="text-[10px] text-outline uppercase">AM</p>
+</div>
+<div class="flex-1">
+<p class="text-sm font-semibold">Portland Coastal</p>
+<p class="text-xs text-on-surface-variant">Bus #118 • Platform 2</p>
+<div class="mt-2 w-full bg-surface-container-low h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-[98%]"></div>
+</div>
+<div class="flex justify-between items-center mt-1">
+<p class="text-[10px] text-secondary font-bold uppercase">Almost Full</p>
+<p class="text-[10px] text-on-surface-variant">42/44 Seats</p>
+</div>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="min-w-[50px] text-center">
+<p class="text-xs font-bold text-on-surface">01:30</p>
+<p class="text-[10px] text-outline uppercase">PM</p>
+</div>
+<div class="flex-1">
+<p class="text-sm font-semibold">Vancouver Limited</p>
+<p class="text-xs text-on-surface-variant">Bus #092 • Platform 1</p>
+<div class="mt-2 w-full bg-surface-container-low h-1.5 rounded-full overflow-hidden">
+<div class="bg-slate-300 h-full w-[30%]"></div>
+</div>
+<p class="text-[10px] mt-1 text-on-surface-variant">30% Seats Filled</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-8 py-3 text-sm font-bold text-primary border border-primary/20 rounded-xl hover:bg-primary/5 transition-colors">
+                        View All Trips
+                    </button>
+</div>
+</section>
+<!-- Bottom Section: Recent Bookings Table -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant/10 overflow-hidden">
+<div class="px-8 py-6 border-b border-surface-container-low flex justify-between items-center">
+<h4 class="font-headline font-bold text-lg">Recent Bookings</h4>
+<button class="text-sm text-primary font-semibold hover:underline">View History</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="px-8 py-4 text-[10px] font-bold text-outline uppercase tracking-widest">Passenger</th>
+<th class="px-8 py-4 text-[10px] font-bold text-outline uppercase tracking-widest">Route</th>
+<th class="px-8 py-4 text-[10px] font-bold text-outline uppercase tracking-widest">Date / Time</th>
+<th class="px-8 py-4 text-[10px] font-bold text-outline uppercase tracking-widest">Status</th>
+<th class="px-8 py-4 text-[10px] font-bold text-outline uppercase tracking-widest">Amount</th>
+<th class="px-8 py-4 text-[10px] font-bold text-outline uppercase tracking-widest">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low">
+<!-- Table Row 1 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-8 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="User" class="w-full h-full object-cover" data-alt="portrait of a young man with a friendly expression and short dark hair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWSM1jbvJ0fRwKNiBxnXzdG87YKRqEs74BL70-u90d9tT9abLDvsmJgULiLjkUqvVhXLl3TqmbYMw1h9XxKqMe360F3P7xu8Sd7tt_yqmKi_h3J_2uw9dk040bMra_0fWxFy6ndVGwKGvPKWtfNMTW7aMoiY-vrSG6_68EVsY4icZRjgmU1xBCIxOVMiggfF1rmpqYXWAPX-Z7VbaaB7P9ZhQR7vv9sNEIdOB-9wglhGfxUez8s6w56AotTkbeeo0uLVFgnz6Vzg"/>
+</div>
+<div>
+<p class="text-sm font-semibold">David Chen</p>
+<p class="text-[10px] text-outline">#BK-92011</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-4">
+<p class="text-sm font-medium">Seattle → Portland</p>
+<p class="text-[10px] text-outline">Coach Class • Seat 14A</p>
+</td>
+<td class="px-8 py-4 text-sm">
+<p>Oct 24, 2024</p>
+<p class="text-[10px] text-outline">09:15 AM</p>
+</td>
+<td class="px-8 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-primary/10 text-primary uppercase">Confirmed</span>
+</td>
+<td class="px-8 py-4 text-sm font-bold">$54.00</td>
+<td class="px-8 py-4">
+<button class="p-1 hover:bg-surface-container-high rounded text-outline transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Table Row 2 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-8 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="User" class="w-full h-full object-cover" data-alt="portrait of a woman with long wavy brown hair and a bright smile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC6PJk2lpAzLS9HpVpnOHVRUFNu-vpWwB8nSR9F2xXRNwHPxwZ7RtEXqqFpGSsFGiyfTRhmMWFSQDBCngVMK_l8Hhd40pwvgD2MToPKNXLA5P_lSIP12mYC0DgViH4ZR_V3A4JzLozqlHP3DfPDA3AfLaOl-JYCDHwPhIxpnQeDsK3cSiMV_VcOOTmuloPKoZX7o0MVqBgccD-xbU4Mh5jgcImKbqJ0zS4cNabHQLohc-cVScmADYHjlX-uC3Yp85hMqi7tMKoQA"/>
+</div>
+<div>
+<p class="text-sm font-semibold">Elena Rodriguez</p>
+<p class="text-[10px] text-outline">#BK-92012</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-4">
+<p class="text-sm font-medium">Vancouver → Seattle</p>
+<p class="text-[10px] text-outline">First Class • Seat 02B</p>
+</td>
+<td class="px-8 py-4 text-sm">
+<p>Oct 24, 2024</p>
+<p class="text-[10px] text-outline">10:30 AM</p>
+</td>
+<td class="px-8 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-secondary/10 text-secondary uppercase">Pending</span>
+</td>
+<td class="px-8 py-4 text-sm font-bold">$89.00</td>
+<td class="px-8 py-4">
+<button class="p-1 hover:bg-surface-container-high rounded text-outline transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Table Row 3 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-8 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="User" class="w-full h-full object-cover" data-alt="portrait of a middle-aged man with short beard and glasses looking professional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9dYHXtGOLtRY8a5YGOXAY51wajNiPe4kA4lTczGkN7_Yt8vlpJ_Nn0QzMgUy-diw9_yYyeoxBmxdmcDY7p8zY5tUf3sibNgkv2Ou9QGCl0zQVZbJBL8-oihUt1kmrhbuW5AeGg6uQWGUjDrpxKua6ojCqkHUHu-srAwTReaJP5lDBA48fcLk8VA11JhRSmeWVFDDHEs2pAMsAixJ65S-Wl4hpZT23nqKSJ7Z1Gqi2ELHUlIOdKf76ILWHPzQuWM7PiEwxuKwufQ"/>
+</div>
+<div>
+<p class="text-sm font-semibold">Marcus Thorne</p>
+<p class="text-[10px] text-outline">#BK-92013</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-4">
+<p class="text-sm font-medium">Seattle → Portland</p>
+<p class="text-[10px] text-outline">Coach Class • Seat 21C</p>
+</td>
+<td class="px-8 py-4 text-sm">
+<p>Oct 24, 2024</p>
+<p class="text-[10px] text-outline">09:15 AM</p>
+</td>
+<td class="px-8 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-primary/10 text-primary uppercase">Confirmed</span>
+</td>
+<td class="px-8 py-4 text-sm font-bold">$48.50</td>
+<td class="px-8 py-4">
+<button class="p-1 hover:bg-surface-container-high rounded text-outline transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 bg-surface-container-low/30 text-center">
+<button class="text-[10px] font-bold text-outline hover:text-primary transition-colors uppercase tracking-widest">Load More Results</button>
+</div>
+</section>
+</main>
+<!-- Footer (Shared Component Guidance) -->
+<footer class="w-full py-12 px-8 bg-surface-container-low mt-auto border-t border-transparent">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-7xl mx-auto">
+<div>
+<p class="text-lg font-bold text-green-900 font-headline italic">JatraXpress</p>
+<p class="text-sm text-slate-500 mt-2 font-body">Premium Mobility Solutions for modern operators.</p>
+</div>
+<div class="flex gap-12">
+<div class="flex flex-col gap-2">
+<p class="text-[10px] font-bold text-outline uppercase tracking-widest mb-2">Platform</p>
+<a class="text-slate-500 text-sm hover:text-green-600 underline transition-all" href="#">About Us</a>
+<a class="text-slate-500 text-sm hover:text-green-600 underline transition-all" href="#">Terms</a>
+</div>
+<div class="flex flex-col gap-2">
+<p class="text-[10px] font-bold text-outline uppercase tracking-widest mb-2">Support</p>
+<a class="text-slate-500 text-sm hover:text-green-600 underline transition-all" href="#">Privacy</a>
+<a class="text-slate-500 text-sm hover:text-green-600 underline transition-all" href="#">Contact</a>
+</div>
+</div>
+<div class="md:text-right">
+<p class="font-['Inter'] text-sm tracking-wide text-slate-500">© 2024 JatraXpress. Premium Mobility.</p>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

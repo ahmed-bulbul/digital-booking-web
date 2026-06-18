@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bus Management | Admin Terminal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-primary": "#62de81",
+              "surface-container-low": "#f1f4fa",
+              "surface": "#f7f9ff",
+              "on-secondary": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "surface-container": "#ebeef4",
+              "on-tertiary-fixed": "#002117",
+              "secondary-container": "#ff8e28",
+              "error-container": "#ffdad6",
+              "error": "#ba1a1a",
+              "on-surface-variant": "#3e4a3e",
+              "on-secondary-fixed": "#301400",
+              "tertiary-fixed": "#99f4d2",
+              "outline": "#6e7a6d",
+              "surface-dim": "#d7dae0",
+              "inverse-surface": "#2d3135",
+              "on-tertiary": "#ffffff",
+              "surface-variant": "#dfe3e8",
+              "secondary": "#934b00",
+              "surface-bright": "#f7f9ff",
+              "on-primary-fixed-variant": "#005323",
+              "on-error-container": "#93000a",
+              "on-secondary-container": "#653200",
+              "on-primary": "#ffffff",
+              "on-surface": "#181c20",
+              "on-error": "#ffffff",
+              "tertiary-container": "#218367",
+              "on-background": "#181c20",
+              "primary-container": "#00873d",
+              "tertiary": "#006950",
+              "surface-container-high": "#e5e8ee",
+              "on-tertiary-fixed-variant": "#00513d",
+              "primary": "#006b2f",
+              "inverse-on-surface": "#eef1f7",
+              "secondary-fixed-dim": "#ffb782",
+              "on-tertiary-container": "#f5fff8",
+              "primary-fixed-dim": "#62de81",
+              "on-primary-container": "#f7fff3",
+              "secondary-fixed": "#ffdcc5",
+              "outline-variant": "#bdcaba",
+              "on-primary-fixed": "#00210a",
+              "surface-dim": "#d7dae0",
+              "surface-tint": "#006d30",
+              "background": "#f7f9ff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        background-color: #f7f9ff;
+      }
+    </style>
+</head>
+<body class="font-body text-on-surface">
+<!-- SideNavBar Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface dark:bg-slate-900 flex flex-col h-full border-r border-transparent z-50">
+<div class="p-8">
+<h1 class="font-['Plus_Jakarta_Sans'] text-xl font-bold italic text-green-900 dark:text-green-50">JatraXpress</h1>
+<p class="text-xs text-slate-500 font-medium tracking-widest mt-1 opacity-70">ADMIN TERMINAL</p>
+</div>
+<nav class="flex-1 px-0 py-4">
+<a class="flex items-center gap-3 text-slate-500 dark:text-slate-400 py-3 px-6 hover:bg-slate-50 dark:hover:bg-slate-800/30 hover:text-green-700 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-['Inter'] text-sm font-medium tracking-wide">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 dark:text-slate-400 py-3 px-6 hover:bg-slate-50 dark:hover:bg-slate-800/30 hover:text-green-700 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">route</span>
+<span class="font-['Inter'] text-sm font-medium tracking-wide">Route Management</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 dark:text-slate-400 py-3 px-6 hover:bg-slate-50 dark:hover:bg-slate-800/30 hover:text-green-700 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">event_upcoming</span>
+<span class="font-['Inter'] text-sm font-medium tracking-wide">Trip Scheduling</span>
+</a>
+<a class="flex items-center gap-3 bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-400 rounded-r-full py-3 px-6 shadow-sm" href="#">
+<span class="material-symbols-outlined">directions_bus</span>
+<span class="font-['Inter'] text-sm font-medium tracking-wide">Bus Management</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 dark:text-slate-400 py-3 px-6 hover:bg-slate-50 dark:hover:bg-slate-800/30 hover:text-green-700 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">confirmation_number</span>
+<span class="font-['Inter'] text-sm font-medium tracking-wide">Booking Management</span>
+</a>
+</nav>
+<div class="p-6 mt-auto">
+<div class="flex items-center gap-3 p-3 bg-surface-container-low dark:bg-slate-800/50 rounded-xl">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-white font-bold">A</div>
+<div>
+<p class="text-xs font-bold text-on-surface">Admin Profile</p>
+<p class="text-[10px] text-slate-500">Super Administrator</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen">
+<!-- TopNavBar Shell -->
+<header class="docked full-width top-0 sticky bg-surface/80 dark:bg-slate-900/80 backdrop-blur-xl flex justify-between items-center px-8 py-4 w-full border-b border-slate-100 dark:border-slate-800/50 z-40">
+<div class="flex items-center gap-6">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-slate-400">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-high border-none rounded-xl text-sm w-80 focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Search buses by ID or Name..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-50 text-slate-500">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-[1px] bg-slate-200 mx-2"></div>
+<button class="flex items-center gap-2 hover:bg-slate-50 px-3 py-1.5 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-green-800">account_circle</span>
+<span class="font-['Plus_Jakarta_Sans'] font-semibold text-sm">Admin Terminal</span>
+</button>
+</div>
+</header>
+<!-- Page Header -->
+<section class="px-8 pt-8 pb-4 flex justify-between items-end">
+<div>
+<h2 class="text-display-lg font-headline font-bold text-on-surface leading-tight">Bus Fleet</h2>
+<p class="text-body-md text-on-surface-variant max-w-md mt-2">Manage your high-end mobility sanctuary. Monitor status, availability, and fleet health.</p>
+</div>
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-6 py-3 rounded-xl font-semibold flex items-center gap-2 shadow-lg shadow-primary/20 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">add</span>
+                Add New Bus
+            </button>
+</section>
+<!-- Stats Overview (Bento Grid Style) -->
+<section class="px-8 py-6 grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-transparent flex items-center gap-4">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">directions_bus</span>
+</div>
+<div>
+<p class="text-label-sm uppercase tracking-wider text-on-surface-variant font-bold">Total Fleet</p>
+<p class="text-2xl font-bold font-headline">42</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-transparent flex items-center gap-4">
+<div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-700">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<p class="text-label-sm uppercase tracking-wider text-on-surface-variant font-bold">Active</p>
+<p class="text-2xl font-bold font-headline">38</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-transparent flex items-center gap-4">
+<div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-orange-600">
+<span class="material-symbols-outlined">build</span>
+</div>
+<div>
+<p class="text-label-sm uppercase tracking-wider text-on-surface-variant font-bold">Maintenance</p>
+<p class="text-2xl font-bold font-headline">3</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-transparent flex items-center gap-4">
+<div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center text-red-600">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<div>
+<p class="text-label-sm uppercase tracking-wider text-on-surface-variant font-bold">Out of Order</p>
+<p class="text-2xl font-bold font-headline">1</p>
+</div>
+</div>
+</section>
+<!-- Bus Grid -->
+<section class="px-8 pb-12">
+<div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-6">
+<!-- Bus Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden group transition-all duration-300 hover:shadow-2xl hover:shadow-primary/5">
+<div class="relative h-48">
+<img alt="Luxury Bus" class="w-full h-full object-cover" data-alt="Modern high-end luxury bus with sleek design parked in a clean minimalist terminal at sunrise with soft golden lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADan46cBZ5Ng-44GXe7OpomVlxwqZihCrImj7WMHztntfxha3DrGT1eeAviCMYGzEMrrGLkkHVL8PZKlnJS5EFnI1JmgYhZTMKrHBKegNqzK86CinmgNEicXMoOx3wMS2klkwu8P2ZGR5ZtMUzPbz6vnN7sArg2B41vyiRfWJZAWsP_bjwsosaAcAf3Me1seXnViZtCvbmW0rjikSmR5ocRnzHHkCuqRi9Jhe8ajLAhgNCUHIL8yB3HaFn5wHpIgG16IC7J75_bw"/>
+<div class="absolute top-4 right-4 bg-surface-bright/80 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase flex items-center gap-1.5 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+                            Active
+                        </div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline font-bold text-xl text-on-surface">Emerald Voyager KS-01</h3>
+<p class="text-label-sm text-on-surface-variant tracking-widest mt-0.5">ID: BUS-2023-V01</p>
+</div>
+<span class="bg-surface-container-low text-primary font-bold px-3 py-1 rounded-lg text-xs">AC Sleeper</span>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant text-lg">event_seat</span>
+<div>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-tighter">Total Seats</p>
+<p class="text-sm font-semibold">32 Berths</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant text-lg">badge</span>
+<div>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-tighter">License Plate</p>
+<p class="text-sm font-semibold">KS 42 EM 001</p>
+</div>
+</div>
+</div>
+<div class="flex gap-2 pt-4 border-t border-slate-50">
+<button class="flex-1 bg-surface-container-low text-on-surface font-semibold py-2.5 rounded-lg text-sm hover:bg-surface-container-high transition-colors">Details</button>
+<button class="flex-1 bg-surface-container-low text-on-surface font-semibold py-2.5 rounded-lg text-sm hover:bg-surface-container-high transition-colors">Schedule</button>
+<button class="w-12 bg-surface-container-low flex items-center justify-center rounded-lg hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Bus Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden group transition-all duration-300 hover:shadow-2xl hover:shadow-primary/5">
+<div class="relative h-48">
+<img alt="Maintenance Bus" class="w-full h-full object-cover grayscale opacity-80" data-alt="White commercial passenger bus in a clean modern maintenance workshop with bright clinical white lighting and polished floors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxvPZuzjgqaW3tDptQtLysFTncGTEZtMc5nCzjIpj_dfJJmMkjycfR4bh-I347W0KI-WHnyeU3aBzl8vDF0xBr_-jpWWIhXMybin81drm2DMaWNUQrJ3B6AB8f56qly9nHK5eeITbudZs5U2cku0gBxWfVPWtVf2wOeOXdVUgKw8qqsMcRyUdY_DUuSoH9kyEXZV_iSd52lwZ5T4dPYt60UCoEfcXDZZDeBp2ilMmHBCbjETFAPqsA9qIMH-IsIoUfceE5VnioOA"/>
+<div class="absolute top-4 right-4 bg-orange-50/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase text-orange-800 flex items-center gap-1.5 shadow-sm border border-orange-100">
+<span class="w-2 h-2 rounded-full bg-orange-500"></span>
+                            Maintenance
+                        </div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline font-bold text-xl text-on-surface">Kinetic Cruiser KS-08</h3>
+<p class="text-label-sm text-on-surface-variant tracking-widest mt-0.5">ID: BUS-2023-C08</p>
+</div>
+<span class="bg-surface-container-low text-secondary font-bold px-3 py-1 rounded-lg text-xs">AC Seater</span>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant text-lg">event_seat</span>
+<div>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-tighter">Total Seats</p>
+<p class="text-sm font-semibold">44 Seats</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant text-lg">badge</span>
+<div>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-tighter">License Plate</p>
+<p class="text-sm font-semibold">KS 42 KM 008</p>
+</div>
+</div>
+</div>
+<div class="flex gap-2 pt-4 border-t border-slate-50">
+<button class="flex-1 bg-secondary-container text-on-secondary-container font-semibold py-2.5 rounded-lg text-sm hover:opacity-90 transition-colors">Service Log</button>
+<button class="flex-1 bg-surface-container-low text-on-surface font-semibold py-2.5 rounded-lg text-sm hover:bg-surface-container-high transition-colors">Details</button>
+<button class="w-12 bg-surface-container-low flex items-center justify-center rounded-lg hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Bus Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden group transition-all duration-300 hover:shadow-2xl hover:shadow-primary/5">
+<div class="relative h-48">
+<img alt="Luxury Sleeper" class="w-full h-full object-cover" data-alt="Interior of a luxury sleeper bus with warm ambient lighting, plush emerald green leather upholstery, and clean minimalist wooden finishes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUxqjcam9rF8ga20oPwtTdyf8TBHBpZBvA7xH5Kk1UiLHb1DXXDW-Uo7-MlfX0KHrHr1uyXfj7o4ep9t5RDPunMN3XXIhqPR-T-ka224yl4HV3yuPA9v6lSatWSdnyWWT1j33A3UjCf5dfpLAgllPVPGFJIo0yZUoUriPGikUQqMAGyNF6EoUcd6a0gpJY-gvluv2Dfy3HxjgF1bxGh5U7qsOfjSE9U2o-TXbXzqqXfIw1b5gsglilu9ImL6EAva37ByrDjxittw"/>
+<div class="absolute top-4 right-4 bg-surface-bright/80 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase flex items-center gap-1.5 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+                            Active
+                        </div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline font-bold text-xl text-on-surface">Midnight Express KS-14</h3>
+<p class="text-label-sm text-on-surface-variant tracking-widest mt-0.5">ID: BUS-2023-M14</p>
+</div>
+<span class="bg-surface-container-low text-primary font-bold px-3 py-1 rounded-lg text-xs">AC Sleeper</span>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant text-lg">event_seat</span>
+<div>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-tighter">Total Seats</p>
+<p class="text-sm font-semibold">24 Berths</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant text-lg">badge</span>
+<div>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-tighter">License Plate</p>
+<p class="text-sm font-semibold">KS 42 MN 014</p>
+</div>
+</div>
+</div>
+<div class="flex gap-2 pt-4 border-t border-slate-50">
+<button class="flex-1 bg-surface-container-low text-on-surface font-semibold py-2.5 rounded-lg text-sm hover:bg-surface-container-high transition-colors">Details</button>
+<button class="flex-1 bg-surface-container-low text-on-surface font-semibold py-2.5 rounded-lg text-sm hover:bg-surface-container-high transition-colors">Schedule</button>
+<button class="w-12 bg-surface-container-low flex items-center justify-center rounded-lg hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Additional Placeholder for Pagination/Growth -->
+<div class="border-2 border-dashed border-slate-200 rounded-xl flex flex-col items-center justify-center p-8 text-center bg-surface-container-low/30 hover:bg-surface-container-low transition-colors cursor-pointer min-h-[400px]">
+<div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-4 text-slate-300 shadow-sm">
+<span class="material-symbols-outlined text-3xl">add_box</span>
+</div>
+<p class="font-headline font-bold text-slate-500">Register New Fleet Unit</p>
+<p class="text-xs text-slate-400 mt-1 max-w-[200px]">Expand your sanctuary by adding new vehicles to your terminal.</p>
+</div>
+</div>
+</section>
+<!-- Quick Actions Floating Section -->
+<div class="fixed bottom-8 right-8 flex flex-col gap-3">
+<button class="w-14 h-14 bg-surface-container-lowest shadow-2xl rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 group relative">
+<span class="material-symbols-outlined">filter_list</span>
+<span class="absolute right-full mr-3 bg-inverse-surface text-inverse-on-surface text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Filter Grid</span>
+</button>
+<button class="w-14 h-14 bg-primary text-white shadow-2xl rounded-full flex items-center justify-center hover:scale-110 transition-all active:scale-90 group relative">
+<span class="material-symbols-outlined">print</span>
+<span class="absolute right-full mr-3 bg-inverse-surface text-inverse-on-surface text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Print Fleet Report</span>
+</button>
+</div>
+</main>
+</body></html>

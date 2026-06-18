@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-fixed-dim": "#7dd8b7",
+                        "surface-dim": "#d7dae0",
+                        "primary-fixed-dim": "#62de81",
+                        "on-tertiary-container": "#f5fff8",
+                        "on-tertiary-fixed-variant": "#00513d",
+                        "on-primary-fixed-variant": "#005323",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#ffb782",
+                        "on-secondary-fixed-variant": "#703800",
+                        "surface-container": "#ebeef4",
+                        "background": "#f7f9ff",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#ffdcc5",
+                        "on-tertiary-fixed": "#002117",
+                        "on-surface-variant": "#3e4a3e",
+                        "surface-container-highest": "#dfe3e8",
+                        "surface-container-high": "#e5e8ee",
+                        "surface": "#f7f9ff",
+                        "primary-fixed": "#7ffc9b",
+                        "outline": "#6e7a6d",
+                        "outline-variant": "#bdcaba",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "primary": "#006b2f",
+                        "on-primary-container": "#f7fff3",
+                        "error-container": "#ffdad6",
+                        "secondary": "#934b00",
+                        "on-secondary-container": "#653200",
+                        "inverse-surface": "#2d3135",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#00210a",
+                        "inverse-primary": "#62de81",
+                        "surface-bright": "#f7f9ff",
+                        "surface-tint": "#006d30",
+                        "on-secondary-fixed": "#301400",
+                        "secondary-container": "#ff8e28",
+                        "surface-container-low": "#f1f4fa",
+                        "tertiary-fixed": "#99f4d2",
+                        "on-background": "#181c20",
+                        "error": "#ba1a1a",
+                        "primary-container": "#00873d",
+                        "tertiary": "#006950",
+                        "on-surface": "#181c20",
+                        "tertiary-container": "#218367",
+                        "surface-variant": "#dfe3e8",
+                        "inverse-on-surface": "#eef1f7"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: #f7f9ff; }
+        .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #006b2f 0%, #00873d 100%);
+        }
+    </style>
+</head>
+<body class="text-on-background selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<nav class="sticky top-0 w-full z-50 bg-surface/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold text-green-800 dark:text-green-400 tracking-tighter font-headline">JatraXpress</span>
+<div class="hidden md:flex items-center gap-6 font-headline font-semibold tracking-tight">
+<a class="text-slate-600 dark:text-slate-400 hover:text-green-600 transition-colors" href="#">Trips</a>
+<a class="text-green-700 dark:text-green-400 border-b-2 border-green-700 dark:border-green-400 pb-1" href="#">My Bookings</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-green-600 transition-colors" href="#">Support</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-surface-container-high/50 transition-colors active:scale-95 duration-200 rounded-full">
+<span class="material-symbols-outlined text-slate-600">notifications</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high/50 transition-colors active:scale-95 duration-200 rounded-full">
+<span class="material-symbols-outlined text-slate-600">account_circle</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="max-w-7xl mx-auto px-6 py-12 lg:py-16">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<!-- Left Column: Payment & Review -->
+<div class="lg:col-span-8 space-y-12">
+<!-- Passenger Review -->
+<section>
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">person_check</span>
+<h2 class="text-2xl font-bold font-headline tracking-tight text-on-surface">Passenger Review</h2>
+</div>
+<div class="bg-surface-container-low p-8 rounded-xl space-y-6">
+<div class="grid md:grid-cols-2 gap-8">
+<div class="space-y-1">
+<p class="text-[10px] uppercase tracking-[0.1em] font-bold text-outline">Primary Passenger</p>
+<p class="text-lg font-semibold text-on-surface">Zubayer Ahmed</p>
+<p class="text-sm text-on-surface-variant">Adult • Male</p>
+</div>
+<div class="space-y-1">
+<p class="text-[10px] uppercase tracking-[0.1em] font-bold text-outline">Contact Details</p>
+<p class="text-on-surface font-medium">+880 1712-345678</p>
+<p class="text-sm text-on-surface-variant">zubayer.ahmed@example.com</p>
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant/20 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-xs text-on-surface-variant">Verification sent via SMS and Email</span>
+</div>
+</div>
+</section>
+<!-- Payment Method Selection -->
+<section>
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">account_balance_wallet</span>
+<h2 class="text-2xl font-bold font-headline tracking-tight text-on-surface">Payment Selection</h2>
+</div>
+<div class="space-y-6">
+<!-- Option 1: Mobile Banking -->
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10 group hover:border-primary/30 transition-all duration-300">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">smartphone</span>
+</div>
+<div>
+<h3 class="font-bold text-lg">Manual Payment (bKash/Rocket)</h3>
+<p class="text-sm text-on-surface-variant">Traditional mobile wallet transfer</p>
+</div>
+</div>
+<div class="flex items-center gap-2 px-3 py-1 bg-surface-container-low rounded-full">
+<div class="w-2 h-2 rounded-full bg-secondary animate-pulse"></div>
+<span class="text-[10px] font-bold uppercase tracking-wider text-secondary">Awaiting Verification</span>
+</div>
+</div>
+<div class="bg-surface-container-low/50 p-6 rounded-xl space-y-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-outline text-lg">info</span>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                                        Send money to <span class="font-bold text-on-surface">017XXXXXXXX</span> using the "Send Money" or "Payment" option. Once the transaction is successful, enter your Transaction ID below.
+                                    </p>
+</div>
+<div class="relative max-w-md">
+<input class="w-full bg-surface-container-high border-none rounded-xl py-4 px-5 text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all" placeholder="Enter Transaction ID" type="text"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline">receipt_long</span>
+</div>
+<p class="text-[11px] text-outline italic">Your booking will be confirmed after admin verification (usually 15-30 mins).</p>
+</div>
+</div>
+<!-- Option 2: Online Gateway -->
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10 group hover:border-primary/30 transition-all duration-300">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">credit_card</span>
+</div>
+<div>
+<h3 class="font-bold text-lg">Online Payment Gateway</h3>
+<p class="text-sm text-on-surface-variant">Cards, Net Banking &amp; Instant Transfer</p>
+</div>
+</div>
+<div class="flex gap-2">
+<div class="bg-surface-container-low p-2 rounded-lg">
+<img alt="Visa" class="h-4 w-auto grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all" data-alt="Visa logo minimalist icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGuXWOpwliGkOOT-y3IETI-0OG_dkbdmUlUCSII7eMFE8vpZknADo-UTTkd-BYBQM7c4wHLkyzoW1JQFxGaAjwMNOCS9mifZeQqStFT6QyqqCE3wLBu_gAnM8o6PdT8-V7D5fdNjWljZovNqQ7I_gwDWSo_bKyfD0K21r6oHDmJl2XC1UtDoVN84ICbAcisQevO1ZuP_R8valydCmmviMp4ZVuXWD_1dmhVwRhA6emWYFqk_eiUi1MfhS4RuxwZaKbyRx9HL9nMg"/>
+</div>
+<div class="bg-surface-container-low p-2 rounded-lg">
+<img alt="Mastercard" class="h-4 w-auto grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all" data-alt="Mastercard logo minimalist icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8qpPLWAAsC71i9W5DnBcji-jZiWUpBNLkilzPH9GO_alikTIgEbKHaNsu4ycQn6B9xtiG86poH6ACwRIl0HliYo7oyQeKVNzj5lxmUVZWy9GY7THaVKoZNMn7tiLRxfy0lkxXngR9-JqcvJWYCXu75hPN-CfoEVfZ_Jz1A7zZDxKMFDs_z6D-KNDxl0ZqGbvP8uSu15AskjuvGXc38zRm30-SNyQBvCypMb3Z6PlrFgoVhOsGsNG_depHfN10dTWuQHv4sp5seg"/>
+</div>
+<div class="bg-surface-container-low p-2 rounded-lg">
+<img alt="AMEX" class="h-4 w-auto grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all" data-alt="American Express logo minimalist icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_7mKAGv8P_eDltftLpa-e49pBvt30pFF2osztT7zpz29bgzrNGMAfqlNu7weohl4UnegjumqqzwfH2mfGnMmQte3CjT7XxtBdz23Nyigrz4slQW2bLlYYJ_-GD7Up4PGRRmNgm-S5HymGEB4BEdglAaOnCCLa7wSsSRVoRudG7tcFywRvEdWsZS3tB9LvPcN678lzCmU57UfZI8lzzMRfM8TamtawPI3MM3HitLZDXtasVC2oO5nCs0h9vc42Sdwwn_56oJXzIg"/>
+</div>
+</div>
+</div>
+<div class="mt-6">
+<div class="inline-flex items-center gap-2 px-3 py-1.5 bg-primary/10 rounded-full mb-4">
+<span class="material-symbols-outlined text-primary text-xs" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="text-[10px] font-bold uppercase tracking-wider text-primary">Pay Now &amp; Get Instant Ticket</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="pt-4">
+<button class="w-full md:w-auto px-12 py-5 primary-gradient text-white rounded-xl font-headline font-bold text-lg shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3">
+                        Complete Booking
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<p class="text-xs text-center md:text-left text-outline mt-4">By clicking complete booking, you agree to our Terms and Conditions.</p>
+</div>
+</div>
+<!-- Right Sidebar: Your Trip Summary -->
+<aside class="lg:col-span-4 sticky top-28 space-y-6">
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10 overflow-hidden relative">
+<!-- Subtle decorative gradient -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+<h3 class="text-xl font-bold font-headline mb-8 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">confirmation_number</span>
+                        Your Trip
+                    </h3>
+<div class="space-y-8 relative">
+<!-- Route Detail -->
+<div class="flex items-start gap-4">
+<div class="flex flex-col items-center py-1">
+<div class="w-2.5 h-2.5 rounded-full bg-primary ring-4 ring-primary/10"></div>
+<div class="w-0.5 h-12 bg-gradient-to-b from-primary to-outline-variant/30 my-1"></div>
+<div class="w-2.5 h-2.5 rounded-full border-2 border-primary bg-white"></div>
+</div>
+<div class="space-y-6">
+<div>
+<p class="text-[10px] uppercase font-bold text-outline tracking-wider">Departure</p>
+<p class="font-bold text-on-surface">Dhaka</p>
+<p class="text-xs text-on-surface-variant">Gabtoli Bus Terminal</p>
+</div>
+<div>
+<p class="text-[10px] uppercase font-bold text-outline tracking-wider">Destination</p>
+<p class="font-bold text-on-surface">Cox's Bazar</p>
+<p class="text-xs text-on-surface-variant">Sugandha Beach Point</p>
+</div>
+</div>
+</div>
+<!-- Date/Time Chips -->
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-surface-container-low p-3 rounded-xl text-center">
+<span class="material-symbols-outlined text-outline text-sm mb-1">calendar_today</span>
+<p class="text-[10px] uppercase font-bold text-outline">Date</p>
+<p class="text-sm font-bold">24 May, 2024</p>
+</div>
+<div class="bg-surface-container-low p-3 rounded-xl text-center">
+<span class="material-symbols-outlined text-outline text-sm mb-1">schedule</span>
+<p class="text-[10px] uppercase font-bold text-outline">Time</p>
+<p class="text-sm font-bold">09:30 PM</p>
+</div>
+</div>
+<!-- Seat Details -->
+<div class="bg-primary/5 p-4 rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">chair</span>
+<div>
+<p class="text-[10px] uppercase font-bold text-primary/70">Seats</p>
+<p class="text-sm font-bold text-on-surface">B1, B2</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[10px] uppercase font-bold text-outline">Bus Type</p>
+<p class="text-sm font-bold text-on-surface">Scania AC Multi-Axle</p>
+</div>
+</div>
+<!-- Fare Breakdown -->
+<div class="pt-6 border-t border-outline-variant/30 space-y-3">
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant">Base Fare (2x)</span>
+<span class="font-medium">৳ 3,600</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant">Service Fee</span>
+<span class="font-medium">৳ 120</span>
+</div>
+<div class="flex justify-between items-center text-sm text-secondary">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">sell</span>
+                                    Discount
+                                </span>
+<span class="font-medium">- ৳ 200</span>
+</div>
+<div class="flex justify-between items-center pt-4 border-t border-dashed border-outline-variant/50">
+<span class="font-bold text-on-surface">Total Amount</span>
+<span class="text-xl font-extrabold text-primary font-headline">৳ 3,520</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Support Card -->
+<div class="bg-surface-container-high/50 p-6 rounded-xl border border-outline-variant/10 flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-lg">headset_mic</span>
+</div>
+<div>
+<p class="text-sm font-bold">Need assistance?</p>
+<p class="text-xs text-on-surface-variant">Call our 24/7 helpline 16222</p>
+</div>
+</div>
+</aside></div>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-auto bg-surface-container-low dark:bg-slate-950 border-t border-slate-200/50 dark:border-slate-800/50">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 py-12 max-w-7xl mx-auto gap-4 font-['Inter'] text-sm text-slate-500 dark:text-slate-400">
+<div class="flex flex-col items-center md:items-start gap-2">
+<span class="font-['Plus_Jakarta_Sans'] font-bold text-slate-900 dark:text-slate-100 text-lg">JatraXpress</span>
+<p>© 2024 JatraXpress Mobility. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-slate-500 dark:text-slate-400 hover:text-green-700 dark:hover:text-green-300 transition-colors opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-green-700 dark:hover:text-green-300 transition-colors opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-green-700 dark:hover:text-green-300 transition-colors opacity-80 hover:opacity-100" href="#">Refund Policy</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-green-700 dark:hover:text-green-300 transition-colors opacity-80 hover:opacity-100" href="#">Contact Us</a>
+</div>
+</div>
+</footer>
+</body></html>

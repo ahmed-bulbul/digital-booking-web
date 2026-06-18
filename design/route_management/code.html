@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Route Management | Admin Terminal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-primary": "#62de81",
+              "surface-container-low": "#f1f4fa",
+              "surface": "#f7f9ff",
+              "on-secondary": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "surface-container": "#ebeef4",
+              "on-tertiary-fixed": "#002117",
+              "secondary-container": "#ff8e28",
+              "error-container": "#ffdad6",
+              "error": "#ba1a1a",
+              "on-surface-variant": "#3e4a3e",
+              "on-secondary-fixed": "#301400",
+              "tertiary-fixed": "#99f4d2",
+              "outline": "#6e7a6d",
+              "surface-dim": "#d7dae0",
+              "inverse-surface": "#2d3135",
+              "on-tertiary": "#ffffff",
+              "surface-variant": "#dfe3e8",
+              "secondary": "#934b00",
+              "surface-bright": "#f7f9ff",
+              "on-primary-fixed-variant": "#005323",
+              "on-error-container": "#93000a",
+              "on-secondary-container": "#653200",
+              "on-primary": "#ffffff",
+              "on-surface": "#181c20",
+              "on-error": "#ffffff",
+              "tertiary-container": "#218367",
+              "on-background": "#181c20",
+              "primary-container": "#00873d",
+              "tertiary": "#006950",
+              "surface-container-high": "#e5e8ee",
+              "on-tertiary-fixed-variant": "#00513d",
+              "primary": "#006b2f",
+              "inverse-on-surface": "#eef1f7",
+              "secondary-fixed-dim": "#ffb782",
+              "on-tertiary-container": "#f5fff8",
+              "primary-fixed-dim": "#62de81",
+              "on-primary-container": "#f7fff3",
+              "secondary-fixed": "#ffdcc5",
+              "outline-variant": "#bdcaba",
+              "on-primary-fixed": "#00210a",
+              "surface-dim": "#d7dae0",
+              "surface-tint": "#006d30",
+              "background": "#f7f9ff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9ff;
+        }
+        .editorial-shadow {
+            box-shadow: 0 40px 60px -20px rgba(24, 28, 32, 0.04);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(24px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface dark:bg-slate-900 flex flex-col h-full border-r border-transparent z-50">
+<div class="p-8">
+<h1 class="font-['Plus_Jakarta_Sans'] text-xl font-bold italic text-green-900 dark:text-green-50">JatraXpress</h1>
+<p class="text-xs font-['Inter'] text-slate-500 mt-1">Admin Terminal</p>
+</div>
+<nav class="flex-1 px-0 mt-4">
+<a class="flex items-center gap-3 text-slate-500 dark:text-slate-400 py-3 px-6 hover:bg-slate-50 dark:hover:bg-slate-800/30 hover:text-green-700 dark:hover:text-green-300 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-['Inter'] text-sm font-medium tracking-wide">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-400 rounded-r-full py-3 px-6 shadow-sm font-['Inter'] text-sm font-medium tracking-wide" href="#">
+<span class="material-symbols-outlined">route</span>
+<span>Route Management</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 dark:text-slate-400 py-3 px-6 hover:bg-slate-50 dark:hover:bg-slate-800/30 hover:text-green-700 dark:hover:text-green-300 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">event_upcoming</span>
+<span class="font-['Inter'] text-sm font-medium tracking-wide">Trip Scheduling</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 dark:text-slate-400 py-3 px-6 hover:bg-slate-50 dark:hover:bg-slate-800/30 hover:text-green-700 dark:hover:text-green-300 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">directions_bus</span>
+<span class="font-['Inter'] text-sm font-medium tracking-wide">Bus Management</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 dark:text-slate-400 py-3 px-6 hover:bg-slate-50 dark:hover:bg-slate-800/30 hover:text-green-700 dark:hover:text-green-300 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">confirmation_number</span>
+<span class="font-['Inter'] text-sm font-medium tracking-wide">Booking Management</span>
+</a>
+</nav>
+<div class="p-6 mt-auto border-t border-slate-100 dark:border-slate-800/50">
+<div class="flex items-center gap-3">
+<img alt="Admin Profile" class="w-10 h-10 rounded-full object-cover" data-alt="Close-up professional portrait of a confident man in business attire against a neutral soft-lit office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaWxrwxyu1wU1jhH3H1ZsC3qRX2DInmy62np1aUKaU7UJAgZIcIrz7iL9Xa10hUxGiBM-cAFfEZk34FTTzA_4XxH-FMFFWrtPxdDjR9c3OCsSiVHWL8ZMccJhp-0TRzGgxCG0Cbm4bVAgHPJUK1h-z4P7pK7FIuSXB5nMtTpTKhz4YFwNEkCxmfRgzvB7HapuyhuI6WIGMNaqAsNcAo3tImFPInyn02KHGWZH92FKMsrCNA1Nj8BsfLICJCqAS7InJU7PUcYMyWg"/>
+<div>
+<p class="text-sm font-bold text-slate-900">Admin User</p>
+<p class="text-xs text-slate-500">System Controller</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="pl-64 min-h-screen">
+<!-- TopNavBar -->
+<header class="docked full-width top-0 sticky z-40 bg-surface/80 dark:bg-slate-900/80 backdrop-blur-xl flex justify-between items-center px-8 py-4 w-full border-b border-slate-100 dark:border-slate-800/50">
+<div class="flex items-center gap-6">
+<h2 class="text-lg font-bold text-slate-900 dark:text-white font-['Plus_Jakarta_Sans']">Admin Terminal</h2>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="bg-surface-container-high border-none rounded-full pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary/20 w-64 transition-all" placeholder="Search routes, cities..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-full transition-colors relative">
+<span class="material-symbols-outlined text-slate-600">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-secondary rounded-full"></span>
+</button>
+<button class="p-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined text-slate-600">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Route Content Section -->
+<div class="p-8 max-w-7xl mx-auto">
+<!-- Header & Action -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+<div>
+<span class="text-primary font-bold tracking-widest text-[10px] uppercase font-['Inter'] mb-2 block">Network Control</span>
+<h1 class="text-4xl font-extrabold font-['Plus_Jakarta_Sans'] text-on-surface tracking-tight">Route Management</h1>
+<p class="text-on-surface-variant mt-2 max-w-lg">Optimize the JatraXpress network by managing city connections, distances, and operational lanes.</p>
+</div>
+<button class="flex items-center gap-2 bg-gradient-to-br from-primary to-primary-container text-white px-6 py-4 rounded-xl font-bold font-['Plus_Jakarta_Sans'] shadow-lg hover:opacity-90 transition-all transform active:scale-95">
+<span class="material-symbols-outlined">add_circle</span>
+                    Add New Route
+                </button>
+</div>
+<!-- Bento Stats Grid (Editorial Polish) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<div class="bg-surface-container-low p-6 rounded-xl border-l-4 border-primary">
+<p class="text-xs font-bold text-on-surface-variant/60 uppercase tracking-widest mb-1">Active Routes</p>
+<p class="text-3xl font-extrabold font-['Plus_Jakarta_Sans'] text-on-surface">124</p>
+<div class="mt-4 flex items-center gap-1 text-primary text-xs font-bold">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+12% from last month</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl">
+<p class="text-xs font-bold text-on-surface-variant/60 uppercase tracking-widest mb-1">Total Coverage</p>
+<p class="text-3xl font-extrabold font-['Plus_Jakarta_Sans'] text-on-surface">8,420<span class="text-lg font-medium text-on-surface-variant ml-1">km</span></p>
+<p class="text-xs text-on-surface-variant/60 mt-4 italic">Connecting 42 major cities</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl overflow-hidden relative group">
+<div class="relative z-10">
+<p class="text-xs font-bold text-on-surface-variant/60 uppercase tracking-widest mb-1">Busiest Corridor</p>
+<p class="text-xl font-bold font-['Plus_Jakarta_Sans'] text-on-surface">Green Valley — Obsidian Coast</p>
+<p class="text-xs text-on-surface-variant/60 mt-1">14 Daily Trips</p>
+</div>
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-primary/5 text-8xl rotate-12 group-hover:rotate-0 transition-transform duration-700">insights</span>
+</div>
+</div>
+<!-- Main Table Section -->
+<div class="bg-surface-container-lowest editorial-shadow rounded-2xl overflow-hidden border border-outline-variant/10">
+<div class="p-6 flex items-center justify-between bg-surface-container-lowest/50 backdrop-blur-sm border-b border-surface-container-low">
+<h3 class="font-['Plus_Jakarta_Sans'] font-bold text-lg">Active Route Inventory</h3>
+<div class="flex gap-3">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-colors">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-colors">
+<span class="material-symbols-outlined">download</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="px-8 py-5 text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant/70 font-['Inter']">Route ID</th>
+<th class="px-6 py-5 text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant/70 font-['Inter']">Origin</th>
+<th class="px-6 py-5 text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant/70 font-['Inter']">Destination</th>
+<th class="px-6 py-5 text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant/70 font-['Inter']">Distance</th>
+<th class="px-6 py-5 text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant/70 font-['Inter']">Status</th>
+<th class="px-8 py-5 text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant/70 font-['Inter'] text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low">
+<!-- Row 1 -->
+<tr class="group hover:bg-surface-container-low/30 transition-colors">
+<td class="px-8 py-6">
+<span class="font-mono text-sm font-semibold text-primary">RT-0924</span>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary-container"></div>
+<span class="font-semibold text-on-surface">Emerald Heights</span>
+</div>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="font-semibold text-on-surface">Sapphire Bay</span>
+</div>
+</td>
+<td class="px-6 py-6">
+<span class="text-sm text-on-surface-variant">420.5 km</span>
+</td>
+<td class="px-6 py-6">
+<span class="bg-primary/10 text-primary text-[10px] font-bold px-3 py-1 rounded-full border border-primary/20">OPERATIONAL</span>
+</td>
+<td class="px-8 py-6 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">edit_square</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="group hover:bg-surface-container-low/30 transition-colors">
+<td class="px-8 py-6">
+<span class="font-mono text-sm font-semibold text-primary">RT-1142</span>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary-container"></div>
+<span class="font-semibold text-on-surface">Misty Peaks</span>
+</div>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="font-semibold text-on-surface">Echo Valley</span>
+</div>
+</td>
+<td class="px-6 py-6">
+<span class="text-sm text-on-surface-variant">158.0 km</span>
+</td>
+<td class="px-6 py-6">
+<span class="bg-secondary/10 text-secondary text-[10px] font-bold px-3 py-1 rounded-full border border-secondary/20">MAINTENANCE</span>
+</td>
+<td class="px-8 py-6 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">edit_square</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="group hover:bg-surface-container-low/30 transition-colors">
+<td class="px-8 py-6">
+<span class="font-mono text-sm font-semibold text-primary">RT-0518</span>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary-container"></div>
+<span class="font-semibold text-on-surface">Crystal Lake</span>
+</div>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="font-semibold text-on-surface">Obsidian Coast</span>
+</div>
+</td>
+<td class="px-6 py-6">
+<span class="text-sm text-on-surface-variant">684.2 km</span>
+</td>
+<td class="px-6 py-6">
+<span class="bg-primary/10 text-primary text-[10px] font-bold px-3 py-1 rounded-full border border-primary/20">OPERATIONAL</span>
+</td>
+<td class="px-8 py-6 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">edit_square</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="group hover:bg-surface-container-low/30 transition-colors">
+<td class="px-8 py-6">
+<span class="font-mono text-sm font-semibold text-primary">RT-2033</span>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary-container"></div>
+<span class="font-semibold text-on-surface">Ancient Ridge</span>
+</div>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="font-semibold text-on-surface">Neon Oasis</span>
+</div>
+</td>
+<td class="px-6 py-6">
+<span class="text-sm text-on-surface-variant">312.0 km</span>
+</td>
+<td class="px-6 py-6">
+<span class="bg-primary/10 text-primary text-[10px] font-bold px-3 py-1 rounded-full border border-primary/20">OPERATIONAL</span>
+</td>
+<td class="px-8 py-6 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">edit_square</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-6 border-t border-surface-container-low flex items-center justify-between">
+<p class="text-xs text-on-surface-variant/70 font-medium tracking-wide">Showing 1-4 of 124 Routes</p>
+<div class="flex gap-2">
+<button class="px-4 py-2 text-xs font-bold text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-colors border border-outline-variant/20">Previous</button>
+<button class="px-4 py-2 text-xs font-bold text-on-primary bg-primary rounded-lg transition-all shadow-md">Next</button>
+</div>
+</div>
+</div>
+<!-- Custom Trip Pulse Component -->
+<div class="mt-12 flex flex-col md:flex-row gap-8 items-center bg-primary-container p-8 rounded-2xl relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-r from-primary to-transparent opacity-50"></div>
+<!-- Abstract map background visual -->
+<div class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none grayscale invert">
+<img alt="Map abstract" class="w-full h-full object-cover" data-alt="Monochrome minimalist abstract city map showing complex interconnected road networks and grid patterns" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDD1wgZt4lRm5i3GZ1CDdKZR6YkAfKK5igvzmMVMjfU2RGy8kUhcOarbljnqnwI1nnFJNHLjGrFT50VqtVoplOiWci6WtE6Sixx3W_Z5RzD_77sxM_tRgkLYerahQ63BIcq5XXQGjaKvqii9wKvG1o6PoqVdyYlgALfNYRNpMO-2b94j2ODajTap4oa9-tm1AfL7qzPxTQ42o_Pjv1dq9gwq3_2JTUvjDaQr128QGEPLcnJ7_t7akeFiFEfYmjvI1yaC7Y1z3nzZA"/>
+</div>
+<div class="relative z-10 flex-1">
+<h3 class="text-2xl font-['Plus_Jakarta_Sans'] font-bold text-white mb-2">Network Expansion Insight</h3>
+<p class="text-on-primary-container/80 text-sm max-w-lg">Our data indicates high demand for a new route between Crystal Lake and Neon Oasis. Consider adding a corridor here to increase terminal efficiency by 15%.</p>
+</div>
+<div class="relative z-10">
+<button class="bg-white text-primary px-6 py-3 rounded-xl font-extrabold text-sm font-['Plus_Jakarta_Sans'] shadow-xl hover:scale-105 transition-transform">
+                        Review Demand Data
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Modal Backdrop (Hidden by default, used for "Add New Route") -->
+<div class="fixed inset-0 bg-on-surface/40 backdrop-blur-md z-[100] hidden flex items-center justify-center p-4">
+<div class="bg-surface-container-lowest w-full max-w-2xl rounded-2xl overflow-hidden editorial-shadow">
+<div class="p-8 border-b border-surface-container-low flex justify-between items-center">
+<div>
+<h2 class="text-2xl font-extrabold font-['Plus_Jakarta_Sans']">Create New Route</h2>
+<p class="text-on-surface-variant text-sm mt-1">Define coordinates and distance for a new transit line.</p>
+</div>
+<button class="p-2 hover:bg-surface-container-low rounded-full">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="p-8 grid grid-cols-2 gap-6">
+<div class="col-span-2 md:col-span-1">
+<label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60 block mb-2">Route Name</label>
+<input class="w-full bg-surface-container-high border-none rounded-xl py-3 px-4 focus:ring-2 focus:ring-primary/20 transition-all" placeholder="e.g. Northern Coast Express" type="text"/>
+</div>
+<div class="col-span-2 md:col-span-1">
+<label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60 block mb-2">Service ID</label>
+<input class="w-full bg-surface-container-low border-none rounded-xl py-3 px-4 text-on-surface-variant/50 font-mono italic" disabled="" type="text" value="RT-AUTO-GEN"/>
+</div>
+<div class="col-span-2 md:col-span-1">
+<label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60 block mb-2">Origin Point</label>
+<select class="w-full bg-surface-container-high border-none rounded-xl py-3 px-4 focus:ring-2 focus:ring-primary/20 transition-all">
+<option>Select Departure City</option>
+</select>
+</div>
+<div class="col-span-2 md:col-span-1">
+<label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60 block mb-2">Destination Point</label>
+<select class="w-full bg-surface-container-high border-none rounded-xl py-3 px-4 focus:ring-2 focus:ring-primary/20 transition-all">
+<option>Select Arrival City</option>
+</select>
+</div>
+</div>
+<div class="p-8 bg-surface-container-low/50 flex justify-end gap-4">
+<button class="px-6 py-3 text-sm font-bold text-on-surface-variant hover:bg-surface-container-low rounded-xl transition-colors">Cancel</button>
+<button class="bg-primary text-white px-8 py-3 rounded-xl font-bold text-sm shadow-lg">Save Route</button>
+</div>
+</div>
+</div>
+</body></html>

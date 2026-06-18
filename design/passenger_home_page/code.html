@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JatraXpress | Premium Mobility</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-container": "#f7fff3",
+              "on-secondary": "#ffffff",
+              "error-container": "#ffdad6",
+              "secondary-fixed-dim": "#ffb782",
+              "on-primary": "#ffffff",
+              "on-surface": "#181c20",
+              "tertiary": "#006950",
+              "on-tertiary-fixed": "#002117",
+              "on-secondary-container": "#653200",
+              "on-error-container": "#93000a",
+              "background": "#f7f9ff",
+              "error": "#ba1a1a",
+              "surface": "#f7f9ff",
+              "inverse-primary": "#62de81",
+              "surface-dim": "#d7dae0",
+              "outline": "#6e7a6d",
+              "on-tertiary-fixed-variant": "#00513d",
+              "outline-variant": "#bdcaba",
+              "on-secondary-fixed-variant": "#703800",
+              "primary-fixed-dim": "#62de81",
+              "secondary-container": "#ff8e28",
+              "secondary-fixed": "#ffdcc5",
+              "surface-container-highest": "#dfe3e8",
+              "on-error": "#ffffff",
+              "tertiary-fixed": "#99f4d2",
+              "on-tertiary-container": "#f5fff8",
+              "on-tertiary": "#ffffff",
+              "on-secondary-fixed": "#301400",
+              "on-primary-fixed": "#00210a",
+              "surface-bright": "#f7f9ff",
+              "on-background": "#181c20",
+              "primary-container": "#00873d",
+              "tertiary-fixed-dim": "#7dd8b7",
+              "on-surface-variant": "#3e4a3e",
+              "on-primary-fixed-variant": "#005323",
+              "surface-container-low": "#f1f4fa",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-high": "#e5e8ee",
+              "inverse-surface": "#2d3135",
+              "primary": "#006b2f",
+              "surface-container": "#ebeef4",
+              "surface-tint": "#006d30",
+              "inverse-on-surface": "#eef1f7",
+              "tertiary-container": "#218367",
+              "surface-variant": "#dfe3e8",
+              "secondary": "#934b00",
+              "primary-fixed": "#7ffc9b"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        vertical-align: middle;
+      }
+      .bg-glass {
+        background: rgba(247, 249, 255, 0.8);
+        backdrop-filter: blur(20px);
+      }
+      .editorial-shadow {
+        box-shadow: 0 40px 60px -20px rgba(24, 28, 32, 0.06);
+      }
+    </style>
+</head>
+<body class="bg-background font-body text-on-surface">
+<!-- TopNavBar -->
+<header class="bg-surface/80 dark:bg-slate-950/80 backdrop-blur-xl docked full-width top-0 sticky z-50">
+<nav class="flex justify-between items-center px-8 py-4 w-full max-w-7xl mx-auto">
+<div class="text-2xl font-bold text-green-900 dark:text-green-50 italic font-['Plus_Jakarta_Sans'] tracking-tight">JatraXpress</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-green-700 dark:text-green-400 border-b-2 border-green-700 pb-1 font-['Plus_Jakarta_Sans'] font-bold tracking-tight transition-colors duration-300" href="#">Search</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-green-800 font-['Plus_Jakarta_Sans'] font-bold tracking-tight transition-colors duration-300" href="#">My Bookings</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-green-800 font-['Plus_Jakarta_Sans'] font-bold tracking-tight transition-colors duration-300" href="#">Offers</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-green-800 font-['Plus_Jakarta_Sans'] font-bold tracking-tight transition-colors duration-300" href="#">Help</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-slate-600 dark:text-slate-400" data-icon="account_circle">account_circle</button>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-xl font-semibold hover:opacity-90 active:scale-95 transition-all">Login</button>
+</div>
+</nav>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-[600px] flex items-center justify-center px-8 py-20 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover brightness-75 scale-105" data-alt="luxury modern bus traveling on a winding coastal highway during golden hour with warm sunlight reflecting off the windows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkfz8V5K3OeYApXwQdH_dr-dMoqT9bYBoMHRQRcxAZPCjiDWErf64FNNbnqDqeUOsPeU6Ljh64D4AtiJxYYyNmEz8kSoqHlhv_Q6-KVPhnGFjMwOF0UKv8tWHpoIdBp1k32DlyhlkIDxiSWi95BhN19qhE9i6lUfacT7TPVT328nsRzp02PvsGJNvZGwV8UDqWfmJP3pRnbw140yxjSXfKwHHioGwo_0qptPhVMakc08p0Oy-mGu_HTVRrA1jaYi8P8G0GLInfiw"/>
+</div>
+<div class="relative z-10 w-full max-w-5xl">
+<div class="mb-12 text-center md:text-left">
+<h1 class="text-white font-headline text-5xl md:text-7xl font-extrabold tracking-tight leading-tight mb-4">
+                        Your Journey,<br/><span class="text-primary-fixed">Reimagined.</span>
+</h1>
+<p class="text-white/90 font-body text-xl max-w-xl">Experience the pinnacle of intercity travel with premium amenities and curated routes.</p>
+</div>
+<!-- Search Form -->
+<div class="bg-surface-container-lowest rounded-[2rem] p-4 md:p-8 editorial-shadow flex flex-col md:flex-row gap-4 items-center">
+<div class="w-full md:flex-1 group">
+<label class="block text-label-sm font-label text-on-surface-variant mb-2 px-4">DEPARTURE</label>
+<div class="flex items-center bg-surface-container-high rounded-xl px-4 py-3 border-2 border-transparent focus-within:border-primary/20 focus-within:bg-white transition-all">
+<span class="material-symbols-outlined text-primary mr-3" data-icon="location_on">location_on</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-on-surface font-medium placeholder:text-on-surface-variant/50" placeholder="From where?" type="text" value="Dhaka"/>
+</div>
+</div>
+<div class="hidden md:flex items-center justify-center p-2 mt-6">
+<button class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary hover:rotate-180 transition-transform duration-500">
+<span class="material-symbols-outlined" data-icon="swap_horiz">swap_horiz</span>
+</button>
+</div>
+<div class="w-full md:flex-1">
+<label class="block text-label-sm font-label text-on-surface-variant mb-2 px-4">DESTINATION</label>
+<div class="flex items-center bg-surface-container-high rounded-xl px-4 py-3 border-2 border-transparent focus-within:border-primary/20 focus-within:bg-white transition-all">
+<span class="material-symbols-outlined text-primary mr-3" data-icon="distance">distance</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-on-surface font-medium placeholder:text-on-surface-variant/50" placeholder="To where?" type="text"/>
+</div>
+</div>
+<div class="w-full md:flex-1">
+<label class="block text-label-sm font-label text-on-surface-variant mb-2 px-4">TRAVEL DATE</label>
+<div class="flex items-center bg-surface-container-high rounded-xl px-4 py-3 border-2 border-transparent focus-within:border-primary/20 focus-within:bg-white transition-all">
+<span class="material-symbols-outlined text-primary mr-3" data-icon="calendar_month">calendar_month</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-on-surface font-medium placeholder:text-on-surface-variant/50" onfocus="(this.type='date')" placeholder="Select Date" type="text"/>
+</div>
+</div>
+<div class="w-full md:w-auto mt-6">
+<button class="w-full md:w-auto bg-gradient-to-br from-primary to-primary-container text-on-primary-container px-10 py-4 rounded-xl font-bold text-lg hover:shadow-lg hover:shadow-primary/20 transition-all active:scale-95">
+                            Search Routes
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Offers Section -->
+<section class="py-20 px-8 max-w-7xl mx-auto">
+<div class="flex justify-between items-end mb-10">
+<div>
+<h2 class="font-headline text-3xl font-bold text-on-surface">Exclusive JatraXpress Deals</h2>
+<p class="text-on-surface-variant mt-2">Premium comfort at unparalleled value.</p>
+</div>
+<button class="text-primary font-bold hover:underline flex items-center gap-2">
+                    View All Offers <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Promo 1 -->
+<div class="relative group overflow-hidden rounded-[2rem] aspect-[21/9] bg-tertiary-container flex items-center p-8 md:p-12">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-r from-tertiary/90 via-tertiary/40 to-transparent z-10"></div>
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="abstract architectural close up of glass building in teal hues representing modern mobility textures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeNHiI2l2VjmC38Z621loSToTxZf9jzSgtqv9U4sfpnyR-lssXG8Ba9GTl_2cRQU44mh8c1Mqzxf7d8FjcRud6_RASBZw5EdR4KOPRYJit4rKCgnXlIWqtcrvc3DxCYvLW36cECZZ6pS2Iau_1WVDRV5pMM5Q-gVqEGn011vKb5ypBIpKGydZm9jEclodlxLheMADEWV_Z7cEl77RapkBNyLkO4OYcWBYl9Uy2ad5nUkc4gfQIyxZ6gry6HLuV-xs-0-gCDvGhlQ"/>
+</div>
+<div class="relative z-20 max-w-xs">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full">FIRST RIDE</span>
+<h3 class="text-white text-3xl md:text-4xl font-headline font-extrabold mt-4">20% OFF</h3>
+<p class="text-white/80 mt-2 font-medium">Use code: KINETIC20</p>
+<button class="mt-6 bg-white text-tertiary font-bold px-6 py-2 rounded-xl text-sm">Claim Now</button>
+</div>
+</div>
+<!-- Promo 2 -->
+<div class="relative group overflow-hidden rounded-[2rem] aspect-[21/9] bg-secondary-container flex items-center p-8 md:p-12">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-r from-secondary/90 via-secondary/40 to-transparent z-10"></div>
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="urban city bus stop at sunset with warm orange glow and soft bokeh lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2VoWMI5a60wkS2SXCIHpDsrBlCT8cir5q8vjo-Bb2V5waPPfZkwu9DR7GDtdO-OyfAx7kV6XJmUt2ZckNWBhuC0ynyguoar_lDhE_9bCLZ1_xNKUISHKHkaLfjg_StPmeuzGo8eTG3pcS2SQS7krqpQzYNhn5AxSDOnH-ln1AjQ54c5v8-DHvuudAQLUmYIGPVIXeDwambONbKhrv6TK17d9VgOzYpTPjQPYTAkyMGcJmhsolNUgvT6qDChGSLEjS3rmiLZnong"/>
+</div>
+<div class="relative z-20 max-w-xs">
+<span class="bg-secondary-fixed text-on-secondary-fixed text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full">WEEKEND GETAWAY</span>
+<h3 class="text-white text-3xl md:text-4xl font-headline font-extrabold mt-4">15% CASHBACK</h3>
+<p class="text-white/80 mt-2 font-medium">On all coastal routes</p>
+<button class="mt-6 bg-white text-secondary font-bold px-6 py-2 rounded-xl text-sm">Explore Routes</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Popular Routes Section -->
+<section class="bg-surface-container-low py-24 px-8">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline text-4xl font-extrabold text-on-surface tracking-tight">Top Travel Destinations</h2>
+<div class="w-24 h-1.5 bg-primary-fixed mx-auto mt-4 rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+<!-- Route Card 1 -->
+<div class="bg-surface-container-lowest rounded-[2.5rem] overflow-hidden editorial-shadow group">
+<div class="h-64 relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="scenic chittagong hill tracts with lush green mountains and misty atmosphere at dawn" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMJS2YTj2tQE0WsStE2MA3mpON4t0zSqcbo6YClxIDs3p0tDRkOZEDnsUTol0pYC8uPVUUvjEuUmUO0sQaOaD35N-pj4cgu486Rj2VUG3lq7Mx_hCwYy_dDB3B02PoOo8VYCN2vpLePScIiLMi_wbLPAdz-ashdWGIVAoBePm0gz1We7QE1IZlVhjMTU5Z0UeCod6X5_EU8fDjQ-M8GT4qFBeh4GRfDbqrU4tGKhtabPMx0dKJsWJeO2ijBuMloqLizH7T7jw2Vg"/>
+<div class="absolute top-4 right-4">
+<span class="bg-glass px-4 py-2 rounded-full text-xs font-bold text-primary flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span> LIVE TRACKING
+                                </span>
+</div>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h4 class="text-on-surface-variant font-label text-[10px] tracking-widest uppercase mb-1">MOST POPULAR</h4>
+<h3 class="font-headline text-2xl font-bold text-on-surface">Dhaka to Chittagong</h3>
+</div>
+<div class="text-right">
+<p class="text-on-surface-variant text-xs mb-1">Starting from</p>
+<p class="text-primary font-extrabold text-xl">৳850</p>
+</div>
+</div>
+<div class="flex gap-4 mb-8">
+<div class="flex items-center gap-1.5 text-on-surface-variant text-sm bg-surface-container-low px-3 py-1.5 rounded-lg">
+<span class="material-symbols-outlined text-lg" data-icon="airline_seat_recline_extra">airline_seat_recline_extra</span> AC
+                                </div>
+<div class="flex items-center gap-1.5 text-on-surface-variant text-sm bg-surface-container-low px-3 py-1.5 rounded-lg">
+<span class="material-symbols-outlined text-lg" data-icon="wifi">wifi</span> Free WiFi
+                                </div>
+</div>
+<button class="w-full py-4 border-2 border-primary-container text-primary-container font-bold rounded-xl hover:bg-primary-container hover:text-white transition-all">Select Seats</button>
+</div>
+</div>
+<!-- Route Card 2 -->
+<div class="bg-surface-container-lowest rounded-[2.5rem] overflow-hidden editorial-shadow group">
+<div class="h-64 relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="aerial drone shot of cox's bazar sea beach with long shoreline and turquoise waves crashing" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDu7s6rJpAO_A2MkRJh3ds2_Yyc0DVgNeiLH-wPRK39Sg-6-eYnuVWfbeGdxhsc_RmrCBN2Wy3enT5xu3XeN_8WZwDmjJ4Nw9JD2S8G8_ZKuBhwdkLlbcAbGv7XCAxW2IrWz5J18Q2MYCoLF335N6ue34ZgM2tAjSAstJdTkL8zs2_w4wrq0xQis7xW5WGOGhBpUShUtoru3MeXzDE_6UO6plwVMcft9FdWq5EYVVoFZpSUsj6DaJS6HwYsGybVEaemCAOj-DlVyw"/>
+<div class="absolute top-4 right-4">
+<span class="bg-glass px-4 py-2 rounded-full text-xs font-bold text-secondary flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="local_fire_department">local_fire_department</span> SELLING FAST
+                                </span>
+</div>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h4 class="text-on-surface-variant font-label text-[10px] tracking-widest uppercase mb-1">COASTAL EXPRESS</h4>
+<h3 class="font-headline text-2xl font-bold text-on-surface">Dhaka to Cox's Bazar</h3>
+</div>
+<div class="text-right">
+<p class="text-on-surface-variant text-xs mb-1">Starting from</p>
+<p class="text-primary font-extrabold text-xl">৳1,200</p>
+</div>
+</div>
+<div class="flex gap-4 mb-8">
+<div class="flex items-center gap-1.5 text-on-surface-variant text-sm bg-surface-container-low px-3 py-1.5 rounded-lg">
+<span class="material-symbols-outlined text-lg" data-icon="dinner_dining">dinner_dining</span> Snacks
+                                </div>
+<div class="flex items-center gap-1.5 text-on-surface-variant text-sm bg-surface-container-low px-3 py-1.5 rounded-lg">
+<span class="material-symbols-outlined text-lg" data-icon="hotel">hotel</span> Sleeper
+                                </div>
+</div>
+<button class="w-full py-4 border-2 border-primary-container text-primary-container font-bold rounded-xl hover:bg-primary-container hover:text-white transition-all">Select Seats</button>
+</div>
+</div>
+<!-- Route Card 3 -->
+<div class="bg-surface-container-lowest rounded-[2.5rem] overflow-hidden editorial-shadow group">
+<div class="h-64 relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="lush green sylhet tea garden estates with rolling hills and misty morning atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoR-fTdG16bjL0kXgI3yBt_2mWBuhLa9CUatR8lDvhfjRqRs3VHO2tH7ChxwZ87c2XRZT9noGdsJU3chH7AwzPrRw5ds-Qu8hEYwzeBf3eOOb0VMQoRvniNz_toDrZRIgMq_2ib_z9kFaXy8YMApf01qgCN7k6LKuO9aua6Nv6fEJn0FUcPtU5b7xoo-yO-SNjVKVpWMo4qhywFfwRNVOmuzoQsmBoOJYr-JfPVdaO1VpedpVfnaqufgMGDNUzDDoPspg-XY8e4w"/>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h4 class="text-on-surface-variant font-label text-[10px] tracking-widest uppercase mb-1">TEA GARDEN ROUTE</h4>
+<h3 class="font-headline text-2xl font-bold text-on-surface">Dhaka to Sylhet</h3>
+</div>
+<div class="text-right">
+<p class="text-on-surface-variant text-xs mb-1">Starting from</p>
+<p class="text-primary font-extrabold text-xl">৳700</p>
+</div>
+</div>
+<div class="flex gap-4 mb-8">
+<div class="flex items-center gap-1.5 text-on-surface-variant text-sm bg-surface-container-low px-3 py-1.5 rounded-lg">
+<span class="material-symbols-outlined text-lg" data-icon="airline_seat_recline_extra">airline_seat_recline_extra</span> AC
+                                </div>
+<div class="flex items-center gap-1.5 text-on-surface-variant text-sm bg-surface-container-low px-3 py-1.5 rounded-lg">
+<span class="material-symbols-outlined text-lg" data-icon="charging_station">charging_station</span> USB Port
+                                </div>
+</div>
+<button class="w-full py-4 border-2 border-primary-container text-primary-container font-bold rounded-xl hover:bg-primary-container hover:text-white transition-all">Select Seats</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<section class="py-24 px-8 max-w-7xl mx-auto">
+<h2 class="font-headline text-4xl font-extrabold text-on-surface mb-16 text-center">Why Book with JatraXpress?</h2>
+<div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 h-[800px] md:h-[600px]">
+<div class="md:col-span-2 md:row-span-2 bg-primary text-on-primary p-12 rounded-[3rem] flex flex-col justify-end relative overflow-hidden group">
+<div class="absolute top-12 right-12 opacity-20">
+<span class="material-symbols-outlined text-[120px]" data-icon="verified_user">verified_user</span>
+</div>
+<div class="relative z-10">
+<h3 class="text-4xl font-headline font-bold mb-4">Safety First. Always.</h3>
+<p class="text-primary-fixed text-lg leading-relaxed">Every journey is monitored in real-time. Our drivers undergo rigorous training and background checks to ensure your sanctuary remains secure.</p>
+</div>
+</div>
+<div class="md:col-span-2 bg-surface-container-low p-10 rounded-[3rem] flex items-center gap-8 group">
+<div class="w-20 h-20 rounded-full bg-white flex items-center justify-center text-primary editorial-shadow group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl" data-icon="confirmation_number">confirmation_number</span>
+</div>
+<div>
+<h3 class="text-xl font-headline font-bold mb-2">Instant e-Tickets</h3>
+<p class="text-on-surface-variant text-sm">Go paperless. Receive your tickets instantly via SMS and Email.</p>
+</div>
+</div>
+<div class="bg-surface-container-high p-8 rounded-[3rem] flex flex-col justify-center items-center text-center group">
+<span class="material-symbols-outlined text-4xl text-secondary mb-4 group-hover:-translate-y-2 transition-transform" data-icon="support_agent">support_agent</span>
+<h3 class="font-bold">24/7 Support</h3>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-[3rem] flex flex-col justify-center items-center text-center editorial-shadow group">
+<span class="material-symbols-outlined text-4xl text-primary mb-4 group-hover:-translate-y-2 transition-transform" data-icon="event_repeat">event_repeat</span>
+<h3 class="font-bold">Easy Reschedule</h3>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low dark:bg-slate-950 w-full py-12 px-8">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-7xl mx-auto">
+<div>
+<div class="text-lg font-bold text-green-900 mb-4">JatraXpress</div>
+<p class="text-slate-500 dark:text-slate-400 font-['Inter'] text-sm tracking-wide leading-relaxed">
+                    Redefining the standard of road travel across the nation. Luxury, safety, and reliability in every mile.
+                </p>
+</div>
+<div class="flex flex-col gap-2">
+<h4 class="font-bold text-on-surface mb-2">Quick Links</h4>
+<div class="grid grid-cols-2 gap-2">
+<a class="text-slate-500 dark:text-slate-400 hover:text-green-600 underline transition-all font-['Inter'] text-sm tracking-wide" href="#">About Us</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-green-600 underline transition-all font-['Inter'] text-sm tracking-wide" href="#">Terms</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-green-600 underline transition-all font-['Inter'] text-sm tracking-wide" href="#">Privacy</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-green-600 underline transition-all font-['Inter'] text-sm tracking-wide" href="#">Contact</a>
+</div>
+</div>
+<div>
+<h4 class="font-bold text-on-surface mb-4">Stay Connected</h4>
+<div class="flex gap-4 mb-6">
+<button class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined text-xl" data-icon="public">public</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined text-xl" data-icon="mail">mail</span>
+</button>
+</div>
+<p class="text-slate-500 dark:text-slate-400 font-['Inter'] text-sm tracking-wide">© 2024 JatraXpress. Premium Mobility.</p>
+</div>
+</div>
+</footer>
+</body></html>

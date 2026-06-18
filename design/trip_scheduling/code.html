@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Trip Scheduling | Admin Terminal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-primary": "#62de81",
+                        "surface-container-low": "#f1f4fa",
+                        "surface": "#f7f9ff",
+                        "on-secondary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#ebeef4",
+                        "on-tertiary-fixed": "#002117",
+                        "secondary-container": "#ff8e28",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#3e4a3e",
+                        "on-secondary-fixed": "#301400",
+                        "tertiary-fixed": "#99f4d2",
+                        "outline": "#6e7a6d",
+                        "surface-dim": "#d7dae0",
+                        "inverse-surface": "#2d3135",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#dfe3e8",
+                        "secondary": "#934b00",
+                        "surface-bright": "#f7f9ff",
+                        "on-primary-fixed-variant": "#005323",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#653200",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#181c20",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#218367",
+                        "on-background": "#181c20",
+                        "primary-container": "#00873d",
+                        "tertiary": "#006950",
+                        "surface-container-high": "#e5e8ee",
+                        "on-tertiary-fixed-variant": "#00513d",
+                        "primary": "#006b2f",
+                        "inverse-on-surface": "#eef1f7",
+                        "secondary-fixed-dim": "#ffb782",
+                        "on-tertiary-container": "#f5fff8",
+                        "primary-fixed-dim": "#62de81",
+                        "on-primary-container": "#f7fff3",
+                        "secondary-fixed": "#ffdcc5",
+                        "outline-variant": "#bdcaba",
+                        "on-primary-fixed": "#00210a",
+                        "surface-container-highest": "#dfe3e8",
+                        "primary-fixed": "#7ffc9b",
+                        "on-secondary-fixed-variant": "#703800",
+                        "tertiary-fixed-dim": "#7dd8b7",
+                        "surface-tint": "#006d30",
+                        "background": "#f7f9ff"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 flex flex-col bg-surface-container-low dark:bg-slate-800/50 border-r border-transparent">
+<div class="px-6 py-8">
+<h1 class="font-['Plus_Jakarta_Sans'] text-xl font-bold italic text-green-900">JatraXpress</h1>
+<p class="text-xs font-medium tracking-widest text-slate-500 mt-1 uppercase">Admin Terminal</p>
+</div>
+<nav class="flex-1 px-0 py-4 space-y-1">
+<a class="flex items-center gap-3 text-slate-500 py-3 px-6 hover:bg-slate-50 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-['Inter'] text-sm font-medium tracking-wide">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 py-3 px-6 hover:bg-slate-50 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">route</span>
+<span class="font-['Inter'] text-sm font-medium tracking-wide">Route Management</span>
+</a>
+<a class="flex items-center gap-3 bg-green-50 text-green-800 rounded-r-full py-3 px-6 shadow-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">event_upcoming</span>
+<span class="font-['Inter'] text-sm font-medium tracking-wide">Trip Scheduling</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 py-3 px-6 hover:bg-slate-50 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">directions_bus</span>
+<span class="font-['Inter'] text-sm font-medium tracking-wide">Bus Management</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 py-3 px-6 hover:bg-slate-50 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">confirmation_number</span>
+<span class="font-['Inter'] text-sm font-medium tracking-wide">Booking Management</span>
+</a>
+</nav>
+<div class="p-6 flex items-center gap-3 mt-auto">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="Professional portrait of a male administrative manager in a clean office setting, soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9HWO-3ZMOQ4QIGJSABlf3hFnt3Cu5jN7NDvDS7q7dhOFZtx9znNdvMUBhIuOeqd77cyaTPlOf0BaGlQff05A1u7FMAx9dSNDMmo1DHlcJ3D0DjD8itSsigPe0B0azMS8jFDeoqG2ndsaQPkNXqP96dvllfZXYsyGRe1IOZdpiKFL8E2opJ9AQOiZvUQpuR3UUYgrd48Msgv-tFgoHivT5ikszzIpYcarB1MA0Q2_qSqkxUOTE_5ICZdRKRKxZQuO1qJAhiPdx4g"/>
+<div>
+<p class="text-sm font-bold text-on-surface">Admin Profile</p>
+<p class="text-xs text-slate-500">System Overseer</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="pl-64 min-h-screen">
+<!-- TopNavBar -->
+<header class="docked full-width top-0 sticky z-50 flex justify-between items-center px-8 py-4 w-full bg-surface/80 backdrop-blur-xl border-b border-slate-100">
+<div class="flex items-center gap-4 bg-surface-container-high px-4 py-2 rounded-full w-96">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full font-body" placeholder="Search trips, routes or buses..." type="text"/>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">notifications</span>
+<span class="material-symbols-outlined text-primary">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="p-8 space-y-8">
+<!-- Page Header -->
+<div class="flex justify-between items-end">
+<div>
+<h2 class="font-headline text-3xl font-bold text-on-surface tracking-tight">Trip Scheduling</h2>
+<p class="text-on-surface-variant font-body mt-1">Configure and manage active bus deployments across the network.</p>
+</div>
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-6 py-3 rounded-xl flex items-center gap-2 font-semibold shadow-lg hover:opacity-90 transition-all">
+<span class="material-symbols-outlined">add_circle</span>
+                    Schedule New Trip
+                </button>
+</div>
+<!-- Filters & Stats Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="col-span-1 md:col-span-1 bg-surface-container-low p-6 rounded-xl space-y-4">
+<p class="font-label text-xs uppercase tracking-widest text-outline">Quick Filters</p>
+<div class="space-y-3">
+<div>
+<label class="text-xs font-semibold text-on-surface-variant mb-1 block">Route Selection</label>
+<select class="w-full bg-surface-container-lowest border-none rounded-lg text-sm focus:ring-2 focus:ring-primary/20">
+<option>All Major Routes</option>
+<option>North Highland Express</option>
+<option>Coastal JatraXpress Loop</option>
+<option>Emerald Valley Shuttle</option>
+</select>
+</div>
+<div>
+<label class="text-xs font-semibold text-on-surface-variant mb-1 block">Date Range</label>
+<div class="flex items-center gap-2 bg-surface-container-lowest px-3 py-2 rounded-lg">
+<span class="material-symbols-outlined text-xs">calendar_today</span>
+<span class="text-sm">Oct 24 - Oct 30</span>
+</div>
+</div>
+</div>
+</div>
+<div class="col-span-1 md:col-span-3 grid grid-cols-3 gap-6">
+<div class="bg-surface-container-lowest p-6 rounded-xl flex flex-col justify-between">
+<span class="material-symbols-outlined text-primary text-3xl">trending_up</span>
+<div>
+<p class="text-2xl font-bold text-on-surface">84.2%</p>
+<p class="text-xs text-on-surface-variant font-medium">Avg. Occupancy Weekly</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl flex flex-col justify-between">
+<span class="material-symbols-outlined text-secondary text-3xl">electric_bolt</span>
+<div>
+<p class="text-2xl font-bold text-on-surface">124</p>
+<p class="text-xs text-on-surface-variant font-medium">Scheduled Today</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl flex flex-col justify-between">
+<span class="material-symbols-outlined text-tertiary-container text-3xl">verified</span>
+<div>
+<p class="text-2xl font-bold text-on-surface">0</p>
+<p class="text-xs text-on-surface-variant font-medium">Delayed Departures</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Schedule List -->
+<div class="space-y-4">
+<div class="flex items-center justify-between px-4">
+<h3 class="font-headline font-semibold text-lg">Active Schedule: October 24, 2023</h3>
+<div class="flex gap-2">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Trip Cards -->
+<div class="space-y-4">
+<!-- Trip Entry 1 -->
+<div class="group relative flex items-center gap-6 p-6 bg-surface-container-lowest rounded-xl hover:shadow-xl transition-all duration-300">
+<div class="flex flex-col items-center justify-center min-w-[80px] border-r border-slate-100 pr-6">
+<p class="text-xl font-bold text-primary">08:30</p>
+<p class="text-[10px] font-bold text-outline uppercase tracking-tighter">AM</p>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded uppercase">Express</span>
+<h4 class="font-headline font-bold text-on-surface text-lg">North Highland Express</h4>
+</div>
+<div class="flex items-center gap-4 text-sm text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">directions_bus</span>
+<span>KS-902 (Platinum Voyager)</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">payments</span>
+<span class="font-medium">$42.50 Base Fare</span>
+</div>
+</div>
+</div>
+<div class="w-48 px-6">
+<div class="flex justify-between items-end mb-1">
+<p class="text-[10px] font-bold text-outline uppercase">Occupancy</p>
+<p class="text-sm font-bold text-on-surface">92%</p>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 92%"></div>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="p-3 text-primary hover:bg-primary/5 rounded-lg transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-3 text-secondary hover:bg-secondary/5 rounded-lg transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Trip Entry 2 -->
+<div class="group relative flex items-center gap-6 p-6 bg-surface-container-lowest rounded-xl hover:shadow-xl transition-all duration-300">
+<div class="flex flex-col items-center justify-center min-w-[80px] border-r border-slate-100 pr-6">
+<p class="text-xl font-bold text-primary">10:15</p>
+<p class="text-[10px] font-bold text-outline uppercase tracking-tighter">AM</p>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-secondary/10 text-secondary text-[10px] font-bold px-2 py-0.5 rounded uppercase">Saturating</span>
+<h4 class="font-headline font-bold text-on-surface text-lg">Coastal JatraXpress Loop</h4>
+</div>
+<div class="flex items-center gap-4 text-sm text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">directions_bus</span>
+<span>KS-412 (Emerald Cruiser)</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">payments</span>
+<span class="font-medium">$28.00 Base Fare</span>
+</div>
+</div>
+</div>
+<div class="w-48 px-6">
+<div class="flex justify-between items-end mb-1">
+<p class="text-[10px] font-bold text-outline uppercase">Occupancy</p>
+<p class="text-sm font-bold text-secondary">48%</p>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary-container rounded-full" style="width: 48%"></div>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="p-3 text-primary hover:bg-primary/5 rounded-lg transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-3 text-secondary hover:bg-secondary/5 rounded-lg transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Trip Entry 3 -->
+<div class="group relative flex items-center gap-6 p-6 bg-surface-container-lowest rounded-xl hover:shadow-xl transition-all duration-300">
+<div class="flex flex-col items-center justify-center min-w-[80px] border-r border-slate-100 pr-6">
+<p class="text-xl font-bold text-primary">12:45</p>
+<p class="text-[10px] font-bold text-outline uppercase tracking-tighter">PM</p>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-tertiary-container/10 text-tertiary-container text-[10px] font-bold px-2 py-0.5 rounded uppercase">Eco-Route</span>
+<h4 class="font-headline font-bold text-on-surface text-lg">Emerald Valley Shuttle</h4>
+</div>
+<div class="flex items-center gap-4 text-sm text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">directions_bus</span>
+<span>KS-101 (Leaf Liner EV)</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">payments</span>
+<span class="font-medium">$15.00 Base Fare</span>
+</div>
+</div>
+</div>
+<div class="w-48 px-6">
+<div class="flex justify-between items-end mb-1">
+<p class="text-[10px] font-bold text-outline uppercase">Occupancy</p>
+<p class="text-sm font-bold text-on-surface">15%</p>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container rounded-full" style="width: 15%"></div>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="p-3 text-primary hover:bg-primary/5 rounded-lg transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-3 text-secondary hover:bg-secondary/5 rounded-lg transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Calendar Insight Sidebar (Float) -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="lg:col-span-2 space-y-6">
+<div class="bg-surface-container p-6 rounded-2xl">
+<h4 class="font-headline font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">analytics</span>
+                            Peak Demand Forecasting
+                        </h4>
+<div class="aspect-[21/9] w-full relative bg-surface-container-lowest rounded-xl p-4 overflow-hidden">
+<img class="w-full h-full object-cover opacity-80 mix-blend-multiply" data-alt="Abstract data visualization chart with soft green and orange gradients on a clean white background, professional fintech style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZwXpBY8DqWnI5lwjYCp7ofDg6mUOw8RjVlg6T5dZb3O7X_ZpsH-1OpCvYqEGCkb0rVzReF2VcCio2nmXZUiTwjUKSAKkTEc8XGSsoVH89maIwYauNYViSvpjkWqmZWIJhw7oQpyk03YEnBj8pQY21d6FE-KcIE2ft83t0Fr_F62DQfyqngYPV9Dop25zEiseafnI166fKeWFpyiPrP6-1yRw3AlUikGk-oyAHkgiDKNQ0bp5PZKi5FC9_NB4RpDGEJDqvrpP9lg"/>
+<div class="absolute inset-0 flex items-center justify-center bg-white/20 backdrop-blur-[2px]">
+<p class="bg-white/90 px-4 py-2 rounded-full font-bold text-sm shadow-sm border border-slate-100">Live Prediction: High Volume expected Oct 28-29</p>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-1">
+<div class="bg-surface-container-lowest p-6 rounded-2xl border border-slate-100/50 shadow-sm space-y-6">
+<div class="flex justify-between items-center">
+<h4 class="font-headline font-bold">Upcoming Maintenance</h4>
+<span class="material-symbols-outlined text-outline">info</span>
+</div>
+<div class="space-y-4">
+<div class="flex gap-4 items-start">
+<div class="w-2 h-2 rounded-full bg-secondary mt-2"></div>
+<div>
+<p class="text-sm font-bold">KS-902 Platform Check</p>
+<p class="text-xs text-on-surface-variant">Scheduled for Oct 26, 02:00 AM</p>
+</div>
+</div>
+<div class="flex gap-4 items-start">
+<div class="w-2 h-2 rounded-full bg-primary mt-2"></div>
+<div>
+<p class="text-sm font-bold">Driver Rest Rotation</p>
+<p class="text-xs text-on-surface-variant">Applied to Central Terminal Hub</p>
+</div>
+</div>
+</div>
+<button class="w-full py-3 bg-surface-container text-on-surface text-sm font-bold rounded-xl hover:bg-surface-container-high transition-colors">
+                            View Fleet Status
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

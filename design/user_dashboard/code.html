@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Bookings | JatraXpress</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-container": "#f7fff3",
+              "on-secondary": "#ffffff",
+              "error-container": "#ffdad6",
+              "secondary-fixed-dim": "#ffb782",
+              "on-primary": "#ffffff",
+              "on-surface": "#181c20",
+              "tertiary": "#006950",
+              "on-tertiary-fixed": "#002117",
+              "on-secondary-container": "#653200",
+              "on-error-container": "#93000a",
+              "background": "#f7f9ff",
+              "error": "#ba1a1a",
+              "surface": "#f7f9ff",
+              "inverse-primary": "#62de81",
+              "surface-dim": "#d7dae0",
+              "outline": "#6e7a6d",
+              "on-tertiary-fixed-variant": "#00513d",
+              "outline-variant": "#bdcaba",
+              "on-secondary-fixed-variant": "#703800",
+              "primary-fixed-dim": "#62de81",
+              "secondary-container": "#ff8e28",
+              "secondary-fixed": "#ffdcc5",
+              "surface-container-highest": "#dfe3e8",
+              "on-error": "#ffffff",
+              "tertiary-fixed": "#99f4d2",
+              "on-tertiary-container": "#f5fff8",
+              "on-tertiary": "#ffffff",
+              "on-secondary-fixed": "#301400",
+              "on-primary-fixed": "#00210a",
+              "surface-bright": "#f7f9ff",
+              "on-background": "#181c20",
+              "primary-container": "#00873d",
+              "tertiary-fixed-dim": "#7dd8b7",
+              "on-surface-variant": "#3e4a3e",
+              "on-primary-fixed-variant": "#005323",
+              "surface-container-low": "#f1f4fa",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-high": "#e5e8ee",
+              "inverse-surface": "#2d3135",
+              "primary": "#006b2f",
+              "surface-container": "#ebeef4",
+              "surface-tint": "#006d30",
+              "inverse-on-surface": "#eef1f7",
+              "tertiary-container": "#218367",
+              "surface-variant": "#dfe3e8",
+              "secondary": "#934b00",
+              "primary-fixed": "#7ffc9b"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-glass {
+            background: rgba(247, 249, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        .cta-gradient {
+            background: linear-gradient(135deg, #006b2f 0%, #00873d 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- TopNavBar -->
+<nav class="bg-surface/80 dark:bg-slate-950/80 backdrop-blur-xl docked full-width top-0 sticky z-50">
+<div class="flex justify-between items-center px-8 py-4 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold text-green-900 dark:text-green-50 italic font-headline tracking-tight">JatraXpress</span>
+<div class="hidden md:flex gap-6">
+<a class="text-slate-600 dark:text-slate-400 hover:text-green-800 transition-colors duration-300 font-headline font-bold tracking-tight" href="#">Search</a>
+<a class="text-green-700 dark:text-green-400 border-b-2 border-green-700 pb-1 font-headline font-bold tracking-tight" href="#">My Bookings</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-green-800 transition-colors duration-300 font-headline font-bold tracking-tight" href="#">Offers</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-green-800 transition-colors duration-300 font-headline font-bold tracking-tight" href="#">Help</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container-high rounded-full transition-all">account_circle</button>
+</div>
+</div>
+</nav>
+<main class="max-w-7xl mx-auto px-8 py-12">
+<!-- Hero Section / Header -->
+<header class="mb-12">
+<h1 class="text-5xl font-headline font-extrabold tracking-tight text-on-surface mb-2">Welcome back, Julian.</h1>
+<p class="text-on-surface-variant text-lg">Your next sanctuary awaits. Manage your travels with ease.</p>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Sidebar: Profile Overview -->
+<aside class="lg:col-span-3 space-y-6">
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm">
+<div class="w-20 h-20 rounded-full mb-4 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close-up portrait of a professional man in a beige linen shirt with soft morning sunlight against a neutral studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0Q6P3tk1wgl7v5H0tUxb8zyckhYXB7RY43sQIoqQZI9Ne2gxE31rMnS1o-nx0ZgqiZJIEfSxFrwF-tWHZChXhiDvq6Kp3KufgLdYyrAEUTjZA0w6XHuy5FEkNH-hpBj2v3NvyJYiwqYeqRcE5mdmN9FbTAH0HBzPMnhWLuoj47sRHsDZlU0-AUTFBF8KninOQEKqjwdssGmLAlQV6Nzl6VnK90DY4LrHdLgS3bijq3jTuBOhET8dT9um6JJrrB1qCZtWL2LvlPQ"/>
+</div>
+<h2 class="text-xl font-headline font-bold text-primary mb-1">Julian Thorne</h2>
+<p class="text-on-surface-variant text-sm mb-6 font-medium">Gold Member • 1,240 pts</p>
+<div class="space-y-4 pt-6 border-t border-surface-container-high">
+<div class="flex items-center gap-3 text-on-surface-variant hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-xl">person</span>
+<span class="text-sm font-medium">Personal Details</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-xl">payments</span>
+<span class="text-sm font-medium">Payment Methods</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-xl">loyalty</span>
+<span class="text-sm font-medium">Preferences</span>
+</div>
+</div>
+</div>
+<!-- Trip Pulse Chip Mockup -->
+<div class="bg-primary/5 p-6 rounded-xl border-l-4 border-primary">
+<p class="text-xs font-label uppercase tracking-widest text-primary font-bold mb-2">Quick Tip</p>
+<p class="text-sm text-on-surface-variant leading-relaxed">Arrive at the sanctuary lounge 15 minutes before departure for complimentary refreshments.</p>
+</div>
+</aside>
+<!-- Main Content: Active Bookings -->
+<section class="lg:col-span-9 space-y-12">
+<div>
+<div class="flex justify-between items-end mb-8">
+<div>
+<span class="text-xs font-label uppercase tracking-[0.2em] text-outline mb-2 block">Active Journey</span>
+<h3 class="text-3xl font-headline font-bold text-on-surface">My Bookings</h3>
+</div>
+<button class="text-sm font-bold text-primary hover:underline transition-all">View Schedule</button>
+</div>
+<!-- Ticket Card: Bento Inspired Layout -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm flex flex-col md:flex-row relative">
+<div class="md:w-1/3 h-48 md:h-auto relative overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Modern luxury bus cruising on a scenic highway through a lush evergreen forest with sunlight filtering through trees" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZRnO-WTLa4-Ywk5S2HwnpaJjkYzTQcmN6UduPU2s1PUGqOxP4quHxl6jvdUjjQKkr3cEDemNU7bqJgEXIiZv0b9yy2uNFsnV7d-TxGBjDINWgb835j99VKP49Vhm349xutPf9C7Rn19ReQbUz1gGzYA-Hlt2jnh5_YzLSNMXN1y-4uBYNHdosKMoAa_Slo-YgiiWejYr5rmVNm5IjzOJ22SaiwImzyv8qTJNbOAyNQlx6r-bGn0VeNvlbIWkZ_NgoHjvysVxa4g"/>
+<div class="absolute top-4 left-4 bg-white/60 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-2">
+<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+<span class="text-[10px] font-label font-bold uppercase tracking-wider text-on-surface">Live Tracking</span>
+</div>
+</div>
+<div class="flex-1 p-8">
+<div class="flex justify-between items-start mb-6">
+<div>
+<div class="flex items-center gap-4 mb-2">
+<h4 class="text-2xl font-headline font-extrabold text-on-surface">Portland</h4>
+<span class="material-symbols-outlined text-outline">trending_flat</span>
+<h4 class="text-2xl font-headline font-extrabold text-on-surface">Seattle</h4>
+</div>
+<p class="text-on-surface-variant font-medium">Executive JatraXpress Liner • #EX-402</p>
+</div>
+<div class="text-right">
+<span class="text-xs font-label font-bold text-outline-variant uppercase block mb-1">Status</span>
+<span class="bg-primary-fixed-dim text-on-primary-fixed-variant px-3 py-1 rounded-full text-xs font-bold">Confirmed</span>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 bg-surface-container-low p-4 rounded-xl">
+<div>
+<span class="text-[10px] font-label uppercase tracking-widest text-outline block mb-1">Date</span>
+<p class="font-bold text-on-surface">Oct 24, 2023</p>
+</div>
+<div>
+<span class="text-[10px] font-label uppercase tracking-widest text-outline block mb-1">Time</span>
+<p class="font-bold text-on-surface">08:30 AM</p>
+</div>
+<div>
+<span class="text-[10px] font-label uppercase tracking-widest text-outline block mb-1">Seat</span>
+<p class="font-bold text-on-surface">12A (Window)</p>
+</div>
+<div>
+<span class="text-[10px] font-label uppercase tracking-widest text-outline block mb-1">Platform</span>
+<p class="font-bold text-on-surface">No. 04</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-4 items-center justify-between">
+<div class="flex gap-2">
+<button class="cta-gradient text-white px-6 py-3 rounded-lg font-headline font-bold text-sm shadow-sm active:scale-95 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">download</span>
+                                        Download PDF
+                                    </button>
+<button class="bg-surface-container-high text-on-surface-variant px-6 py-3 rounded-lg font-headline font-bold text-sm hover:bg-surface-container-highest transition-all">
+                                        Modify Trip
+                                    </button>
+</div>
+<div class="flex items-center gap-2 text-primary font-bold text-sm cursor-pointer hover:underline">
+<span class="material-symbols-outlined">qr_code_2</span>
+                                    View Digital Ticket
+                                </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Booking History Table -->
+<div class="mt-16">
+<div class="flex items-center gap-4 mb-8">
+<h3 class="text-2xl font-headline font-bold text-on-surface">Booking History</h3>
+<div class="h-[2px] flex-1 bg-surface-container-high"></div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm">
+<table class="w-full border-collapse text-left">
+<thead class="bg-surface-container-low text-outline font-label uppercase text-[10px] tracking-widest">
+<tr>
+<th class="px-8 py-4 font-semibold">Route</th>
+<th class="px-8 py-4 font-semibold">Date</th>
+<th class="px-8 py-4 font-semibold">Amount</th>
+<th class="px-8 py-4 font-semibold">Status</th>
+<th class="px-8 py-4 font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low">
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-8 py-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">directions_bus</span>
+<div>
+<p class="font-bold text-on-surface">San Francisco to LA</p>
+<p class="text-xs text-on-surface-variant">Liner #SF-991</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<p class="text-sm font-medium">Sept 12, 2023</p>
+<p class="text-xs text-on-surface-variant">09:15 PM</p>
+</td>
+<td class="px-8 py-6 font-bold text-on-surface">$84.50</td>
+<td class="px-8 py-6">
+<span class="bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full text-[10px] font-bold uppercase">Completed</span>
+</td>
+<td class="px-8 py-6 text-right">
+<button class="material-symbols-outlined text-outline hover:text-primary transition-colors">receipt_long</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-8 py-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">directions_bus</span>
+<div>
+<p class="font-bold text-on-surface">LA to San Francisco</p>
+<p class="text-xs text-on-surface-variant">Liner #LA-882</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<p class="text-sm font-medium">Sept 08, 2023</p>
+<p class="text-xs text-on-surface-variant">10:00 AM</p>
+</td>
+<td class="px-8 py-6 font-bold text-on-surface">$72.00</td>
+<td class="px-8 py-6">
+<span class="bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full text-[10px] font-bold uppercase">Completed</span>
+</td>
+<td class="px-8 py-6 text-right">
+<button class="material-symbols-outlined text-outline hover:text-primary transition-colors">receipt_long</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-8 py-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline group-hover:text-error transition-colors">event_busy</span>
+<div>
+<p class="font-bold text-on-surface">Vancouver to Victoria</p>
+<p class="text-xs text-on-surface-variant">Ferry Connect #VC-102</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<p class="text-sm font-medium">Aug 22, 2023</p>
+<p class="text-xs text-on-surface-variant">02:30 PM</p>
+</td>
+<td class="px-8 py-6 font-bold text-on-surface text-outline-variant">$45.00</td>
+<td class="px-8 py-6">
+<span class="bg-error-container text-on-error-container px-3 py-1 rounded-full text-[10px] font-bold uppercase">Cancelled</span>
+</td>
+<td class="px-8 py-6 text-right">
+<button class="material-symbols-outlined text-outline hover:text-primary transition-colors">refresh</button>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="p-6 bg-surface-container-low text-center">
+<button class="text-sm font-bold text-primary hover:text-primary-container transition-all">View All History (14)</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low dark:bg-slate-950 w-full py-12 px-8 mt-24">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-7xl mx-auto">
+<div>
+<span class="text-lg font-bold text-green-900 font-headline mb-4 block">JatraXpress</span>
+<p class="text-slate-500 dark:text-slate-400 font-body text-sm tracking-wide max-w-xs leading-relaxed">Redefining the journey with a focus on tranquility, speed, and uncompromising comfort.</p>
+</div>
+<div class="flex gap-12">
+<div class="space-y-3">
+<p class="text-[10px] font-label font-bold text-on-surface-variant uppercase tracking-widest mb-2">Company</p>
+<a class="block text-slate-500 dark:text-slate-400 text-sm hover:text-green-600 underline transition-all" href="#">About Us</a>
+<a class="block text-slate-500 dark:text-slate-400 text-sm hover:text-green-600 underline transition-all" href="#">Contact</a>
+</div>
+<div class="space-y-3">
+<p class="text-[10px] font-label font-bold text-on-surface-variant uppercase tracking-widest mb-2">Legal</p>
+<a class="block text-slate-500 dark:text-slate-400 text-sm hover:text-green-600 underline transition-all" href="#">Terms</a>
+<a class="block text-slate-500 dark:text-slate-400 text-sm hover:text-green-600 underline transition-all" href="#">Privacy</a>
+</div>
+</div>
+<div class="md:text-right">
+<p class="text-slate-500 dark:text-slate-400 font-body text-sm tracking-wide mb-4">© 2024 JatraXpress. Premium Mobility.</p>
+<div class="flex md:justify-end gap-4">
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-primary">language</span>
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-primary">share</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

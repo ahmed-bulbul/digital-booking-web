@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Available Buses | JatraXpress</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-container": "#f7fff3",
+              "on-secondary": "#ffffff",
+              "error-container": "#ffdad6",
+              "secondary-fixed-dim": "#ffb782",
+              "on-primary": "#ffffff",
+              "on-surface": "#181c20",
+              "tertiary": "#006950",
+              "on-tertiary-fixed": "#002117",
+              "on-secondary-container": "#653200",
+              "on-error-container": "#93000a",
+              "background": "#f7f9ff",
+              "error": "#ba1a1a",
+              "surface": "#f7f9ff",
+              "inverse-primary": "#62de81",
+              "surface-dim": "#d7dae0",
+              "outline": "#6e7a6d",
+              "on-tertiary-fixed-variant": "#00513d",
+              "outline-variant": "#bdcaba",
+              "on-secondary-fixed-variant": "#703800",
+              "primary-fixed-dim": "#62de81",
+              "secondary-container": "#ff8e28",
+              "secondary-fixed": "#ffdcc5",
+              "surface-container-highest": "#dfe3e8",
+              "on-error": "#ffffff",
+              "tertiary-fixed": "#99f4d2",
+              "on-tertiary-container": "#f5fff8",
+              "on-tertiary": "#ffffff",
+              "on-secondary-fixed": "#301400",
+              "on-primary-fixed": "#00210a",
+              "surface-bright": "#f7f9ff",
+              "on-background": "#181c20",
+              "primary-container": "#00873d",
+              "tertiary-fixed-dim": "#7dd8b7",
+              "on-surface-variant": "#3e4a3e",
+              "on-primary-fixed-variant": "#005323",
+              "surface-container-low": "#f1f4fa",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-high": "#e5e8ee",
+              "inverse-surface": "#2d3135",
+              "primary": "#006b2f",
+              "surface-container": "#ebeef4",
+              "surface-tint": "#006d30",
+              "inverse-on-surface": "#eef1f7",
+              "tertiary-container": "#218367",
+              "surface-variant": "#dfe3e8",
+              "secondary": "#934b00",
+              "primary-fixed": "#7ffc9b"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .backdrop-blur-xl { backdrop-filter: blur(24px); }
+        .primary-gradient { background: linear-gradient(135deg, #006b2f 0%, #00873d 100%); }
+        /* Custom hide scrollbar */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface min-h-screen">
+<!-- TopNavBar -->
+<nav class="bg-surface/80 backdrop-blur-xl font-['Plus_Jakarta_Sans'] font-bold tracking-tight docked full-width top-0 sticky z-50">
+<div class="flex justify-between items-center px-8 py-4 w-full max-w-7xl mx-auto">
+<div class="text-2xl font-bold text-green-900 italic">JatraXpress</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-green-700 border-b-2 border-green-700 pb-1" href="#">Search</a>
+<a class="text-slate-600 hover:text-green-800 transition-colors duration-300" href="#">My Bookings</a>
+<a class="text-slate-600 hover:text-green-800 transition-colors duration-300" href="#">Offers</a>
+<a class="text-slate-600 hover:text-green-800 transition-colors duration-300" href="#">Help</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:block text-green-800 font-bold px-4 py-2 hover:opacity-80 transition-all">Login</button>
+<div class="p-2 cursor-pointer">
+<span class="material-symbols-outlined text-slate-700" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Layout -->
+<main class="max-w-7xl mx-auto px-8 py-10 flex flex-col md:flex-row gap-10">
+<!-- Sidebar Filters -->
+<aside class="w-full md:w-72 flex-shrink-0">
+<div class="sticky top-24 space-y-8">
+<div class="flex items-center justify-between">
+<h2 class="font-headline text-xl font-bold text-on-surface">Filters</h2>
+<button class="text-primary text-sm font-semibold hover:underline">Clear all</button>
+</div>
+<!-- Departure Time -->
+<section class="space-y-4">
+<h3 class="text-label-sm font-bold tracking-widest text-on-surface-variant uppercase">Departure Time</h3>
+<div class="grid grid-cols-1 gap-2">
+<label class="flex items-center justify-between p-3 rounded-xl bg-surface-container-low cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="wb_sunny">wb_sunny</span>
+<span class="text-sm font-medium">Morning</span>
+</div>
+<input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-3 rounded-xl bg-surface-container-low cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="light_mode">light_mode</span>
+<span class="text-sm font-medium">Afternoon</span>
+</div>
+<input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-3 rounded-xl bg-surface-container-low cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="bedtime">bedtime</span>
+<span class="text-sm font-medium">Night</span>
+</div>
+<input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+</label>
+</div>
+</section>
+<!-- Bus Type -->
+<section class="space-y-4">
+<h3 class="text-label-sm font-bold tracking-widest text-on-surface-variant uppercase">Bus Type</h3>
+<div class="flex gap-2">
+<button class="flex-1 py-2 px-4 rounded-full border border-outline-variant text-sm font-medium hover:bg-primary-container hover:text-white hover:border-transparent transition-all">AC</button>
+<button class="flex-1 py-2 px-4 rounded-full border border-outline-variant text-sm font-medium hover:bg-primary-container hover:text-white hover:border-transparent transition-all">Non-AC</button>
+</div>
+</section>
+<!-- Price Range -->
+<section class="space-y-4">
+<div class="flex justify-between items-end">
+<h3 class="text-label-sm font-bold tracking-widest text-on-surface-variant uppercase">Price Range</h3>
+<span class="text-sm font-bold text-primary">$40 - $120</span>
+</div>
+<input class="w-full h-1.5 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-primary" type="range"/>
+</section>
+<!-- Operators -->
+<section class="space-y-4">
+<h3 class="text-label-sm font-bold tracking-widest text-on-surface-variant uppercase">Operators</h3>
+<div class="space-y-2">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-on-surface-variant group-hover:text-on-surface">Green Line</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-on-surface-variant group-hover:text-on-surface">Hanif Enterprise</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-on-surface-variant group-hover:text-on-surface">Shyamoli Paribahan</span>
+</label>
+</div>
+</section>
+</div>
+</aside>
+<!-- Results Section -->
+<section class="flex-1 space-y-6">
+<!-- Search Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+<div>
+<span class="text-label-sm font-bold tracking-[0.2em] text-primary uppercase">12 Available Journeys</span>
+<h1 class="font-headline text-3xl font-extrabold text-on-surface mt-1">Dhaka to Cox's Bazar</h1>
+<p class="text-on-surface-variant text-sm mt-1">October 24, 2024 • Thursday</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-sm font-medium text-on-surface-variant">Sort by:</span>
+<select class="bg-transparent border-none text-sm font-bold text-on-surface focus:ring-0 cursor-pointer">
+<option>Earliest Departure</option>
+<option>Lowest Price</option>
+<option>Fastest Duration</option>
+</select>
+</div>
+</div>
+<!-- Result Card 1 -->
+<div class="group relative overflow-hidden bg-surface-container-lowest rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_20px_50px_rgba(0,107,47,0.08)] ring-1 ring-inset ring-black/[0.03]">
+<div class="flex flex-col md:flex-row items-center gap-8">
+<!-- Operator Logo & Info -->
+<div class="w-full md:w-48 space-y-2">
+<div class="h-12 w-32 bg-surface-container-low rounded-lg flex items-center justify-center overflow-hidden">
+<img alt="Green Line" class="w-full h-full object-cover" data-alt="professional logo for a premium bus operator named Green Line in emerald and white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASBs7HZXIyZW0v9Zpmw5r3vRJEvvcx9QR7t7liiwLdmauLKrk3-HXmkpiw3waQ4prfHBOGYo91MDhelzjoCrIc6PH3kSSm6Weu_fTYJ2ZaJON_N2tfto1F62JaiQVqqOUZoulde3fuOxE3fRigVqltTh8U33x34CgqzvYtnqhaGt1hg_1AWpUEwyCqrQlYQBrZnoCY0HL9FapOH6Z4J9w-U6UIMR3sbDeNKvZGUeRX0C9g4OH5APDJercwRkFZUNCFQUptXO0-CA"/>
+</div>
+<h4 class="font-bold text-on-surface">Green Line</h4>
+<div class="flex items-center gap-2">
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">Scania Multi-Axle</span>
+<span class="bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded text-[10px] font-bold uppercase">AC</span>
+</div>
+</div>
+<!-- Journey Details -->
+<div class="flex-1 grid grid-cols-3 gap-4 w-full">
+<div class="text-center md:text-left">
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-tighter">Departure</p>
+<p class="text-xl font-bold font-headline">08:30 PM</p>
+<p class="text-sm text-on-surface-variant">Gabtoli</p>
+</div>
+<div class="flex flex-col items-center justify-center relative">
+<p class="text-[10px] font-bold text-primary mb-1 uppercase tracking-widest">10h 45m</p>
+<div class="w-full flex items-center gap-2">
+<div class="h-[2px] flex-1 bg-surface-container-high relative">
+<div class="absolute -left-1 -top-1 w-2 h-2 rounded-full border-2 border-primary bg-white"></div>
+<div class="absolute -right-1 -top-1 w-2 h-2 rounded-full border-2 border-primary bg-primary"></div>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary text-lg mt-2" data-icon="directions_bus">directions_bus</span>
+</div>
+<div class="text-center md:text-right">
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-tighter">Arrival</p>
+<p class="text-xl font-bold font-headline">07:15 AM</p>
+<p class="text-sm text-on-surface-variant">Kolatoli</p>
+</div>
+</div>
+<!-- Pricing & CTA -->
+<div class="w-full md:w-56 flex flex-col items-end gap-3 pt-6 md:pt-0 md:border-l md:border-surface-container-high md:pl-8">
+<div class="text-right">
+<p class="text-xs text-on-surface-variant font-medium">Starting from</p>
+<p class="text-3xl font-black text-on-surface tracking-tighter">$95.00</p>
+</div>
+<div class="flex items-center gap-2 text-secondary font-bold text-xs uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm" data-icon="event_seat">event_seat</span>
+                            8 Seats Left
+                        </div>
+<button class="w-full primary-gradient text-white font-bold py-3 px-6 rounded-xl hover:scale-[1.02] active:scale-95 transition-all shadow-lg shadow-primary/20">
+                            View Seats
+                        </button>
+</div>
+</div>
+<!-- Trip Pulse Chip -->
+<div class="absolute top-4 right-4 bg-surface-bright/60 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1.5 ring-1 ring-white/50">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-[10px] font-bold text-primary tracking-wider uppercase">Live Tracking</span>
+</div>
+</div>
+<!-- Result Card 2 -->
+<div class="group relative overflow-hidden bg-surface-container-lowest rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_20px_50px_rgba(0,107,47,0.08)] ring-1 ring-inset ring-black/[0.03]">
+<div class="flex flex-col md:flex-row items-center gap-8">
+<!-- Operator Logo & Info -->
+<div class="w-full md:w-48 space-y-2">
+<div class="h-12 w-32 bg-surface-container-low rounded-lg flex items-center justify-center overflow-hidden">
+<img alt="Hanif" class="w-full h-full object-cover" data-alt="clean minimal logo for Hanif Enterprise bus line in black and white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAedzszspiceOtKm-i35FiIfyHoZUdEat1V2wY4eiuCyjvfLyosR_OwzFYRtM7Lx3NtE2bRD5RFgKKtp2IDz66GOuQa0ocpXcp8x0oPn7g9dciL4k6ZZXhy-9cLje012igibYgFzt6zAZqPdPwJaNro9flHJjy7TifJWAHvbBjfEiywH_vmaPbzx8JbQVJP79wHKYXdEWmEYKf5wm1L2OZi1-4KOLXd4bYYjckfbrVo-DSybgqzpa0hqBK64MwYX3xpybDwmaDtOw"/>
+</div>
+<h4 class="font-bold text-on-surface">Hanif Enterprise</h4>
+<div class="flex items-center gap-2">
+<span class="bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">Hino 1J</span>
+<span class="bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded text-[10px] font-bold uppercase">Non-AC</span>
+</div>
+</div>
+<!-- Journey Details -->
+<div class="flex-1 grid grid-cols-3 gap-4 w-full">
+<div class="text-center md:text-left">
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-tighter">Departure</p>
+<p class="text-xl font-bold font-headline">09:00 PM</p>
+<p class="text-sm text-on-surface-variant">Arambagh</p>
+</div>
+<div class="flex flex-col items-center justify-center relative">
+<p class="text-[10px] font-bold text-primary mb-1 uppercase tracking-widest">11h 00m</p>
+<div class="w-full flex items-center gap-2">
+<div class="h-[2px] flex-1 bg-surface-container-high relative">
+<div class="absolute -left-1 -top-1 w-2 h-2 rounded-full border-2 border-primary bg-white"></div>
+<div class="absolute -right-1 -top-1 w-2 h-2 rounded-full border-2 border-primary bg-primary"></div>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary text-lg mt-2" data-icon="directions_bus">directions_bus</span>
+</div>
+<div class="text-center md:text-right">
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-tighter">Arrival</p>
+<p class="text-xl font-bold font-headline">08:00 AM</p>
+<p class="text-sm text-on-surface-variant">Sugandha</p>
+</div>
+</div>
+<!-- Pricing & CTA -->
+<div class="w-full md:w-56 flex flex-col items-end gap-3 pt-6 md:pt-0 md:border-l md:border-surface-container-high md:pl-8">
+<div class="text-right">
+<p class="text-xs text-on-surface-variant font-medium">Starting from</p>
+<p class="text-3xl font-black text-on-surface tracking-tighter">$45.00</p>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant font-bold text-xs uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm" data-icon="event_seat">event_seat</span>
+                            24 Seats Left
+                        </div>
+<button class="w-full primary-gradient text-white font-bold py-3 px-6 rounded-xl hover:scale-[1.02] active:scale-95 transition-all shadow-lg shadow-primary/20">
+                            View Seats
+                        </button>
+</div>
+</div>
+</div>
+<!-- Result Card 3 (Featured/Fastest) -->
+<div class="group relative overflow-hidden bg-surface-container-lowest rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_20px_50px_rgba(147,75,0,0.08)] ring-2 ring-inset ring-secondary/10 bg-gradient-to-br from-white to-secondary/5">
+<div class="flex flex-col md:flex-row items-center gap-8">
+<!-- Operator Logo & Info -->
+<div class="w-full md:w-48 space-y-2">
+<div class="h-12 w-32 bg-surface-container-low rounded-lg flex items-center justify-center overflow-hidden">
+<img alt="Shyamoli" class="w-full h-full object-cover" data-alt="professional logo for Shyamoli bus lines in ochre and white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6AWdxneW4v7S1qdJnuZGbDmObVx7EQZVdBK8-7BtBxVwYaFsPYQ3cP4QLSocYrZTUfKkjB_D3quYvCvAXRXvJ9rYZIACY7Xc1Qyx1IQGaWcm2-8GbITpFFnJVOyspGVx3WU7jjaLSoJhYowZv5RcqVhjORhb7TwDb_fK2HTnTv3G-ejeKGryUbwj6hGF8NXbcnJHDQt5PaKIA7oz9GZvdbHDulQ7BEbUx3ecX2ic4DsHhlnU4DTHPagUPneD5elZ6c2QytYTZ6A"/>
+</div>
+<h4 class="font-bold text-on-surface">Shyamoli NR</h4>
+<div class="flex items-center gap-2">
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">Hino RM2</span>
+<span class="bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded text-[10px] font-bold uppercase">AC Sleeper</span>
+</div>
+</div>
+<!-- Journey Details -->
+<div class="flex-1 grid grid-cols-3 gap-4 w-full">
+<div class="text-center md:text-left">
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-tighter">Departure</p>
+<p class="text-xl font-bold font-headline text-secondary">10:45 PM</p>
+<p class="text-sm text-on-surface-variant">Sayedabad</p>
+</div>
+<div class="flex flex-col items-center justify-center relative">
+<p class="text-[10px] font-bold text-secondary mb-1 uppercase tracking-widest">09h 30m</p>
+<div class="w-full flex items-center gap-2">
+<div class="h-[2px] flex-1 bg-secondary/20 relative">
+<div class="absolute -left-1 -top-1 w-2 h-2 rounded-full border-2 border-secondary bg-white"></div>
+<div class="absolute -right-1 -top-1 w-2 h-2 rounded-full border-2 border-secondary bg-secondary"></div>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary text-lg mt-2" data-icon="airline_seat_flat">airline_seat_flat</span>
+</div>
+<div class="text-center md:text-right">
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-tighter">Arrival</p>
+<p class="text-xl font-bold font-headline">08:15 AM</p>
+<p class="text-sm text-on-surface-variant">Marine Drive</p>
+</div>
+</div>
+<!-- Pricing & CTA -->
+<div class="w-full md:w-56 flex flex-col items-end gap-3 pt-6 md:pt-0 md:border-l md:border-surface-container-high md:pl-8">
+<div class="text-right">
+<p class="text-xs text-on-surface-variant font-medium">Starting from</p>
+<p class="text-3xl font-black text-on-surface tracking-tighter">$115.00</p>
+</div>
+<div class="flex items-center gap-2 text-error font-bold text-xs uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm" data-icon="bolt">bolt</span>
+                            Last 2 Seats
+                        </div>
+<button class="w-full bg-secondary-container text-on-secondary-container font-bold py-3 px-6 rounded-xl hover:scale-[1.02] active:scale-95 transition-all shadow-lg shadow-secondary/20">
+                            Book Fast
+                        </button>
+</div>
+</div>
+<!-- Urgency Pulse Chip -->
+<div class="absolute top-4 right-4 bg-secondary-fixed/80 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1.5 ring-1 ring-secondary/20">
+<span class="text-[10px] font-bold text-on-secondary-container tracking-wider uppercase">Selling Fast</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low dark:bg-slate-950 w-full py-12 px-8 mt-20">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-7xl mx-auto font-['Inter'] text-sm tracking-wide">
+<div class="space-y-4">
+<div class="text-lg font-bold text-green-900">JatraXpress</div>
+<p class="text-slate-500 dark:text-slate-400 leading-relaxed max-w-xs">Elevating your travel experience through premium mobility and effortless booking journeys.</p>
+</div>
+<div class="flex flex-col gap-3">
+<h5 class="font-bold text-green-900 uppercase text-xs tracking-widest mb-1">Company</h5>
+<a class="text-slate-500 hover:text-green-600 underline transition-all" href="#">About Us</a>
+<a class="text-slate-500 hover:text-green-600 underline transition-all" href="#">Terms</a>
+<a class="text-slate-500 hover:text-green-600 underline transition-all" href="#">Privacy</a>
+<a class="text-slate-500 hover:text-green-600 underline transition-all" href="#">Contact</a>
+</div>
+<div class="flex flex-col gap-6">
+<div>
+<h5 class="font-bold text-green-900 uppercase text-xs tracking-widest mb-3">Language</h5>
+<div class="flex gap-4">
+<button class="text-green-700 font-semibold">EN</button>
+<button class="text-slate-500 hover:text-green-600 transition-all">BN</button>
+</div>
+</div>
+<div class="text-slate-500 dark:text-slate-400">© 2024 JatraXpress. Premium Mobility.</div>
+</div>
+</div>
+</footer>
+</body></html>

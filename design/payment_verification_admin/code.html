@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Payment Verification | Terminal Console</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9ff;
+        }
+        .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "on-secondary-fixed": "#301400",
+                "surface-variant": "#dfe3e8",
+                "on-tertiary-container": "#f5fff8",
+                "surface": "#f7f9ff",
+                "on-primary-container": "#f7fff3",
+                "on-error": "#ffffff",
+                "surface-bright": "#f7f9ff",
+                "inverse-surface": "#2d3135",
+                "secondary-container": "#ff8e28",
+                "secondary": "#934b00",
+                "primary-container": "#00873d",
+                "on-tertiary-fixed": "#002117",
+                "surface-container-highest": "#dfe3e8",
+                "primary-fixed": "#7ffc9b",
+                "tertiary": "#006950",
+                "on-primary-fixed-variant": "#005323",
+                "inverse-primary": "#62de81",
+                "secondary-fixed": "#ffdcc5",
+                "on-secondary-fixed-variant": "#703800",
+                "on-tertiary-fixed-variant": "#00513d",
+                "tertiary-fixed-dim": "#7dd8b7",
+                "outline-variant": "#bdcaba",
+                "on-primary": "#ffffff",
+                "on-error-container": "#93000a",
+                "secondary-fixed-dim": "#ffb782",
+                "surface-container": "#ebeef4",
+                "tertiary-fixed": "#99f4d2",
+                "surface-container-lowest": "#ffffff",
+                "on-tertiary": "#ffffff",
+                "tertiary-container": "#218367",
+                "error-container": "#ffdad6",
+                "on-secondary-container": "#653200",
+                "outline": "#6e7a6d",
+                "on-surface-variant": "#3e4a3e",
+                "surface-container-low": "#f1f4fa",
+                "surface-container-high": "#e5e8ee",
+                "surface-dim": "#d7dae0",
+                "on-background": "#181c20",
+                "primary": "#006b2f",
+                "inverse-on-surface": "#eef1f7",
+                "primary-fixed-dim": "#62de81",
+                "on-surface": "#181c20",
+                "on-secondary": "#ffffff",
+                "surface-tint": "#006d30",
+                "error": "#ba1a1a",
+                "background": "#f7f9ff",
+                "on-primary-fixed": "#00210a"
+              },
+              fontFamily: {
+                "headline": ["Plus Jakarta Sans"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r-0 bg-slate-50 dark:bg-slate-900 flex flex-col py-6">
+<div class="px-6 mb-8">
+<h1 class="text-xl font-bold text-green-800 dark:text-green-300 tracking-tight font-headline">Mobility Admin</h1>
+<p class="text-xs text-slate-500 font-medium uppercase tracking-widest mt-1">Fleet Control Center</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-green-600 dark:hover:text-green-300 hover:bg-white/50 transition-colors mx-2 rounded-lg font-['Plus_Jakarta_Sans'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-green-600 dark:hover:text-green-300 hover:bg-white/50 transition-colors mx-2 rounded-lg font-['Plus_Jakarta_Sans'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="route">route</span>
+                Route Management
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-green-600 dark:hover:text-green-300 hover:bg-white/50 transition-colors mx-2 rounded-lg font-['Plus_Jakarta_Sans'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+                Trip Scheduling
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-green-600 dark:hover:text-green-300 hover:bg-white/50 transition-colors mx-2 rounded-lg font-['Plus_Jakarta_Sans'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="directions_bus">directions_bus</span>
+                Bus Management
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-green-600 dark:hover:text-green-300 hover:bg-white/50 transition-colors mx-2 rounded-lg font-['Plus_Jakarta_Sans'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="confirmation_number">confirmation_number</span>
+                Booking Management
+            </a>
+<!-- Active State: Payment Verification -->
+<a class="flex items-center gap-3 px-4 py-3 bg-white dark:bg-slate-800 text-green-700 dark:text-green-400 rounded-lg mx-2 shadow-sm font-['Plus_Jakarta_Sans'] text-sm font-medium active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="payments" style="font-variation-settings: 'FILL' 1;">payments</span>
+                Payment Verification
+            </a>
+</nav>
+<div class="mt-auto px-4">
+<div class="bg-slate-100 dark:bg-slate-800/50 rounded-xl p-4 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-white font-bold">A</div>
+<div>
+<p class="text-sm font-semibold text-slate-900 dark:text-white">Admin user profile</p>
+<p class="text-xs text-slate-500">System Overseer</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="ml-64 min-h-screen">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-40 w-full bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-100 dark:border-slate-800 shadow-sm dark:shadow-none h-16 px-8 flex justify-between items-center">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-green-600">search</span>
+<input class="w-full bg-surface-container-high border-none rounded-xl py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-green-500/20 outline-none transition-all font-body" placeholder="Search Transaction or Booking ID..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="text-green-700 dark:text-green-400 font-semibold font-headline">Terminal Console</span>
+</div>
+<div class="flex items-center gap-4 text-slate-500">
+<button class="hover:text-green-600 transition-all"><span class="material-symbols-outlined" data-icon="notifications">notifications</span></button>
+<button class="hover:text-green-600 transition-all"><span class="material-symbols-outlined" data-icon="account_circle">account_circle</span></button>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-8 space-y-8">
+<!-- Summary Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border-l-4 border-primary">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Total Pending</p>
+<h3 class="text-3xl font-bold font-headline mt-2">142</h3>
+</div>
+<div class="p-3 bg-primary-fixed rounded-lg text-on-primary-fixed-variant">
+<span class="material-symbols-outlined" data-icon="pending_actions">pending_actions</span>
+</div>
+</div>
+<p class="text-xs text-slate-500 mt-4 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_up">trending_up</span> 12% increase from yesterday
+                    </p>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border-l-4 border-secondary-container">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Verified Today</p>
+<h3 class="text-3xl font-bold font-headline mt-2">856</h3>
+</div>
+<div class="p-3 bg-secondary-fixed rounded-lg text-on-secondary-fixed-variant">
+<span class="material-symbols-outlined" data-icon="verified">verified</span>
+</div>
+</div>
+<p class="text-xs text-slate-500 mt-4 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="speed">speed</span> Efficiency: 94%
+                    </p>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border-l-4 border-tertiary">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Total Amount Waiting</p>
+<h3 class="text-3xl font-bold font-headline mt-2">৳42,850</h3>
+</div>
+<div class="p-3 bg-tertiary-fixed rounded-lg text-on-tertiary-fixed-variant">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+</div>
+<p class="text-xs text-slate-500 mt-4 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span> Avg. Wait: 14 mins
+                    </p>
+</div>
+</section>
+<!-- Filter Bar -->
+<section class="bg-surface-container-low p-4 rounded-xl flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-2 bg-white p-1 rounded-lg">
+<button class="px-4 py-2 bg-primary text-white rounded-md text-sm font-medium shadow-md">Pending</button>
+<button class="px-4 py-2 text-on-surface-variant hover:bg-slate-50 rounded-md text-sm font-medium transition-all">Verified</button>
+<button class="px-4 py-2 text-on-surface-variant hover:bg-slate-50 rounded-md text-sm font-medium transition-all">Rejected</button>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 text-sm text-slate-600">
+<span class="material-symbols-outlined text-base" data-icon="filter_list">filter_list</span>
+<span>Sort by:</span>
+<select class="bg-transparent border-none focus:ring-0 text-primary font-semibold cursor-pointer">
+<option>Submission Time (Newest)</option>
+<option>Submission Time (Oldest)</option>
+<option>Amount (High-Low)</option>
+</select>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-lowest text-on-surface border border-outline-variant/30 rounded-lg text-sm font-medium hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined text-base" data-icon="download">download</span> Export
+                    </button>
+</div>
+</section>
+<!-- Verification Table -->
+<section class="bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant text-xs uppercase tracking-widest font-bold">
+<th class="px-6 py-4">Booking Details</th>
+<th class="px-6 py-4">Passenger</th>
+<th class="px-6 py-4">Operator/Route</th>
+<th class="px-6 py-4">Transaction ID</th>
+<th class="px-6 py-4">Amount</th>
+<th class="px-6 py-4">Submission Time</th>
+<th class="px-6 py-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="px-6 py-5">
+<span class="font-bold text-slate-900">#BK-9021</span>
+<div class="text-[10px] text-primary font-bold uppercase mt-1 px-2 py-0.5 bg-primary-fixed/30 rounded inline-block">Manual</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-xs font-bold text-slate-600">JH</div>
+<div>
+<p class="text-sm font-semibold text-slate-900">Junaid Hasan</p>
+<p class="text-xs text-slate-500">+880 1712-345678</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5 text-sm">
+<p class="font-medium text-slate-800">Green Line Paribahan</p>
+<p class="text-xs text-slate-500">Dhaka → Chattogram</p>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<img alt="" class="w-5 h-5 rounded" data-alt="Small square pink bkash logo icon for mobile payment indicator" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU4VYuPF0B1cSd2Ot_APzl3OSs-oBFWCmo81kHjFCzi6rV4a033suSUHeKqANu1Cmph9tP8mkNtisTAIfSIPLnZyaHnoXmlm--EglNKX_pI9t9_Ua0tVTsEbGKAjBp-2LAvNgG05rZWCRAVYaXfSC_9YqeBmmdd9sRfUCMM1ym64yJ15fpjaa9jy3Ln8UVFCMj948Ya7h0dZBJ8IUtNUWfauHigb-o_1eI21PTkQai1zpOHVz7HLy7xBXUfPrEoYnnq-5FlO7eBg"/>
+<code class="bg-slate-100 px-2 py-1 rounded text-xs font-mono font-bold text-slate-700 uppercase">BK7X902LMA</code>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm font-bold text-slate-900">৳1,250</p>
+<p class="text-[10px] text-slate-400">Personal Account</p>
+</td>
+<td class="px-6 py-5 text-sm text-slate-600">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="history">history</span>
+                                        2 mins ago
+                                    </div>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-error hover:bg-error-container/30 rounded-lg transition-all" title="Reject">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+<button class="px-4 py-2 bg-primary text-white text-xs font-bold rounded-lg shadow-sm hover:shadow-md transition-all active:scale-95">
+                                            Approve
+                                        </button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group bg-surface-container-low/20">
+<td class="px-6 py-5">
+<span class="font-bold text-slate-900">#BK-8843</span>
+<div class="text-[10px] text-primary font-bold uppercase mt-1 px-2 py-0.5 bg-primary-fixed/30 rounded inline-block">Manual</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-xs font-bold text-slate-600">SM</div>
+<div>
+<p class="text-sm font-semibold text-slate-900">Sara Mahmud</p>
+<p class="text-xs text-slate-500">+880 1822-998877</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5 text-sm">
+<p class="font-medium text-slate-800">Ena Transport</p>
+<p class="text-xs text-slate-500">Dhaka → Sylhet</p>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<img alt="" class="w-5 h-5 rounded" data-alt="Small square violet rocket mobile payment logo icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbxBM5am5YdmtvaVB24j1tYmJh2kzlmh2j3hp9A0YDzx6gVGMNkH5hWWz8So8hgTzFPKwxQNi34UETVvHf9U_I39UKsL2hdbmXCk-jBLrtIPKwYqAtafyWwmtnU1i-7g_drSL8HASLTwJNO_P2tPuNmNtsMtyI_C9HKHX6WNUnVaNvwy2LQla4etbH7s6NZpv9Z_uTdUBJ5cxxwmd6HBg_UrLMpdDLg-ArhpNsp1aSD0gyFXvvQjaYfaTm_y3SpFSFeaLjzGz2hA"/>
+<code class="bg-slate-100 px-2 py-1 rounded text-xs font-mono font-bold text-slate-700 uppercase">RC12_YT90P</code>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm font-bold text-slate-900">৳800</p>
+<p class="text-[10px] text-slate-400">Agent Cash-in</p>
+</td>
+<td class="px-6 py-5 text-sm text-slate-600">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="history">history</span>
+                                        15 mins ago
+                                    </div>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-error hover:bg-error-container/30 rounded-lg transition-all" title="Reject">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+<button class="px-4 py-2 bg-primary text-white text-xs font-bold rounded-lg shadow-sm hover:shadow-md transition-all active:scale-95">
+                                            Approve
+                                        </button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="px-6 py-5">
+<span class="font-bold text-slate-900">#BK-7110</span>
+<div class="text-[10px] text-primary font-bold uppercase mt-1 px-2 py-0.5 bg-primary-fixed/30 rounded inline-block">Manual</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-xs font-bold text-slate-600">RA</div>
+<div>
+<p class="text-sm font-semibold text-slate-900">Rafiq Ahmed</p>
+<p class="text-xs text-slate-500">+880 1512-112233</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5 text-sm">
+<p class="font-medium text-slate-800">Hanif Enterprise</p>
+<p class="text-xs text-slate-500">Dhaka → Rajshahi</p>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<img alt="" class="w-5 h-5 rounded" data-alt="Small square pink bkash logo icon for mobile payment indicator" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEoAKmnWwN8sNQz5Gm2hvz5pD7RIufTBDEP0DXiXY7bl4YHuiqDJ7_enf2yB8R80BmwviYHw-9xt7zvUBS7JgXKTWRmidyzeIUWwAHxbcLO7hNuy9BmCmhRhS75RVA9fLaTQw6Y4e11kHQC6eTOQFH_57YEAZ_PgSIv8zmsN2NiGQN6A6FH66RgKleSZWAx9-zVwZqm6bljBCbyQVCBdp_U70dbBrqJqD5YSSprKKZC8jSJAoXQ1He97isEUxPEq8JtUfeemtLYQ"/>
+<code class="bg-slate-100 px-2 py-1 rounded text-xs font-mono font-bold text-slate-700 uppercase">BK9P_X11QA</code>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm font-bold text-slate-900">৳1,100</p>
+<p class="text-[10px] text-slate-400">Personal Account</p>
+</td>
+<td class="px-6 py-5 text-sm text-slate-600">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="history">history</span>
+                                        24 mins ago
+                                    </div>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-error hover:bg-error-container/30 rounded-lg transition-all" title="Reject">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+<button class="px-4 py-2 bg-primary text-white text-xs font-bold rounded-lg shadow-sm hover:shadow-md transition-all active:scale-95">
+                                            Approve
+                                        </button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group bg-surface-container-low/20">
+<td class="px-6 py-5">
+<span class="font-bold text-slate-900">#BK-6552</span>
+<div class="text-[10px] text-primary font-bold uppercase mt-1 px-2 py-0.5 bg-primary-fixed/30 rounded inline-block">Manual</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-xs font-bold text-slate-600">TK</div>
+<div>
+<p class="text-sm font-semibold text-slate-900">Tanvir Karim</p>
+<p class="text-xs text-slate-500">+880 1912-445566</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5 text-sm">
+<p class="font-medium text-slate-800">Shyamoli N.R. Travels</p>
+<p class="text-xs text-slate-500">Dhaka → Rangpur</p>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<img alt="" class="w-5 h-5 rounded" data-alt="Small square pink bkash logo icon for mobile payment indicator" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClLCRBo9pYiNKfIasz1H2Lk0IIU0vYyFSwdSNADw__h-HwWpujkKqCtNNcsKqlmJb6HbQmHDaLxtmvyTeUiaRX-RkIWzpdeZFXgvvKWb2HabDQkV8o3rVzhNasDAhB3U1Y-JG5iHXNtw3nUi_4pGmEiWhDw-JQ1h55yDkJ6f5llx3UZ2LUGLVx4uZ7hZK1vFcCrOo4w-hwIt1m0ymIlGfyq86Nnt4DSoObZkyDSXra8RvPPmjyfZGvh34zXu_Qudet6WBYMYqA6g"/>
+<code class="bg-slate-100 px-2 py-1 rounded text-xs font-mono font-bold text-slate-700 uppercase">BK33_LM12Z</code>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm font-bold text-slate-900">৳950</p>
+<p class="text-[10px] text-slate-400">Personal Account</p>
+</td>
+<td class="px-6 py-5 text-sm text-slate-600">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="history">history</span>
+                                        1 hour ago
+                                    </div>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-error hover:bg-error-container/30 rounded-lg transition-all" title="Reject">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+<button class="px-4 py-2 bg-primary text-white text-xs font-bold rounded-lg shadow-sm hover:shadow-md transition-all active:scale-95">
+                                            Approve
+                                        </button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 bg-surface-container-lowest flex items-center justify-between border-t border-slate-100">
+<p class="text-sm text-slate-500 font-body">Showing 1 to 4 of 142 entries</p>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-lg hover:bg-slate-100 transition-colors disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-primary text-white text-sm font-bold">1</button>
+<button class="w-8 h-8 rounded-lg hover:bg-slate-100 text-sm font-medium transition-colors">2</button>
+<button class="w-8 h-8 rounded-lg hover:bg-slate-100 text-sm font-medium transition-colors">3</button>
+<span class="px-2">...</span>
+<button class="w-8 h-8 rounded-lg hover:bg-slate-100 text-sm font-medium transition-colors">36</button>
+<button class="p-2 rounded-lg hover:bg-slate-100 transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Audit Activity Snippet (Glassmorphism card) -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<div class="bg-white/40 backdrop-blur-xl p-8 rounded-3xl border border-white/50 space-y-4">
+<div class="flex justify-between items-center">
+<h4 class="font-headline font-bold text-lg text-slate-900">Verification Integrity Audit</h4>
+<span class="material-symbols-outlined text-slate-400" data-icon="shield">shield</span>
+</div>
+<p class="text-sm text-slate-600 font-body leading-relaxed">
+                        All manual verifications are logged with the administrator's fingerprint. Ensure the Transaction ID matches exactly with the payment provider portal before approval. Discrepancies should be marked for rejection with a clear reason.
+                    </p>
+<div class="pt-4 flex items-center gap-4">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-white bg-slate-300" title="Admin 1"></div>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-slate-400" title="Admin 2"></div>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-primary-container flex items-center justify-center text-[10px] text-white font-bold">+5</div>
+</div>
+<p class="text-xs text-slate-500 italic">Currently active moderators</p>
+</div>
+</div>
+<div class="bg-primary/5 rounded-3xl p-8 border border-primary/10 flex flex-col justify-between">
+<div>
+<h4 class="font-headline font-bold text-lg text-primary">Need Assistance?</h4>
+<p class="text-sm text-on-surface-variant/80 mt-2">Contact the technical operations desk for payment gateway API sync issues.</p>
+</div>
+<div class="mt-6">
+<button class="flex items-center gap-2 text-primary font-bold text-sm group">
+                            Open Support Channel 
+                            <span class="material-symbols-outlined text-base transition-transform group-hover:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Contextual FAB (Hidden on Verification page as per instructions, but kept as placeholder for logic) -->
+<!-- Suppressed -->
+</body></html>
