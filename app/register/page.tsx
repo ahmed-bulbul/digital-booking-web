@@ -158,10 +158,12 @@ export default function RegisterPage() {
   return (
     <div className="min-h-screen bg-background text-on-background">
       <header className="w-full top-0 left-0 sticky z-50 bg-[#f7f9ff] flex justify-between items-center px-6 py-4">
-        <div className="flex items-center gap-2">
-          <span className="text-xl font-bold text-[#079D49] tracking-tighter font-headline">
-            JatraXpress
-          </span>
+          <div className="flex items-center gap-2">
+              <Link href="/" className="flex items-center gap-2.5 group flex-shrink-0">
+                  <span className="text-xl font-bold text-[#079D49] tracking-tighter font-headline">
+                    JatraXpress
+                  </span>
+              </Link>
         </div>
         <div className="flex items-center gap-4">
           <button
