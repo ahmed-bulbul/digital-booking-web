@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { API_BASE_URL, getCurrentUser, getStoredToken } from "../lib/authClient";
 import { toast } from "react-hot-toast";
@@ -109,6 +109,8 @@ function getSessionId() {
 
 export default function SeatSelectionClient({ items, scheduleDetail }: SeatSelectionClientProps) {
   const router = useRouter();
+  const seatMapRef = useRef<HTMLDivElement>(null);
+  const passengerFormRef = useRef<HTMLElement>(null);
   const [selectedSeats, setSelectedSeats] = useState<string[]>([]);
   const [passengers, setPassengers] = useState<Record<string, PassengerInput>>({});
   const [currentUser, setCurrentUser] = useState<CurrentUser | null>(null);
@@ -228,6 +230,11 @@ export default function SeatSelectionClient({ items, scheduleDetail }: SeatSelec
     const validationError = validate();
     if (validationError) {
       setError(validationError);
+      if (selectedSeats.length === 0) {
+        seatMapRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+      } else {
+        passengerFormRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
       return;
     }
 
@@ -322,7 +329,7 @@ export default function SeatSelectionClient({ items, scheduleDetail }: SeatSelec
 
           {error ? <p className="text-sm text-error font-semibold">{error}</p> : null}
 
-          <div className="bg-surface-container-low rounded-[2rem] p-8 md:p-12 relative overflow-hidden">
+          <div ref={seatMapRef} className="bg-surface-container-low rounded-[2rem] p-8 md:p-12 relative overflow-hidden">
             <div className="absolute top-0 right-0 opacity-5 pointer-events-none">
               <span className="material-symbols-outlined text-[300px]">directions_bus</span>
             </div>
@@ -397,7 +404,7 @@ export default function SeatSelectionClient({ items, scheduleDetail }: SeatSelec
             </div>
           </div>
 
-          <section className="space-y-8">
+          <section ref={passengerFormRef} className="space-y-8">
             <div className="flex items-center justify-between">
               <h2 className="text-2xl font-headline font-bold text-on-surface">Passenger Details</h2>
               <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-bold">

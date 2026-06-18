@@ -9,13 +9,17 @@ type ApiResponse<T> = {
 };
 
 async function fetchRoutes(): Promise<RouteLookup[]> {
-  const baseUrl = process.env.API_BASE_URL ?? "http://localhost:8080";
-  const res = await fetch(`${baseUrl}/api/routes/public`, { cache: "no-store" });
-  if (!res.ok) {
+  try {
+    const baseUrl = process.env.API_BASE_URL ?? "http://localhost:8080";
+    const res = await fetch(`${baseUrl}/api/routes/public`, { cache: "no-store" });
+    if (!res.ok) {
+      return [];
+    }
+    const payload = (await res.json()) as ApiResponse<RouteLookup[]>;
+    return payload.data ?? [];
+  } catch {
     return [];
   }
-  const payload = (await res.json()) as ApiResponse<RouteLookup[]>;
-  return payload.data ?? [];
 }
 
 export default async function HomePage() {
