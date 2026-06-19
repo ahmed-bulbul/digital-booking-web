@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Pagination from "../../components/Pagination";
 import { API_BASE_URL, authFetch } from "../../lib/authClient";
@@ -48,7 +48,7 @@ const emptyForm: ProviderForm = {
   status: String(providerStatuses[0].value)
 };
 
-export default function SuperAdminProvidersPage() {
+function SuperAdminProvidersPageInner() {
   const searchParams = useSearchParams();
   const [organizations, setOrganizations] = useState<Organization[]>([]);
   const [items, setItems] = useState<Provider[]>([]);
@@ -336,5 +336,13 @@ export default function SuperAdminProvidersPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function SuperAdminProvidersPage() {
+  return (
+    <Suspense>
+      <SuperAdminProvidersPageInner />
+    </Suspense>
   );
 }

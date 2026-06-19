@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import RequireAuth from "../components/RequireAuth";
 import ThemeToggle from "../components/ThemeToggle";
 import { clearAuth } from "../lib/authClient";
@@ -16,26 +16,14 @@ const navItems = [
   { label: "Providers", href: "/super-admin/providers", icon: "directions_bus" }
 ];
 
-export default function SuperAdminLayout({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
-  const router = useRouter();
+function SearchBar({ pathname }: { pathname: string }) {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const [searchValue, setSearchValue] = useState("");
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const { t } = useI18n();
-
-  const handleLogout = () => {
-    clearAuth();
-    router.replace("/login");
-  };
 
   useEffect(() => {
     setSearchValue(searchParams.get("q") ?? "");
   }, [searchParams]);
-
-  useEffect(() => {
-    setSidebarOpen(false);
-  }, [pathname]);
 
   const handleSearchChange = (value: string) => {
     setSearchValue(value);
@@ -47,6 +35,37 @@ export default function SuperAdminLayout({ children }: { children: React.ReactNo
     }
     router.replace(`${pathname}?${params.toString()}`);
   };
+
+  return (
+    <div className="relative w-full md:max-w-md">
+      <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg">
+        search
+      </span>
+      <input
+        className="w-full bg-surface-container-high border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary/20 placeholder:text-outline/60"
+        placeholder="Search organizations or providers..."
+        type="text"
+        value={searchValue}
+        onChange={(event) => handleSearchChange(event.target.value)}
+      />
+    </div>
+  );
+}
+
+export default function SuperAdminLayout({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const router = useRouter();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { t } = useI18n();
+
+  const handleLogout = () => {
+    clearAuth();
+    router.replace("/login");
+  };
+
+  useEffect(() => {
+    setSidebarOpen(false);
+  }, [pathname]);
 
   return (
     <RequireAuth requiredRole="SUPER_ADMIN">
@@ -125,18 +144,22 @@ export default function SuperAdminLayout({ children }: { children: React.ReactNo
               >
                 <span className="material-symbols-outlined">menu</span>
               </button>
-              <div className="relative w-full md:max-w-md">
-                <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg">
-                  search
-                </span>
-                <input
-                  className="w-full bg-surface-container-high border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary/20 placeholder:text-outline/60"
-                  placeholder="Search organizations or providers..."
-                  type="text"
-                  value={searchValue}
-                  onChange={(event) => handleSearchChange(event.target.value)}
-                />
-              </div>
+              <Suspense
+                fallback={
+                  <div className="relative w-full md:max-w-md">
+                    <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg">
+                      search
+                    </span>
+                    <input
+                      disabled
+                      className="w-full bg-surface-container-high border-none rounded-full py-2 pl-10 pr-4 text-sm placeholder:text-outline/60"
+                      placeholder="Search organizations or providers..."
+                    />
+                  </div>
+                }
+              >
+                <SearchBar pathname={pathname} />
+              </Suspense>
             </div>
             <div className="flex items-center gap-4 justify-between md:justify-end w-full md:w-auto">
               <ThemeToggle />

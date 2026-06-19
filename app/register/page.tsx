@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useMemo, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
 import { registerOrganization, registerPassenger, storeAuth } from "../lib/authClient";
 import { useI18n } from "../components/I18nProvider";
 import LanguageToggle from "../components/LanguageToggle";
@@ -16,7 +16,7 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const phoneRegex = /^[0-9+\-\s]*$/;
 const domainRegex = /^(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/;
 
-export default function RegisterPage() {
+function RegisterPageInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { t } = useI18n();
@@ -480,5 +480,13 @@ export default function RegisterPage() {
       <div className="fixed top-1/4 -right-10 w-40 h-40 bg-primary-fixed/30 blur-[100px] pointer-events-none rounded-full"></div>
       <div className="fixed bottom-1/4 -left-10 w-60 h-60 bg-secondary-fixed/20 blur-[120px] pointer-events-none rounded-full"></div>
     </div>
+  );
+}
+
+export default function RegisterPage() {
+  return (
+    <Suspense>
+      <RegisterPageInner />
+    </Suspense>
   );
 }

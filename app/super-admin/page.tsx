@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { API_BASE_URL, authFetch } from "../lib/authClient";
 
@@ -18,7 +18,7 @@ type ApiResponse<T> = {
   data: T;
 };
 
-export default function SuperAdminApprovalsPage() {
+function SuperAdminApprovalsPageInner() {
   const searchParams = useSearchParams();
   const [pendingOrgs, setPendingOrgs] = useState<PendingOrganization[]>([]);
   const [loading, setLoading] = useState(true);
@@ -193,5 +193,13 @@ export default function SuperAdminApprovalsPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function SuperAdminApprovalsPage() {
+  return (
+    <Suspense>
+      <SuperAdminApprovalsPageInner />
+    </Suspense>
   );
 }

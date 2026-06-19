@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Pagination from "../../components/Pagination";
 import { API_BASE_URL, authFetch } from "../../lib/authClient";
@@ -48,7 +48,7 @@ const emptyForm: OrganizationForm = {
   status: "PENDING"
 };
 
-export default function SuperAdminOrganizationsPage() {
+function SuperAdminOrganizationsPageInner() {
   const searchParams = useSearchParams();
   const [items, setItems] = useState<Organization[]>([]);
   const [form, setForm] = useState<OrganizationForm>(emptyForm);
@@ -305,5 +305,13 @@ export default function SuperAdminOrganizationsPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function SuperAdminOrganizationsPage() {
+  return (
+    <Suspense>
+      <SuperAdminOrganizationsPageInner />
+    </Suspense>
   );
 }
