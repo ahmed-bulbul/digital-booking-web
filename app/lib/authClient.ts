@@ -60,8 +60,8 @@ export async function login(payload: LoginPayload) {
   });
 
   if (!res.ok) {
-    const errorPayload = (await safeJson<ApiResponse<unknown>>(res)) ?? {};
-    throw new Error(errorPayload.error?.message ?? "Login failed");
+    const errorPayload = await safeJson<ApiResponse<unknown>>(res);
+    throw new Error(errorPayload?.error?.message ?? "Login failed");
   }
 
   const data = (await res.json()) as ApiResponse<AuthResponse>;
@@ -76,8 +76,8 @@ export async function loginAdmin(payload: LoginPayload) {
   });
 
   if (!res.ok) {
-    const errorPayload = (await safeJson<ApiResponse<unknown>>(res)) ?? {};
-    throw new Error(errorPayload.error?.message ?? "Login failed");
+    const errorPayload = await safeJson<ApiResponse<unknown>>(res);
+    throw new Error(errorPayload?.error?.message ?? "Login failed");
   }
 
   const data = (await res.json()) as ApiResponse<AuthResponse>;
@@ -92,8 +92,8 @@ export async function loginSuperAdmin(payload: LoginPayload) {
   });
 
   if (!res.ok) {
-    const errorPayload = (await safeJson<ApiResponse<unknown>>(res)) ?? {};
-    throw new Error(errorPayload.error?.message ?? "Login failed");
+    const errorPayload = await safeJson<ApiResponse<unknown>>(res);
+    throw new Error(errorPayload?.error?.message ?? "Login failed");
   }
 
   const data = (await res.json()) as ApiResponse<AuthResponse>;
@@ -108,8 +108,8 @@ export async function registerPassenger(payload: RegisterPayload) {
   });
 
   if (!res.ok) {
-    const errorPayload = (await safeJson<ApiResponse<unknown>>(res)) ?? {};
-    throw new Error(errorPayload.error?.message ?? "Registration failed");
+    const errorPayload = await safeJson<ApiResponse<unknown>>(res);
+    throw new Error(errorPayload?.error?.message ?? "Registration failed");
   }
 
   const data = (await res.json()) as ApiResponse<AuthResponse>;
@@ -124,8 +124,8 @@ export async function registerOrganization(payload: OrganizationRegisterPayload)
   });
 
   if (!res.ok) {
-    const errorPayload = (await safeJson<ApiResponse<unknown>>(res)) ?? {};
-    throw new Error(errorPayload.error?.message ?? "Registration failed");
+    const errorPayload = await safeJson<ApiResponse<unknown>>(res);
+    throw new Error(errorPayload?.error?.message ?? "Registration failed");
   }
 
   const data = (await res.json()) as ApiResponse<OrganizationRegistrationResponse>;
@@ -184,8 +184,8 @@ export async function getCurrentUser() {
   });
 
   if (!res.ok) {
-    const errorPayload = (await safeJson<ApiResponse<unknown>>(res)) ?? {};
-    throw new Error(errorPayload.error?.message ?? "Failed to load user profile");
+    const errorPayload = await safeJson<ApiResponse<unknown>>(res);
+    throw new Error(errorPayload?.error?.message ?? "Failed to load user profile");
   }
 
   const payload = (await res.json()) as ApiResponse<CurrentUser>;
