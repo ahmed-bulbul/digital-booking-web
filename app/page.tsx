@@ -10,7 +10,7 @@ type ApiResponse<T> = {
 
 async function fetchRoutes(): Promise<RouteLookup[]> {
   try {
-    const baseUrl = process.env.API_BASE_URL ?? "http://localhost:8080";
+    const baseUrl = process.env.API_BASE_URL ?? "https://b84d-103-72-212-59.ngrok-free.app";
     const res = await fetch(`${baseUrl}/api/routes/public`, { cache: "no-store" });
     if (!res.ok) return [];
     const payload = (await res.json()) as ApiResponse<RouteLookup[]>;

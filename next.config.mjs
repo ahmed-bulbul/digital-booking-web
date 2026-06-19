@@ -7,14 +7,8 @@ const nextConfig = {
         hostname: "lh3.googleusercontent.com"
       },
       {
-        protocol: "http",
-        hostname: "localhost",
-        port: "8080"
-      },
-      {
         protocol: "https",
-        hostname: "localhost",
-        port: "8080"
+        hostname: "b84d-103-72-212-59.ngrok-free.app"
       }
     ]
   }

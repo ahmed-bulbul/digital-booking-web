@@ -51,7 +51,7 @@ type SearchParams = {
 };
 
 async function fetchInventoryLayout(scheduleId: number) {
-  const baseUrl = process.env.API_BASE_URL ?? "http://localhost:8080";
+  const baseUrl = process.env.API_BASE_URL ?? "https://b84d-103-72-212-59.ngrok-free.app";
   const res = await fetch(`${baseUrl}/api/schedules/${scheduleId}/inventory`, {
     cache: "no-store"
   });
@@ -63,7 +63,7 @@ async function fetchInventoryLayout(scheduleId: number) {
 }
 
 async function fetchScheduleDetail(scheduleId: number) {
-  const baseUrl = process.env.API_BASE_URL ?? "http://localhost:8080";
+  const baseUrl = process.env.API_BASE_URL ?? "https://b84d-103-72-212-59.ngrok-free.app";
   const res = await fetch(`${baseUrl}/api/schedules/${scheduleId}`, {
     cache: "no-store"
   });

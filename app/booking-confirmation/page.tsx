@@ -39,7 +39,7 @@ function formatPrice(price?: number | null, currency?: string | null) {
 
 async function fetchBookingDetail(bookingId: number) {
   try {
-    const baseUrl = process.env.API_BASE_URL ?? "http://localhost:8080";
+    const baseUrl = process.env.API_BASE_URL ?? "https://b84d-103-72-212-59.ngrok-free.app";
     const res = await fetch(`${baseUrl}/api/bookings/${bookingId}`, { cache: "no-store" });
     if (!res.ok) return null;
     const payload = (await res.json()) as ApiResponse<BookingDetail>;
@@ -63,7 +63,7 @@ function statusConfig(status?: number) {
 export default async function BookingConfirmationPage({ searchParams }: { searchParams: SearchParams }) {
   const bookingId = Number(searchParams.bookingId ?? 0);
   const booking = bookingId ? await fetchBookingDetail(bookingId) : null;
-  const baseUrl = process.env.API_BASE_URL ?? "http://localhost:8080";
+  const baseUrl = process.env.API_BASE_URL ?? "https://b84d-103-72-212-59.ngrok-free.app";
   const status = booking ? statusConfig(booking.status) : null;
   const isConfirmed = booking?.status === 2;
   const isPending = booking?.status === 1;
