@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { getStoredRole, getStoredToken, login, storeAuth } from "../lib/authClient";
 import { useI18n } from "../components/I18nProvider";
 import LanguageToggle from "../components/LanguageToggle";
@@ -25,7 +25,7 @@ const avatarImages = [
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export default function LoginPage() {
+function LoginContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { t } = useI18n();
@@ -336,5 +336,13 @@ export default function LoginPage() {
         </span>
       </div>
     </main>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense>
+      <LoginContent />
+    </Suspense>
   );
 }

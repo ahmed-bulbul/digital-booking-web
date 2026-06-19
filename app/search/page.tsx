@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import TopNav from "../components/TopNav";
+import FilterSidebar from "./FilterSidebar";
 
 type SearchParams = {
   routeId?: string;
@@ -146,160 +147,21 @@ export default async function SearchResultsPage({ searchParams }: { searchParams
     : "Search Results";
   const formattedDate = formatDate(travelDate);
 
-  const timeOptions = [
-    { label: "Morning", sublabel: "06:00 – 12:00", icon: "wb_sunny", value: "morning" },
-    { label: "Afternoon", sublabel: "12:00 – 18:00", icon: "light_mode", value: "afternoon" },
-    { label: "Night", sublabel: "18:00 – 06:00", icon: "bedtime", value: "night" }
-  ];
-
   return (
     <>
       <TopNav active="search" />
-      <form method="get" className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-8 flex flex-col md:flex-row gap-8">
-        <input type="hidden" name="routeId" value={routeId} />
-        <input type="hidden" name="date" value={travelDate} />
-
-        {/* Sidebar */}
-        <aside className="w-full md:w-64 flex-shrink-0">
-          <div className="md:sticky md:top-24">
-            <div className="bg-surface-container-lowest border border-outline-variant/20 rounded-2xl p-5 card-shadow">
-              <div className="flex items-center justify-between mb-5">
-                <h2 className="font-headline text-base font-bold text-on-surface">Filters</h2>
-                <button
-                  className="text-primary text-xs font-bold hover:underline underline-offset-2 transition-all"
-                  type="reset"
-                >
-                  Clear all
-                </button>
-              </div>
-
-              <div className="space-y-6">
-                {/* Departure time */}
-                <div>
-                  <h3 className="text-[10px] font-bold tracking-widest text-on-surface-variant uppercase mb-3">
-                    Departure Time
-                  </h3>
-                  <div className="space-y-1.5">
-                    {timeOptions.map((item) => (
-                      <label
-                        key={item.value}
-                        className="flex items-center justify-between p-3 rounded-xl bg-surface-container-low cursor-pointer hover:bg-surface-container-high transition-colors duration-150 group"
-                      >
-                        <div className="flex items-center gap-2.5">
-                          <span className="material-symbols-outlined text-primary text-[18px]">{item.icon}</span>
-                          <div>
-                            <p className="text-sm font-semibold text-on-surface leading-none">{item.label}</p>
-                            <p className="text-[10px] text-on-surface-variant mt-0.5">{item.sublabel}</p>
-                          </div>
-                        </div>
-                        <input
-                          className="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4"
-                          type="checkbox"
-                          name="time"
-                          value={item.value}
-                          defaultChecked={timeSlots.includes(item.value)}
-                        />
-                      </label>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Bus type */}
-                <div>
-                  <h3 className="text-[10px] font-bold tracking-widest text-on-surface-variant uppercase mb-3">
-                    Bus Type
-                  </h3>
-                  <div className="grid grid-cols-2 gap-2">
-                    {[{ label: "AC", value: "ac" }, { label: "Non-AC", value: "non-ac" }].map((opt) => (
-                      <label
-                        key={opt.value}
-                        className={`flex items-center justify-center py-2.5 rounded-xl border text-sm font-semibold cursor-pointer transition-all duration-150 ${
-                          busType === opt.value
-                            ? "border-primary bg-primary/8 text-primary"
-                            : "border-outline-variant/50 text-on-surface-variant hover:border-primary/40 hover:text-on-surface"
-                        }`}
-                      >
-                        <input type="radio" name="busType" value={opt.value} className="sr-only" defaultChecked={busType === opt.value} />
-                        {opt.label}
-                      </label>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Price range */}
-                <div>
-                  <h3 className="text-[10px] font-bold tracking-widest text-on-surface-variant uppercase mb-3">
-                    Price Range (৳)
-                  </h3>
-                  <div className="grid grid-cols-2 gap-2">
-                    <input
-                      className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-3 py-2.5 text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary/30 transition-all"
-                      type="number"
-                      name="minPrice"
-                      placeholder="Min"
-                      defaultValue={searchParams.minPrice ?? ""}
-                    />
-                    <input
-                      className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-3 py-2.5 text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary/30 transition-all"
-                      type="number"
-                      name="maxPrice"
-                      placeholder="Max"
-                      defaultValue={searchParams.maxPrice ?? ""}
-                    />
-                  </div>
-                </div>
-
-                {/* Operators */}
-                {providers.length > 0 && (
-                  <div>
-                    <h3 className="text-[10px] font-bold tracking-widest text-on-surface-variant uppercase mb-3">
-                      Operators
-                    </h3>
-                    <div className="space-y-2">
-                      {providers.map((provider) => (
-                        <label key={provider.id} className="flex items-center gap-2.5 cursor-pointer group">
-                          <input
-                            className="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4"
-                            type="checkbox"
-                            name="provider"
-                            value={provider.id}
-                            defaultChecked={providerIds.includes(provider.id)}
-                          />
-                          <span className="text-sm text-on-surface-variant group-hover:text-on-surface transition-colors">
-                            {provider.name}
-                          </span>
-                        </label>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Sort */}
-                <div>
-                  <h3 className="text-[10px] font-bold tracking-widest text-on-surface-variant uppercase mb-3">
-                    Sort By
-                  </h3>
-                  <select
-                    className="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-3 py-2.5 text-sm font-semibold text-on-surface focus:ring-2 focus:ring-primary/20 cursor-pointer"
-                    name="sort"
-                    defaultValue={sortBy}
-                  >
-                    <option value="departure">Earliest Departure</option>
-                    <option value="price">Lowest Price</option>
-                    <option value="duration">Fastest Duration</option>
-                  </select>
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full primary-gradient text-white font-bold py-3 rounded-xl hover:opacity-95 active:scale-95 transition-all duration-200 shadow-sm shadow-primary/20 text-sm"
-                >
-                  Apply Filters
-                </button>
-              </div>
-            </div>
-          </div>
-        </aside>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-8 flex flex-col md:flex-row gap-8">
+        <FilterSidebar
+          routeId={routeId}
+          travelDate={travelDate}
+          initTimeSlots={timeSlots}
+          initProviderIds={providerIds}
+          initMinPrice={searchParams.minPrice ?? ""}
+          initMaxPrice={searchParams.maxPrice ?? ""}
+          initSortBy={sortBy}
+          initBusType={busType}
+          providers={providers}
+        />
 
         {/* Results */}
         <section className="flex-1 min-w-0 space-y-5">
@@ -473,7 +335,7 @@ export default async function SearchResultsPage({ searchParams }: { searchParams
             </div>
           )}
         </section>
-      </form>
+      </div>
 
       {/* Footer */}
       <footer className="bg-surface-container-low border-t border-outline-variant/20 mt-16">
