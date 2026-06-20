@@ -52,10 +52,12 @@ export type RoleLabel = "USER" | "ADMIN" | "AGENT" | "PROVIDER" | "SUPER_ADMIN" 
 import { API_BASE_URL } from "./config";
 export { API_BASE_URL };
 
+const NGROK_SKIP_HEADER = { "ngrok-skip-browser-warning": "1" };
+
 export async function login(payload: LoginPayload) {
   const res = await fetch(`${API_BASE_URL}/api/auth/login`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", ...NGROK_SKIP_HEADER },
     body: JSON.stringify(payload)
   });
 
@@ -71,7 +73,7 @@ export async function login(payload: LoginPayload) {
 export async function loginAdmin(payload: LoginPayload) {
   const res = await fetch(`${API_BASE_URL}/api/auth/login-admin`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", ...NGROK_SKIP_HEADER },
     body: JSON.stringify(payload)
   });
 
@@ -87,7 +89,7 @@ export async function loginAdmin(payload: LoginPayload) {
 export async function loginSuperAdmin(payload: LoginPayload) {
   const res = await fetch(`${API_BASE_URL}/api/auth/login-super-admin`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", ...NGROK_SKIP_HEADER },
     body: JSON.stringify(payload)
   });
 
@@ -103,7 +105,7 @@ export async function loginSuperAdmin(payload: LoginPayload) {
 export async function registerPassenger(payload: RegisterPayload) {
   const res = await fetch(`${API_BASE_URL}/api/auth/register`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", ...NGROK_SKIP_HEADER },
     body: JSON.stringify(payload)
   });
 
@@ -119,7 +121,7 @@ export async function registerPassenger(payload: RegisterPayload) {
 export async function registerOrganization(payload: OrganizationRegisterPayload) {
   const res = await fetch(`${API_BASE_URL}/api/auth/register-organization`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", ...NGROK_SKIP_HEADER },
     body: JSON.stringify(payload)
   });
 
@@ -198,6 +200,8 @@ export async function authFetch(input: RequestInfo | URL, init: RequestInit = {}
   if (token) {
     headers.set("Authorization", `Bearer ${token}`);
   }
+  // Required to bypass ngrok's browser interstitial page in dev/staging
+  headers.set("ngrok-skip-browser-warning", "1");
   return fetch(input, { ...init, headers });
 }
 

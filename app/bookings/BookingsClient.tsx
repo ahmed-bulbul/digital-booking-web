@@ -104,7 +104,8 @@ export default function BookingsClient() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [meta, setMeta] = useState<PaginationMeta["pagination"] | null>(null);
-  const isAuthenticated = typeof window !== "undefined" && Boolean(getStoredToken());
+  // Start false to match server render; set to real value after mount to avoid hydration mismatch
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const fetchBookings = async () => {
     if (!isAuthenticated) return;
@@ -125,7 +126,11 @@ export default function BookingsClient() {
     }
   };
 
-  useEffect(() => { fetchBookings(); }, [page, statusFilter]);
+  useEffect(() => {
+    setIsAuthenticated(Boolean(getStoredToken()));
+  }, []);
+
+  useEffect(() => { fetchBookings(); }, [page, statusFilter, isAuthenticated]);
 
   const summary = useMemo(() => ({
     pending: bookings.filter((b) => b.status === 1).length,
