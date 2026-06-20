@@ -114,8 +114,21 @@ async function fetchSearchResults(
 }
 
 export default async function SearchResultsPage({ searchParams }: { searchParams: SearchParams }) {
-  const routeId = Number(searchParams.routeId ?? 1);
-  const travelDate = searchParams.date ?? "2026-04-01";
+  if (!searchParams.routeId) {
+    return (
+      <>
+        <TopNav active="search" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-24 text-center">
+          <span className="material-symbols-outlined text-5xl text-outline block mb-4">search</span>
+          <p className="font-headline font-bold text-xl text-on-surface mb-2">Where would you like to go?</p>
+          <p className="text-on-surface-variant text-sm">Use the search form on the home page to find available journeys.</p>
+        </div>
+      </>
+    );
+  }
+
+  const routeId = Number(searchParams.routeId);
+  const travelDate = searchParams.date ?? new Date().toISOString().split("T")[0];
   const page = Number(searchParams.page ?? 0);
   const size = Number(searchParams.size ?? 10);
   const timeSlots = arrayify(searchParams.time);
