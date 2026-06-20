@@ -49,8 +49,7 @@ export type OrganizationRegistrationResponse = {
 
 export type RoleLabel = "USER" | "ADMIN" | "AGENT" | "PROVIDER" | "SUPER_ADMIN" | "UNKNOWN";
 
-export const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8080";
+export { API_BASE_URL } from "./config";
 
 export async function login(payload: LoginPayload) {
   const res = await fetch(`${API_BASE_URL}/api/auth/login`, {

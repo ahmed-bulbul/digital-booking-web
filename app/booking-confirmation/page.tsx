@@ -1,5 +1,6 @@
 import Link from "next/link";
 import TopNav from "../components/TopNav";
+import { API_BASE_URL } from "../lib/config";
 
 const currencySymbols: Record<string, string> = { BDT: "৳", USD: "$", EUR: "€" };
 
@@ -39,8 +40,7 @@ function formatPrice(price?: number | null, currency?: string | null) {
 
 async function fetchBookingDetail(bookingId: number) {
   try {
-    const baseUrl = process.env.API_BASE_URL ?? "http://localhost:8080";
-    const res = await fetch(`${baseUrl}/api/bookings/${bookingId}`, { cache: "no-store" });
+    const res = await fetch(`${API_BASE_URL}/api/bookings/${bookingId}`, { cache: "no-store" });
     if (!res.ok) return null;
     const payload = (await res.json()) as ApiResponse<BookingDetail>;
     return payload.data ?? null;
@@ -63,7 +63,6 @@ function statusConfig(status?: number) {
 export default async function BookingConfirmationPage({ searchParams }: { searchParams: SearchParams }) {
   const bookingId = Number(searchParams.bookingId ?? 0);
   const booking = bookingId ? await fetchBookingDetail(bookingId) : null;
-  const baseUrl = process.env.API_BASE_URL ?? "http://localhost:8080";
   const status = booking ? statusConfig(booking.status) : null;
   const isConfirmed = booking?.status === 2;
   const isPending = booking?.status === 1;
@@ -202,7 +201,7 @@ export default async function BookingConfirmationPage({ searchParams }: { search
             <div className="px-6 py-5 flex flex-wrap gap-3">
               {booking && (
                 <a
-                  href={`${baseUrl}/api/bookings/${booking.bookingId}/ticket`}
+                  href={`${API_BASE_URL}/api/bookings/${booking.bookingId}/ticket`}
                   className="flex items-center gap-2 primary-gradient text-white px-5 py-2.5 rounded-xl text-sm font-bold hover:opacity-95 active:scale-95 transition-all shadow-sm shadow-primary/20"
                 >
                   <span className="material-symbols-outlined text-[18px]">download</span>

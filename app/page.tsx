@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import TopNav from "./components/TopNav";
 import SearchForm, { RouteLookup } from "./components/SearchForm";
+import { API_BASE_URL } from "./lib/config";
 
 type ApiResponse<T> = {
   success: boolean;
@@ -10,8 +11,7 @@ type ApiResponse<T> = {
 
 async function fetchRoutes(): Promise<RouteLookup[]> {
   try {
-    const baseUrl = process.env.API_BASE_URL ?? "http://localhost:8080";
-    const res = await fetch(`${baseUrl}/api/routes/public`, { cache: "no-store" });
+    const res = await fetch(`${API_BASE_URL}/api/routes/public`, { cache: "no-store" });
     if (!res.ok) return [];
     const payload = (await res.json()) as ApiResponse<RouteLookup[]>;
     return payload.data ?? [];

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import TopNav from "../components/TopNav";
 import CheckoutPaymentClient from "./CheckoutPaymentClient";
+import { API_BASE_URL } from "../lib/config";
 
 const currencySymbols: Record<string, string> = {
   BDT: "৳",
@@ -73,8 +74,7 @@ function formatPrice(price?: number | null, currency?: string | null) {
 }
 
 async function fetchBookingDetail(bookingId: number) {
-  const baseUrl = process.env.API_BASE_URL ?? "http://localhost:8080";
-  const res = await fetch(`${baseUrl}/api/bookings/${bookingId}`, {
+  const res = await fetch(`${API_BASE_URL}/api/bookings/${bookingId}`, {
     cache: "no-store"
   });
   if (!res.ok) {

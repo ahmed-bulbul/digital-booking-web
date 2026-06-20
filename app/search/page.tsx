@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import TopNav from "../components/TopNav";
 import FilterSidebar from "./FilterSidebar";
+import { API_BASE_URL } from "../lib/config";
 
 type SearchParams = {
   routeId?: string;
@@ -50,7 +51,7 @@ type ApiResponse<T> = {
 };
 
 const fallbackLogo = "/images/default-product.svg";
-const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8080";
+const apiBaseUrl = API_BASE_URL;
 
 const currencySymbols: Record<string, string> = { BDT: "৳", USD: "$", EUR: "€" };
 
@@ -99,8 +100,7 @@ async function fetchSearchResults(
   filters: { providerIds?: number[]; minPrice?: number; maxPrice?: number; timeSlots?: string[]; sortBy?: string; busType?: string }
 ) {
   try {
-    const baseUrl = process.env.API_BASE_URL ?? "http://localhost:8080";
-    const res = await fetch(`${baseUrl}/api/search`, {
+    const res = await fetch(`${API_BASE_URL}/api/search`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ routeId, travelDate, page, size, ...filters }),

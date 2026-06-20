@@ -1,5 +1,6 @@
 import TopNav from "../components/TopNav";
 import SeatSelectionClient from "./SeatSelectionClient";
+import { API_BASE_URL } from "../lib/config";
 
 const STATUS_AVAILABLE = 1;
 
@@ -51,8 +52,7 @@ type SearchParams = {
 };
 
 async function fetchInventoryLayout(scheduleId: number) {
-  const baseUrl = process.env.API_BASE_URL ?? "http://localhost:8080";
-  const res = await fetch(`${baseUrl}/api/schedules/${scheduleId}/inventory`, {
+  const res = await fetch(`${API_BASE_URL}/api/schedules/${scheduleId}/inventory`, {
     cache: "no-store"
   });
   if (!res.ok) {
@@ -63,8 +63,7 @@ async function fetchInventoryLayout(scheduleId: number) {
 }
 
 async function fetchScheduleDetail(scheduleId: number) {
-  const baseUrl = process.env.API_BASE_URL ?? "http://localhost:8080";
-  const res = await fetch(`${baseUrl}/api/schedules/${scheduleId}`, {
+  const res = await fetch(`${API_BASE_URL}/api/schedules/${scheduleId}`, {
     cache: "no-store"
   });
   if (!res.ok) {
