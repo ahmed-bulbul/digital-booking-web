@@ -49,7 +49,8 @@ export type OrganizationRegistrationResponse = {
 
 export type RoleLabel = "USER" | "ADMIN" | "AGENT" | "PROVIDER" | "SUPER_ADMIN" | "UNKNOWN";
 
-export { API_BASE_URL } from "./config";
+import { API_BASE_URL } from "./config";
+export { API_BASE_URL };
 
 export async function login(payload: LoginPayload) {
   const res = await fetch(`${API_BASE_URL}/api/auth/login`, {
