@@ -54,12 +54,19 @@ const emptyForm: ScheduleForm = {
   availableCount: ""
 };
 
+const BST_OFFSET_MS = 6 * 60 * 60 * 1000; // Bangladesh Standard Time = UTC+6
+
+// Convert UTC ISO string → "YYYY-MM-DDTHH:MM" in BST, independent of browser timezone
 const toLocalDateTime = (isoString: string) => {
-  const date = new Date(isoString);
-  const pad = (value: number) => String(value).padStart(2, "0");
-  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(
-    date.getHours()
-  )}:${pad(date.getMinutes())}`;
+  const pad = (n: number) => String(n).padStart(2, "0");
+  const bst = new Date(new Date(isoString).getTime() + BST_OFFSET_MS);
+  return `${bst.getUTCFullYear()}-${pad(bst.getUTCMonth() + 1)}-${pad(bst.getUTCDate())}T${pad(bst.getUTCHours())}:${pad(bst.getUTCMinutes())}`;
+};
+
+// Convert "YYYY-MM-DDTHH:MM" entered as BST → UTC ISO string
+const bstInputToUTC = (datetimeLocal: string): string | null => {
+  if (!datetimeLocal) return null;
+  return new Date(`${datetimeLocal}:00+06:00`).toISOString();
 };
 
 export default function TripSchedulingPage() {
@@ -136,8 +143,8 @@ export default function TripSchedulingPage() {
       const payload = {
         productId: Number(form.productId),
         routeId: form.routeId ? Number(form.routeId) : null,
-        departureAt: form.departureAt ? new Date(form.departureAt).toISOString() : null,
-        arrivalAt: form.arrivalAt ? new Date(form.arrivalAt).toISOString() : null,
+        departureAt: bstInputToUTC(form.departureAt),
+        arrivalAt: bstInputToUTC(form.arrivalAt),
         status: Number(form.status),
         totalCapacity: form.totalCapacity ? Number(form.totalCapacity) : null,
         availableCount: form.availableCount ? Number(form.availableCount) : null
@@ -256,20 +263,24 @@ export default function TripSchedulingPage() {
               </option>
             ))}
           </select>
-          <input
-            className="bg-surface-container-high rounded-xl px-4 py-3 text-sm"
-            placeholder="Departure"
-            type="datetime-local"
-            value={form.departureAt}
-            onChange={(event) => setForm((prev) => ({ ...prev, departureAt: event.target.value }))}
-          />
-          <input
-            className="bg-surface-container-high rounded-xl px-4 py-3 text-sm"
-            placeholder="Arrival"
-            type="datetime-local"
-            value={form.arrivalAt}
-            onChange={(event) => setForm((prev) => ({ ...prev, arrivalAt: event.target.value }))}
-          />
+          <div className="flex flex-col gap-1">
+            <label className="text-xs text-on-surface-variant font-medium px-1">Departure (BST, UTC+6)</label>
+            <input
+              className="bg-surface-container-high rounded-xl px-4 py-3 text-sm"
+              type="datetime-local"
+              value={form.departureAt}
+              onChange={(event) => setForm((prev) => ({ ...prev, departureAt: event.target.value }))}
+            />
+          </div>
+          <div className="flex flex-col gap-1">
+            <label className="text-xs text-on-surface-variant font-medium px-1">Arrival (BST, UTC+6)</label>
+            <input
+              className="bg-surface-container-high rounded-xl px-4 py-3 text-sm"
+              type="datetime-local"
+              value={form.arrivalAt}
+              onChange={(event) => setForm((prev) => ({ ...prev, arrivalAt: event.target.value }))}
+            />
+          </div>
           <input
             className="bg-surface-container-high rounded-xl px-4 py-3 text-sm"
             placeholder="Total Capacity"
@@ -334,7 +345,7 @@ export default function TripSchedulingPage() {
                       })()}
                     </td>
                     <td className="py-3 text-xs text-on-surface-variant">
-                      {new Date(item.departureAt).toLocaleString()}
+                      {new Date(item.departureAt).toLocaleString("en-US", { timeZone: "Asia/Dhaka" })}
                     </td>
                     <td className="py-3">{labelForValue(scheduleStatuses, item.status)}</td>
                     <td className="py-3 flex gap-2">

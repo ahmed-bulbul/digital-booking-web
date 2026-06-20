@@ -547,14 +547,14 @@ export default function SeatSelectionClient({ items, scheduleDetail }: SeatSelec
                   <p className="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">From</p>
                   <p className="font-bold text-on-surface">{boardingLabel}</p>
                   <p className="text-xs text-primary font-medium mt-0.5">
-                    {departureAt ? departureAt.toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" }) : "—"}
+                    {departureAt ? departureAt.toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short", timeZone: "Asia/Dhaka" }) : "—"}
                   </p>
                 </div>
                 <div>
                   <p className="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">To</p>
                   <p className="font-bold text-on-surface">{droppingLabel}</p>
                   <p className="text-xs text-secondary font-medium mt-0.5">
-                    {arrivalAt ? arrivalAt.toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" }) : "—"}
+                    {arrivalAt ? arrivalAt.toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short", timeZone: "Asia/Dhaka" }) : "—"}
                   </p>
                 </div>
               </div>

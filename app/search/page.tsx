@@ -67,12 +67,12 @@ function arrayify(value?: string | string[]) {
 }
 
 function formatTime(iso: string) {
-  return new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "2-digit" }).format(new Date(iso));
+  return new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "2-digit", timeZone: "Asia/Dhaka" }).format(new Date(iso));
 }
 
 function formatDate(dateString: string) {
-  return new Intl.DateTimeFormat("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" })
-    .format(new Date(`${dateString}T00:00:00Z`));
+  return new Intl.DateTimeFormat("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric", timeZone: "Asia/Dhaka" })
+    .format(new Date(`${dateString}T00:00:00+06:00`));
 }
 
 function formatDuration(minutes?: number | null, departureAt?: string, arrivalAt?: string) {

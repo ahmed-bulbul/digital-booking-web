@@ -125,7 +125,7 @@ export default function PaymentManagementPage() {
                       {item.amount} {item.currency}
                     </td>
                     <td className="py-3 text-xs text-on-surface-variant">
-                      {new Date(item.createdAt).toLocaleString()}
+                      {new Date(item.createdAt).toLocaleString("en-US", { timeZone: "Asia/Dhaka" })}
                     </td>
                     <td className="py-3">
                       <button

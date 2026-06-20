@@ -63,7 +63,7 @@ function SuperAdminApprovalsPageInner() {
       })
       .map((org) => ({
         ...org,
-        createdLabel: new Date(org.createdAt).toLocaleString()
+        createdLabel: new Date(org.createdAt).toLocaleString("en-US", { timeZone: "Asia/Dhaka" })
       }));
   }, [pendingOrgs, query]);
 

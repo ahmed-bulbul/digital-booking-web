@@ -210,7 +210,7 @@ export default function BookingManagementPage() {
                       {formatPrice(item.grandTotal, item.currency)}
                     </td>
                     <td className="py-3 text-xs text-on-surface-variant">
-                      {new Date(item.createdAt).toLocaleString()}
+                      {new Date(item.createdAt).toLocaleString("en-US", { timeZone: "Asia/Dhaka" })}
                     </td>
                     <td className="py-3 text-right">
                       <button
@@ -295,10 +295,10 @@ export default function BookingManagementPage() {
                     <div className="bg-surface-container-low rounded-2xl p-4">
                       <p className="text-xs uppercase tracking-widest text-on-surface-variant">Schedule</p>
                       <p className="text-sm font-semibold text-on-surface mt-2">
-                        {detail.departureAt ? new Date(detail.departureAt).toLocaleString() : "—"}
+                        {detail.departureAt ? new Date(detail.departureAt).toLocaleString("en-US", { timeZone: "Asia/Dhaka" }) : "—"}
                       </p>
                       <p className="text-xs text-on-surface-variant">
-                        {detail.arrivalAt ? new Date(detail.arrivalAt).toLocaleString() : "—"}
+                        {detail.arrivalAt ? new Date(detail.arrivalAt).toLocaleString("en-US", { timeZone: "Asia/Dhaka" }) : "—"}
                       </p>
                       <p className="text-xs text-on-surface-variant">Schedule #{detail.scheduleId ?? "—"}</p>
                     </div>

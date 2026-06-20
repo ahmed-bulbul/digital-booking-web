@@ -95,10 +95,10 @@ export default async function CheckoutPage({
 
   const departureAt = bookingDetail?.departureAt ? new Date(bookingDetail.departureAt) : null;
   const departureDateLabel = departureAt
-    ? departureAt.toLocaleDateString(undefined, { day: "2-digit", month: "short", year: "numeric" })
+    ? departureAt.toLocaleDateString("en-US", { day: "2-digit", month: "short", year: "numeric", timeZone: "Asia/Dhaka" })
     : "—";
   const departureTimeLabel = departureAt
-    ? departureAt.toLocaleTimeString(undefined, { hour: "2-digit", minute: "2-digit" })
+    ? departureAt.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", timeZone: "Asia/Dhaka" })
     : "—";
 
   return (

@@ -21,9 +21,10 @@ async function fetchRoutes(): Promise<RouteLookup[]> {
 }
 
 function getTomorrowDate() {
-  const d = new Date();
-  d.setDate(d.getDate() + 1);
-  return d.toISOString().split("T")[0];
+  // Use BST (UTC+6) date so it matches the admin's schedule timezone
+  const bstNow = new Date(Date.now() + 6 * 60 * 60 * 1000);
+  bstNow.setUTCDate(bstNow.getUTCDate() + 1);
+  return bstNow.toISOString().split("T")[0];
 }
 
 const STATS = [

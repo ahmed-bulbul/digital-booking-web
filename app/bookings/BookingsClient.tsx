@@ -61,12 +61,12 @@ function formatPrice(amount?: number | null, currency?: string | null) {
 
 function formatDate(value?: string | null) {
   if (!value) return "—";
-  return new Intl.DateTimeFormat("en-US", { day: "2-digit", month: "short", year: "numeric" }).format(new Date(value));
+  return new Intl.DateTimeFormat("en-US", { day: "2-digit", month: "short", year: "numeric", timeZone: "Asia/Dhaka" }).format(new Date(value));
 }
 
 function formatTime(value?: string | null) {
   if (!value) return "—";
-  return new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "2-digit" }).format(new Date(value));
+  return new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "2-digit", timeZone: "Asia/Dhaka" }).format(new Date(value));
 }
 
 function bookingStatusConfig(status?: BookingStatus | null) {

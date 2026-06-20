@@ -151,7 +151,7 @@ export default function AdminDashboardPage() {
                       {booking.grandTotal} {booking.currency}
                     </td>
                     <td className="py-3 text-xs text-on-surface-variant">
-                      {new Date(booking.createdAt).toLocaleString()}
+                      {new Date(booking.createdAt).toLocaleString("en-US", { timeZone: "Asia/Dhaka" })}
                     </td>
                   </tr>
                 ))}
