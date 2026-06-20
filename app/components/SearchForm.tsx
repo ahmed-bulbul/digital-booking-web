@@ -25,9 +25,8 @@ export default function SearchForm({ routes, defaultDate }: SearchFormProps) {
     return Array.from(set.values()).sort();
   }, [routes]);
 
-  const defaultRoute = routes[0];
-  const [from, setFrom] = useState(defaultRoute?.sourceName ?? "");
-  const [to, setTo] = useState(defaultRoute?.destinationName ?? "");
+  const [from, setFrom] = useState("");
+  const [to, setTo] = useState("");
   const [date, setDate] = useState(defaultDate);
   const [error, setError] = useState<string | null>(null);
   const [fromOpen, setFromOpen] = useState(false);
