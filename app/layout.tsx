@@ -2,6 +2,7 @@ import "./globals.css";
 import { Inter, Plus_Jakarta_Sans, Noto_Sans_Bengali } from "next/font/google";
 import type { Metadata } from "next";
 import ClientProviders from "./components/ClientProviders";
+import AiChatWidget from "./components/AiChatWidget";
 
 const headline = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -41,6 +42,7 @@ export default function RootLayout({
       </head>
       <body className={`${headline.variable} ${body.variable} ${bangla.variable} bg-surface text-on-surface min-h-screen`}>
         <ClientProviders>{children}</ClientProviders>
+        <AiChatWidget />
       </body>
     </html>
   );
